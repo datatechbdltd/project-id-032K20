@@ -1,0 +1,17 @@
+                         /*
+
+                        //alert(data.data.length)
+                        var array =[];
+                        $.each(data.data, function(key,value) {
+                            console.log(key)
+                            console.log(value.address['cityName'])
+                            //console.log(data.data[key].address['cityName'])
+                            array.push(value.address['cityName'])
+                        });
+                        $( "#one-way-search-from" ).autocomplete({
+                            source: array
+                        });*/
+                        //console.log(data)
+                        //console.log(data.length)
+                        //console.log(data.data[0].type)
+                        //console.log(data.data[0].address['cityName'])
