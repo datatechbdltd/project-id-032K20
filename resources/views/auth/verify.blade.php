@@ -67,7 +67,12 @@
                                                         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                                                             @csrf
                                                             <div class="btn-box">
-                                                                <button type="submit" class="theme-btn">{{ __('Click here to request another') }}</button>
+                                                                @if(session('resent'))
+                                                                    <button type="submit" class="theme-btn">{{ __('Click here to request another') }}</button>
+                                                                @else
+                                                                <button type="submit" class="theme-btn">{{ __('Click here to request') }}</button>
+                                                                @endif
+
                                                             </div>
                                                         </form>
                                                     </div>

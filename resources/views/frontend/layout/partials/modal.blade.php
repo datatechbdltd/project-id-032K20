@@ -25,7 +25,7 @@
                                 <label class="label-text">{{ __('Full Name') }}</label>
                                 <div class="form-group">
                                     <span class="la la-user form-icon"></span>
-                                    <input class="form-control" id="name" name="text" type="text" placeholder="Type your name">
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="Type your name">
                                 </div>
                             </div><!-- end input-box -->
                             <div class="input-box">

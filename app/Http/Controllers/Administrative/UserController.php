@@ -15,8 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::role('user')->orderBy('id', 'desc')->get();
-        return view('administrative.user.index', compact('users'));
+        // $users = User::role('user')->orderBy('id', 'desc')->get();
+        // return view('administrative.user.index', compact('users'));
+        return view('administrative.user.index');
+
     }
 
     /**

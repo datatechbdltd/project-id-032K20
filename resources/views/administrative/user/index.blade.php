@@ -1,5 +1,8 @@
 @extends('administrative.layout.app')
 @push('title') {{ __('Users') }} @endpush
+@push('css')
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+@endpush
 @section('content')
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -35,65 +38,26 @@
                 <div class="card card-custom">
                     <div class="card-header">
                         <div class="card-title">
-											<span class="card-icon">
-												<i class="flaticon2-user-1 text-primary"></i>
-											</span>
+                                <span class="card-icon">
+                                    <i class="flaticon2-user-1 text-primary"></i>
+                                </span>
                             <h3 class="card-label">Users table</h3>
                         </div>
                     </div>
-
                     <div class="card-body">
                         <!--begin: Datatable-->
-                        <table class="table table-bordered table-hover table-checkable" id="user-table" style="margin-top: 13px !important">
+                        <table class="table table-bordered table-hover table-checkable" id="datatable" style="margin-top: 13px !important">
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Avatar</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Join</th>
-                                <th>Actions</th>
-                            </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Avatar</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Join</th>
+                                    <th>Actions</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>
-                                    <div class="symbol symbol-40 mr-3">
-                                        <div class="symbol-label" style="background-image: url('{{ $user->avatar }}')"></div>
-                                        @if(!$user->email_verified_at)
-                                        <i class="symbol-badge bg-danger"></i>
-                                        @else
-                                            <i class="symbol-badge bg-success"></i>
-                                        @endif
-                                    </div>
-                                </td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at->format('M Y') }}</td>
-                                <td nowrap="nowrap">
-                                    <div class="dropdown dropdown-inline">
-                                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
-                                            <i class="la la-cog"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                            <ul class="nav nav-hoverable flex-column">
-                                                <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-edit"></i><span class="nav-text">Edit Details</span></a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-leaf"></i><span class="nav-text">Update Status</span></a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-print"></i><span class="nav-text">Print</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details">
-                                        <i class="la la-edit"></i>
-                                    </a>
-                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">
-                                        <i class="la la-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
                             </tbody>
                         </table>
                         <!--end: Datatable-->
@@ -108,16 +72,22 @@
     <!--end::Content-->
 @endsection
 @push('js')
-    <!--begin::Page Vendors(used by this page)-->
-    <script src="{{ asset('assets/administrative/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <!--end::Page Vendors-->
-    <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('assets/administrative/js/pages/crud/datatables/data-sources/user-table.js') }}"></script>
-    <!--end::Page Scripts-->
-    <!--begin::Page Scripts(used by this page)-->
+    <script src="//code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script>
-        $(document).ready(function() {
-
+        $(document).ready( function () {
+            $('#datatable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "{{ route('api.administrative.users') }}",
+                "columns": [
+                    { "data": "id" },
+                    { "data": "avatar" },
+                    { "data": "name" },
+                    { "data": "email" },
+                    { "data": "created_at" }
+                ]
+            });
         });
     </script>
     <!--end::Page Scripts-->
