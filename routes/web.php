@@ -77,6 +77,7 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
     Route::resource('user', 'UserController');
     Route::resource('provider', 'ProviderController');
     Route::get('profile/edit/{id}', 'ProfileController@edit')->name('profile.edit');
+    Route::resource('terms-condition', 'TermsAndConditionController');
     Route::group(['prefix'=>'application'], function (){
         Route::resource('language', 'LanguageController');
         Route::resource('currency', 'CurrencyController');
