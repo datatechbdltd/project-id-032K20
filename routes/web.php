@@ -79,14 +79,14 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
     Route::group(['prefix'=>'application'], function (){
         Route::resource('language', 'LanguageController');
         Route::resource('currency', 'CurrencyController');
+        Route::resource('document', 'DocumentTypeController'); // administrative.document.index,
 
         Route::group(['prefix'=>'mail', 'as' => 'mail.'], function (){
             Route::get('/smtp', 'EmailConfigController@smtp')->name('smtp');
             Route::post('/smtp', 'EmailConfigController@updateSmtp')->name('smtp.update');
             Route::post('/smtp/test', 'EmailConfigController@testSmtp')->name('smtp.test');
         });
-    });
-    Route::group(['prefix'=>'application'], function (){
+
         Route::group(['prefix'=>'setting', 'as' => 'setting.'], function (){
             Route::get('/identity', 'SettingController@identity')->name('identity');
             Route::post('/identity/image', 'SettingController@updateIdentityImage')->name('identity_image.update');

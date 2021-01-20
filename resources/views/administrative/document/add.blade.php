@@ -1,0 +1,198 @@
+@extends('administrative.layout.app')
+@push('title') {{ __('Doocument') }} @endpush
+@push('css')
+
+@endpush
+@section('content')
+    <!--begin::Content-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+            <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                    <!--begin::Page Heading-->
+                    <div class="d-flex align-items-baseline flex-wrap mr-5">
+                        <!--begin::Page Title-->
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">{{ config('app.name') }}</h5>
+                        <!--end::Page Title-->
+                        <!--begin::Breadcrumb-->
+                        <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:0;" class="text-muted">Document</a>
+                            </li>
+                        </ul>
+                        <!--end::Breadcrumb-->
+                    </div>
+                    <!--end::Page Heading-->
+                </div>
+                <!--end::Info-->
+            </div>
+        </div>
+        <!--end::Subheader-->
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Card-->
+                <div class="card card-custom">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">Add new document</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!--begin::Form-->
+                        <form class="form">
+                            <div class="form-group form-group-last">
+                                <div class="alert alert-custom alert-default" role="alert">
+                                    <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                                    <div class="alert-text">
+                                        Note about document add
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Document name</label>
+                                <input type="text" class="form-control form-control-lg document_name" value="{{ old('document_name') }}"  placeholder="Document name" name="document_name" required/>
+                            </div>
+                            {{--currect_example--}}
+                            <div class="form-group bg-light-success rounded ">
+                                <div class="col-6 text-right">
+                                    <label for="example-search-input" class="col-form-label "><b>Currect example (134px, 38px)</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="overlay">
+                                        <div class="overlay-wrapper rounded bg-light-success text-center">
+                                            <img  src="{{ asset('assets/uploads/images/no-image.png') }}" alt="" id="image-display" class="mw-100 w-200px image-display">
+                                        </div>
+                                        <div class="overlay-layer">
+                                            <input style="display: none" type="file" accept="image/*" class="image-importer correct_example">
+                                            <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
+                                                <i class="ki ki-plus text-white"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset('assets/uploads/images/no-image.png') }}" >
+                                                <i class="ki ki-reload text-white"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{--false_example--}}
+                            <div class="form-group bg-light-success rounded ">
+                                <div class="col-6 text-right">
+                                    <label for="example-search-input" class="col-form-label "><b>False example (134px, 38px)</b></label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="overlay">
+                                        <div class="overlay-wrapper rounded bg-light-success text-center">
+                                            <img src="{{ asset('assets/uploads/images/no-image.png') }}" alt="" id="image-display" class="mw-100 w-200px image-display">
+                                        </div>
+                                        <div class="overlay-layer">
+                                            <input style="display: none" type="file" accept="image/*" class="image-importer false_example">
+                                            <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
+                                                <i class="ki ki-plus text-white"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn"  value="{{ asset('assets/uploads/images/no-image.png') }}">
+                                                <i class="ki ki-reload text-white"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <span class="switch switch-info">
+                                <label>
+                                <input type="checkbox" @if(old('document_status') == true) checked @endif value="1" name="document_status"/>
+                                <span></span>
+                                </label>
+                                </span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="submit-btn" class="btn btn-primary font-weight-bold">Save changes</button>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Entry-->
+    </div>
+    <!--end::Content-->
+
+@endsection
+@push('js')
+<!--begin::Page Scripts-->
+<script>
+    $(document).ready(function() {
+        //Submit image without reload
+        $('#submit-btn').click(function(){
+            var formData = new FormData();
+            formData.append('name', $(this).parent().parent().find('.document_name').val())
+            formData.append('correct_example', $(this).parent().parent().find('.correct_example')[0].files[0])
+            formData.append('false_example', $(this).parent().parent().find('.false_example')[0].files[0])
+
+            var this_button = $(this);
+            $.ajax({
+                method: 'POST',
+                url: "{{ route('administrative.document.store') }}",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function (){
+                    this_button.prop("disabled", true)
+                },
+                complete: function (){
+                    this_button.prop("disabled", false)
+                },
+                success: function (response_data) {
+                    if (response_data.type == 'success'){
+                        this_button.parent().parent().find('.image-display').attr("src",'{{ url('/') }}/'+response_data.image_src);
+                        this_button.parent().find('.image-reset-btn').val('{{ url('/') }}/'+response_data.image_src);
+                        this_button.parent().find('.image-importer').val('');
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: response_data.type,
+                            title: response_data.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }else{
+                        Swal.fire({
+                            icon: response_data.type,
+                            title: 'Oops...',
+                            text: response_data.message,
+                        })
+                    }
+                },
+                error: function (xhr) {
+                    var errorMessage = '<div class="card bg-danger">\n' +
+                        '                        <div class="card-body text-center p-5">\n' +
+                        '                            <span class="text-white">';
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        errorMessage +=(''+value+'<br>');
+                    });
+                    errorMessage +='</span>\n' +
+                        '                        </div>\n' +
+                        '                    </div>';
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        footer: errorMessage
+                    })
+                },
+            })
+        });
+    });
+</script>
+    @include('includes.image-upload-helper')
+
+    <script src="{{ asset('assets/administrative/js/pages/crud/file-upload/image-input.js') }}"></script>
+    <script src="{{ asset('assets/administrative/js/pages/crud/forms/widgets/select2.js') }}"></script>
+<!--end::Page Scripts-->
+@endpush
