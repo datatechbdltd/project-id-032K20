@@ -39,5 +39,36 @@
     "Advanced options": "এডভান্স অপশন",
     "Preferred airline": "পছন্দসই বিমান সংস্থা",
     "No preference": "পছন্দ নাই",
-    "Add another flight": "অন্য ফ্লাইট যুক্ত করুন"
+    "Add another flight": "অন্য ফ্লাইট যুক্ত করুন",
+
+    "Users": "ব্যবহারকারীরা",
+    "Providers": "সরবরাহকারী",
+    "01. Flights Search": "০১. ফ্লাইট অনুসন্ধান",
+    "02. Stays Search": "০২. বাসে অনুসন্ধান",
+    "03. Tour": "০৩. ট্যুর",
+    "04. Vacation Packages": "০৪. অবকাশ প্যাকেজ",
+    "05. Things to do": "০৫. করণীয়",
+    "06. Food & Drink": "০৬. খাদ্য ও পানীয়",
+    "07. Spa": "০৭. স্পা",
+    "08. Online Activities": "০৮. অনলাইন কার্যক্রম",
+    "09. Ticket": "০৯. টিকিট",
+    "10. Car Rental": "১০. গাড়ি ভাড়া",
+    "11. Transfer": "১১. স্থানান্তর",
+    "12. Travel Gear Rental": "১২. ট্র্যাভেল গিয়ার ভাড়া",
+    "13. Cruises": "১৩. ক্রুজ",
+    "Applications": "অ্যাপ্লিকেশন",
+    "Manage languages": "ভাষা পরিচালনা করুন",
+    "List - Language": "তালিকা - ভাষা",
+    "Create - Language": "তৈরি করুন - ভাষা",
+    "Manage Currency": "মুদ্রা পরিচালনা করুন",
+    "Manage mail": "মেল পরিচালনা করুন",
+    "SMTP - Setup": "এসএমটিপি - সেটআপ",
+    "Setting": "সেটিং",
+    "Identity - Setup": "পরিচয় - সেটআপ",
+    "Contact - Setup": "যোগাযোগ - সেটআপ",
+    "SEO - Setup": "এসইও - সেটআপ",
+    "oAuth - Setup": "ওঅটো - সেটআপ"
+
 }
+
+
