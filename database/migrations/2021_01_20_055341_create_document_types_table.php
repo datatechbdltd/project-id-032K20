@@ -17,7 +17,7 @@ class CreateDocumentTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('status')->default(false);
-            $table->string('currect_example')->nullable();
+            $table->string('correct_example')->nullable();
             $table->string('false_example')->nullable();
             $table->timestamps();
         });

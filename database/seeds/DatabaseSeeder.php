@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StaticOptionSeeder::class);
         $this->call(CurrencySeeder::class);
         $this->call(DocumentTypeSeeder::class);
+        $this->call(UserTypeSeeder::class);
     }
 }

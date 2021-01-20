@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
         $user->status       = 1;
         $user->name         = 'Mr. Admin';
         $user->email        = 'admin@gmail.com';
+        $user->user_type_id        = 1;
         $user->email_verified_at        = \Carbon\Carbon::now();
         $user->password     = \Illuminate\Support\Facades\Hash::make('password');
         $user->api_token    = Str::random(60);
@@ -25,6 +26,7 @@ class UserSeeder extends Seeder
         $user->status       = 1;
         $user->name         = 'Mr. Provider';
         $user->email        = 'provider@gmail.com';
+        $user->user_type_id        = 2;
         $user->email_verified_at        = \Carbon\Carbon::now();
         $user->password     = \Illuminate\Support\Facades\Hash::make('password');
         $user->api_token    = Str::random(60);
@@ -34,16 +36,18 @@ class UserSeeder extends Seeder
         $user->status       = 1;
         $user->name         = 'Mr. User';
         $user->email        = 'user@gmail.com';
+        $user->user_type_id        = 3;
         $user->email_verified_at        = \Carbon\Carbon::now();
         $user->password     = \Illuminate\Support\Facades\Hash::make('password');
         $user->api_token    = Str::random(60);
         $user->save();
 
-        for ($i=0; $i < 50; $i++) {
+        for ($i=0; $i < 5; $i++) {
             $user = new \App\User();
             $user->status       = 1;
             $user->name         = 'Mr. User'.Str::random(3);
             $user->email        = Str::random(10).'@gmail.com';
+            $user->user_type_id        = 3;
             $user->email_verified_at        = \Carbon\Carbon::now();
             $user->password     = \Illuminate\Support\Facades\Hash::make('password');
             $user->api_token    = Str::random(60);
