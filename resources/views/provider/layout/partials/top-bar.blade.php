@@ -4,7 +4,10 @@
             <div class="col-lg-12">
                 <div class="menu-wrapper">
                     <div class="logo mr-5">
-                        <a href="index.html"><img src="images/logo2.png" alt="logo"></a>
+                        <a href="index.html">
+                            <img @if(get_static_option('website_logo')) src="{{ asset(get_static_option('website_logo')) }}" alt=""
+                                     @else src="{{ asset('assets/frontend/images/logo.png') }}" alt="" @endif >
+                        </a>
                         <div class="menu-toggler">
                             <i class="la la-bars"></i>
                             <i class="la la-times"></i>
@@ -91,7 +94,7 @@
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="msg-body d-flex align-items-center">
                                                     <div class="avatar flex-shrink-0 mr-3">
-                                                        <img src="images/team8.jpg" alt="">
+                                                        <img src="{{ auth()->user()->avatar ?? asset('/assets/uploads/images/no-image.png') }}" alt="avatar">
                                                     </div>
                                                     <div class="msg-content w-100">
                                                         <div class="d-flex align-items-center justify-content-between">
@@ -105,7 +108,7 @@
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="msg-body d-flex align-items-center">
                                                     <div class="avatar flex-shrink-0 mr-3">
-                                                        <img src="images/team9.jpg" alt="">
+                                                        <img src="{{ auth()->user()->avatar ?? asset('/assets/uploads/images/no-image.png') }}" alt="avatar">
                                                     </div>
                                                     <div class="msg-content w-100">
                                                         <div class="d-flex align-items-center justify-content-between">
@@ -119,7 +122,7 @@
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="msg-body d-flex align-items-center">
                                                     <div class="avatar flex-shrink-0 mr-3">
-                                                        <img src="images/team10.jpg" alt="">
+                                                        <img src="{{ auth()->user()->avatar ?? asset('/assets/uploads/images/no-image.png') }}" alt="avatar">
                                                     </div>
                                                     <div class="msg-content w-100">
                                                         <div class="d-flex align-items-center justify-content-between">
@@ -133,7 +136,7 @@
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="msg-body d-flex align-items-center">
                                                     <div class="avatar flex-shrink-0 mr-3">
-                                                        <img src="images/team11.jpg" alt="">
+                                                        <img src="{{ auth()->user()->avatar ?? asset('/assets/uploads/images/no-image.png') }}" alt="avatar">
                                                     </div>
                                                     <div class="msg-content w-100">
                                                         <div class="d-flex align-items-center justify-content-between">
@@ -153,8 +156,8 @@
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" id="userDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm flex-shrink-0 mr-2"><img src="images/team8.jpg" alt="team-img"></div>
-                                            <span class="font-size-14 font-weight-bold">Royel Admin</span>
+                                            <div class="avatar avatar-sm flex-shrink-0 mr-2"><img src="{{ auth()->user()->avatar ?? asset('/assets/uploads/images/no-image.png') }}" alt="avatar"></div>
+                                            <span class="font-size-14 font-weight-bold">{{ auth()->user()->name  }}</span>
                                         </div>
                                     </a>
                                     <div class="dropdown-menu dropdown-reveal dropdown-menu-md dropdown-menu-right">
@@ -191,7 +194,7 @@
                                                 </div><!-- end msg-body -->
                                             </a>
                                             <div class="section-block"></div>
-                                            <a href="index.html" class="list-group-item list-group-item-action">
+                                            <a href="javascript:0" class="logout-btn list-group-item list-group-item-action">
                                                 <div class="msg-body">
                                                     <div class="msg-content">
                                                         <h3 class="title"><i class="la la-power-off mr-2"></i>Logout</h3>
