@@ -31,7 +31,8 @@
     START DASHBOARD AREA
 ================================= -->
 <section class="dashboard-area">
-{{--@include('layouts.provider.partials.top-bar')--}}
+@include('provider.layout.partials.top-bar')
+@include('provider.layout.partials.alert')
     <!-- end dashboard-nav -->
     <div class="dashboard-content-wrap">
         @yield('header')
