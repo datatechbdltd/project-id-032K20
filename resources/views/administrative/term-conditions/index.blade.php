@@ -50,7 +50,6 @@
                                 <th>SL#</th>
                                 <th>Serial</th>
                                 <th>Title</th>
-                                <th>Description</th>
                                 <th>Status</th>
                                 <th style="width: 20%">Actions</th>
                             </tr>
@@ -61,7 +60,6 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $termandcondition->serial }}</td>
                                     <td>{{ $termandcondition->title }}</td>
-                                    <td>{{ $termandcondition->description}}</td>
                                     <td>{{ $termandcondition->status}}</td>
                                     <td nowrap="nowrap">
                                         <a class="btn btn-info d-inline-block" href="{{ route('administrative.terms-condition.edit', $termandcondition->id) }}">Edit</a>
