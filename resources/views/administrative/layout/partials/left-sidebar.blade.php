@@ -162,7 +162,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">{{}}</span>
+                                    <span class="menu-text">{{__('Manage languages')}}</span>
                                     <i class="menu-arrow"></i>
                                 </a>
                                 <div class="menu-submenu">
@@ -173,7 +173,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">List - Language</span>
+                                                <span class="menu-text">{{__('List - Language')}}</span>
                                             </a>
                                         </li>
                                         <li class="menu-item @if(Request::is('*/language/create')) menu-item-active @endif" aria-haspopup="true">
@@ -181,7 +181,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">Create - Language</span>
+                                                <span class="menu-text">{{__('Create - Language')}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -192,7 +192,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Manage Currency</span>
+                                    <span class="menu-text">{{__('Manage Currency')}}</span>
                                 </a>
                             </li>
                             <li class="menu-item menu-item-submenu @if(Request::is('*/mail')) menu-item-open menu-item-here @elseif(Request::is('*/mail/*')) menu-item-open menu-item-here @endif" aria-haspopup="true" data-menu-toggle="hover">
@@ -200,7 +200,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Manage mail</span>
+                                    <span class="menu-text">{{__('Manage mail')}}</span>
                                     <i class="menu-arrow"></i>
                                 </a>
                                 <div class="menu-submenu">
@@ -211,7 +211,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">SMTP - Setup</span>
+                                                <span class="menu-text">{{__('SMTP - Setup')}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -222,7 +222,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Setting</span>
+                                    <span class="menu-text">{{__('Setting')}}</span>
                                     <i class="menu-arrow"></i>
                                 </a>
                                 <div class="menu-submenu">
@@ -233,7 +233,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">Identity - Setup</span>
+                                                <span class="menu-text">{{__('Identity - Setup')}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -246,7 +246,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">Contact - Setup</span>
+                                                <span class="menu-text">{{__('Contact - Setup')}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -259,7 +259,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">SEO - Setup</span>
+                                                <span class="menu-text">{{__('SEO - Setup')}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -272,7 +272,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">oAuth - Setup</span>
+                                                <span class="menu-text">{{__('oAuth - Setup')}}</span>
                                             </a>
                                         </li>
                                     </ul>
