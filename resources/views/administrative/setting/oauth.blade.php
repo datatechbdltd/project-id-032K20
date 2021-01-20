@@ -102,6 +102,7 @@
                                     </h3>
                                 </div>
                                 <form class="form" action="{{ route('administrative.setting.oAuth.update') }}" method="post">
+                                    @csrf
                                     <div class="card-body">
                                         <div class="form-group form-group-last">
                                             <div class="alert alert-custom alert-default" role="alert">
@@ -148,6 +149,7 @@
                                     </h3>
                                 </div>
                                 <form class="form" action="{{ route('administrative.setting.oAuth.update') }}" method="post">
+                                    @csrf
                                     <div class="card-body">
                                         <div class="form-group form-group-last">
                                             <div class="alert alert-custom alert-default" role="alert">
@@ -194,6 +196,7 @@
                                     </h3>
                                 </div>
                                 <form class="form" action="{{ route('administrative.setting.oAuth.update') }}" method="post">
+                                    @csrf
                                     <div class="card-body">
                                         <div class="form-group form-group-last">
                                             <div class="alert alert-custom alert-default" role="alert">
@@ -240,6 +243,7 @@
                                     </h3>
                                 </div>
                                 <form class="form" action="{{ route('administrative.setting.oAuth.update') }}" method="post">
+                                    @csrf
                                     <div class="card-body">
                                         <div class="form-group form-group-last">
                                             <div class="alert alert-custom alert-default" role="alert">
@@ -286,6 +290,7 @@
                                     </h3>
                                 </div>
                                 <form class="form" action="{{ route('administrative.setting.oAuth.update') }}" method="post">
+                                    @csrf
                                     <div class="card-body">
                                         <div class="form-group form-group-last">
                                             <div class="alert alert-custom alert-default" role="alert">

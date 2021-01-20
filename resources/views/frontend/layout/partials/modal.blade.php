@@ -54,7 +54,6 @@
                                 <button type="button" class="theme-btn w-100" id="registration-btn">{{ __('Register Account') }}</button>
                             </div>
                             <div class="action-box text-center">
-                                <p class="font-size-14">{{ __('Or Sign up Using') }}</p>
                                 <ul class="social-profile py-3">
                                     @if(get_static_option('google_o_auth_status') == 'Enable')
                                         <li><a href="{{ route('socialiteLogin', 'google') }}" class="bg-5 text-white"><i class="lab la-google"></i></a></li>
@@ -133,7 +132,6 @@
                                 </button>
                             </div>
                             <div class="action-box text-center">
-                                <p class="font-size-14">{{ __('Sign in with Google') }}</p>
                                 <ul class="social-profile py-3">
                                     <ul class="social-profile py-3">
                                         @if(get_static_option('google_o_auth_status') == 'Enable')
@@ -154,6 +152,7 @@
                                         @if(get_static_option('github_o_auth_status') == 'Enable')
                                             <li><a href="{{ route('socialiteLogin', 'github') }}" class="bg-5 text-white"><i class="lab la-github"></i></a></li>
                                         @endif
+
                                     </ul>
                                 </ul>
                             </div>
