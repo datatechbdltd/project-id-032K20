@@ -76,6 +76,7 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
     Route::resource('dashboard', 'DashboardController');
     Route::resource('user', 'UserController');
     Route::resource('provider', 'ProviderController');
+    Route::get('profile/edit/{id}', 'ProfileController@edit')->name('profile.edit');
     Route::group(['prefix'=>'application'], function (){
         Route::resource('language', 'LanguageController');
         Route::resource('currency', 'CurrencyController');
