@@ -78,59 +78,59 @@
                 </li>
 
                 <li class="menu-section">
-                    <h4 class="menu-text">01. Flights Search</h4>
+                    <h4 class="menu-text">{{__('01. Flights Search')}}</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">02. Stays Search</h4>
+                    <h4 class="menu-text">{{__('02. Stays Search')}}</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">03. Tour</h4>
+                    <h4 class="menu-text">{{__('03. Tour')}}</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">04. Vacation Packages</h4>
+                    <h4 class="menu-text">{{__('04. Vacation Packages')}}</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">05. Things to do</h4>
+                    <h4 class="menu-text">{{__('05. Things to do')}}</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">06. Food & Drink </h4>
+                    <h4 class="menu-text">{{__('06. Food & Drink')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">07. Spa </h4>
+                    <h4 class="menu-text">{{__('07. Spa')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">08. Online Activities </h4>
+                    <h4 class="menu-text">{{__('08. Online Activities')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">09. Ticket </h4>
+                    <h4 class="menu-text">{{__('09. Ticket')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">10. Car Rental  </h4>
+                    <h4 class="menu-text">{{__('10. Car Rental')}}  </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">11. Transfer </h4>
+                    <h4 class="menu-text">{{__('11. Transfer')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">12. Travel Gear Rental </h4>
+                    <h4 class="menu-text">{{__('12. Travel Gear Rental')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">13. Cruises </h4>
+                    <h4 class="menu-text">{{__('13. Cruises')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-section">
-                    <h4 class="menu-text">Setting </h4>
+                    <h4 class="menu-text">{{__('Setting')}} </h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <li class="menu-item menu-item-submenu @if(Request::is('*/application/*')) menu-item-open menu-item-here @endif" aria-haspopup="true" data-menu-toggle="hover">
