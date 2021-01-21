@@ -18,7 +18,15 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default('0')->comment('0 disable | 1 enable');
             $table->foreignId('user_type_id');
             $table->string('name');
+            $table->string('phone')->nullable()->unique();
             $table->string('email')->unique();
+            $table->string('username')->nullable()->unique();
+            $table->string('language')->nullable();
+            $table->string('time_zone')->nullable();
+            $table->boolean('is_active_email')->default('0')->comment('0 disable | 1 enable');
+            $table->boolean('is_active_sms')->default('0')->comment('0 disable | 1 enable');
+            $table->boolean('is_active_phone')->default('0')->comment('0 disable | 1 enable');
+            $table->timestamp('phone_verified_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api_token', 80)->unique()->nullable()->default(null);

@@ -167,7 +167,6 @@
                     ids.push(checkboxes[i].value)
                 }
             }
-alert(ids)
             formData.append('user_role', ids)
 
             var this_button = $(this);

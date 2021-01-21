@@ -60,7 +60,7 @@ class DocumentTypeController extends Controller
         if ($request->hasFile('correct_example')) {
             $image             = $request->file('correct_example');
             $folder_path       = 'assets/uploads/images/setting/document/';
-            $image_new_name    = 'correct-type-document-example'.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.' . $image->getClientOriginalExtension();
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.'. $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->resize(500, 500)->save($folder_path.$image_new_name);
             $document_type->correct_example=$folder_path.$image_new_name;
@@ -68,7 +68,7 @@ class DocumentTypeController extends Controller
         if ($request->hasFile('false_example')) {
             $image             = $request->file('false_example');
             $folder_path       = 'assets/uploads/images/setting/document/';
-            $image_new_name    = 'false-type-document-example'.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.'. $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->resize(500, 500)->save($folder_path.$image_new_name);
             $document_type->false_example=$folder_path.$image_new_name;
