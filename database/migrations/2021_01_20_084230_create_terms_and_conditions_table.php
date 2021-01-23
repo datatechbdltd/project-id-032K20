@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentTypesTable extends Migration
+class CreateTermsAndConditionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDocumentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('document_types', function (Blueprint $table) {
+        Schema::create('terms_and_conditions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('status')->default(false);
-            $table->string('correct_example')->nullable();
-            $table->string('false_example')->nullable();
+            $table->boolean('status')->default(true);
+            $table->integer('serial');
+            $table->string('title');
+            $table->longText('description');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateDocumentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('document_types');
+        Schema::dropIfExists('terms_and_conditions');
     }
 }

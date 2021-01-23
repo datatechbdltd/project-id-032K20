@@ -162,6 +162,36 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
+                                    <span class="menu-text">{{__('Tearm And Conditions')}}</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu">
+                                    <i class="menu-arrow"></i>
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @if(Request::is('*/language')) menu-item-active @endif" aria-haspopup="true">
+                                            <a href="{{route('administrative.terms-condition.index')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="menu-text">{{__('List - Condition')}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @if(Request::is('*/language/create')) menu-item-active @endif" aria-haspopup="true">
+                                            <a href="{{route('administrative.terms-condition.create')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="menu-text">{{__('Create - Condition')}}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu @if(Request::is('*/language')) menu-item-open menu-item-here @elseif(Request::is('*/language/*')) menu-item-open menu-item-here @endif" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
                                     <span class="menu-text">{{__('Manage languages')}}</span>
                                     <i class="menu-arrow"></i>
                                 </a>
@@ -182,6 +212,28 @@
                                                     <span></span>
                                                 </i>
                                                 <span class="menu-text">{{__('Create - Language')}}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu @if(Request::is('*/language')) menu-item-open menu-item-here @elseif(Request::is('*/language/*')) menu-item-open menu-item-here @endif" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('Manage Document')}}</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu">
+                                    <i class="menu-arrow"></i>
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @if(Request::is('*/language')) menu-item-active @endif" aria-haspopup="true">
+                                            <a href="{{ route('administrative.document.index') }}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="menu-text">{{__('List - Document Type')}}</span>
                                             </a>
                                         </li>
                                     </ul>

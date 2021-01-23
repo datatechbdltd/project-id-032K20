@@ -19,7 +19,7 @@
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                             <li class="breadcrumb-item">
-                                <a href="javascript:0;" class="text-muted">Document</a>
+                                <a href="javascript:0;" class="text-muted">Document type create</a>
                             </li>
                         </ul>
                         <!--end::Breadcrumb-->
@@ -100,14 +100,36 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Status</label>
-                                <span class="switch switch-info">
-                                <label>
-                                <input type="checkbox" @if(old('document_status') == true) checked @endif value="1" name="document_status"/>
-                                <span></span>
-                                </label>
-                                </span>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Status</label>
+                                <div class="col-9 col-form-label">
+                                    <div class="radio-inline">
+                                        <label class="radio radio-success">
+                                            <input value="0"  checked="checked"  type="radio" class="status" name="status"/>
+                                            <span></span>
+                                           Off
+                                        </label>
+                                        <label class="radio radio-success">
+                                            <input value="1"  type="radio" class="status" name="status"/>
+                                            <span></span>
+                                           On
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label">Select user role</label>
+                                <div class="col-9 col-form-label">
+                                    <div class="radio-inline">
+                                        @foreach ($user_type as $type)
+                                            <label class="radio radio-success">
+                                                <input id="id-{{ $type->id }}" value="{{ $type->id }}" @if($type->id == 1)  checked="checked"  @endif class="user_role" type="checkbox" name="user_role"/>
+                                                <span></span>
+                                                {{ $type->name }}
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="submit-btn" class="btn btn-primary font-weight-bold">Save changes</button>
@@ -131,10 +153,21 @@
     $(document).ready(function() {
         //Submit image without reload
         $('#submit-btn').click(function(){
+
             var formData = new FormData();
             formData.append('name', $(this).parent().parent().find('.document_name').val())
             formData.append('correct_example', $(this).parent().parent().find('.correct_example')[0].files[0])
             formData.append('false_example', $(this).parent().parent().find('.false_example')[0].files[0])
+            formData.append('status', $(this).parent().parent().find('.status:checked').val())
+
+            var ids = []
+            var checkboxes = document.querySelectorAll('.user_role:checked')
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].value != 'null'){
+                    ids.push(checkboxes[i].value)
+                }
+            }
+            formData.append('user_role', ids)
 
             var this_button = $(this);
             $.ajax({
@@ -152,9 +185,6 @@
                 },
                 success: function (response_data) {
                     if (response_data.type == 'success'){
-                        this_button.parent().parent().find('.image-display').attr("src",'{{ url('/') }}/'+response_data.image_src);
-                        this_button.parent().find('.image-reset-btn').val('{{ url('/') }}/'+response_data.image_src);
-                        this_button.parent().find('.image-importer').val('');
                         Swal.fire({
                             position: 'top-end',
                             icon: response_data.type,
@@ -162,6 +192,7 @@
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        window.location.replace(response_data.url);
                     }else{
                         Swal.fire({
                             icon: response_data.type,

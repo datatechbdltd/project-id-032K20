@@ -99,19 +99,19 @@
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body">
-                <form class="form" id="kt_form">
+                {{-- <form class="form" id="kt_form"> --}}
                     <div class="tab-content">
                         <!--begin::Tab-->
                         <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
                             <!--begin::Row-->
-                            <div class="row">
+                            <div class="row profile-details">
                                 <div class="col-xl-2"></div>
                                 <div class="col-xl-7 my-2">
                                     <!--begin::Row-->
                                     <div class="row">
                                         <label class="col-3"></label>
                                         <div class="col-9">
-                                            <h6 class="text-dark font-weight-bold mb-10">Customer Info:</h6>
+                                            <h6 class="text-dark font-weight-bold mb-10">Information :</h6>
                                         </div>
                                     </div>
                                     <!--end::Row-->
@@ -120,45 +120,28 @@
                                         <label class="col-form-label col-3 text-lg-right text-left">Avatar</label>
                                         <div class="col-9">
                                             <div class="image-input image-input-empty image-input-outline" id="kt_user_edit_avatar"
-                                                 style="background-image: url(@if(auth()->user()->avatar) {{ auth()->user()->avatar }} @else {{ asset('assets/uploads/images/no-image.png') }} @endif">
+                                                 style="background-image: url(@if(auth()->user()->avatar) {{ asset(auth()->user()->avatar) }} @else {{ asset('assets/uploads/images/no-image.png') }} @endif">
                                                 <div class="image-input-wrapper"></div>
                                                 <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                                    <input class="profile_avatar"  type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
                                                     <input type="hidden" name="profile_avatar_remove" />
                                                 </label>
                                                 <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-																			<i class="ki ki-bold-close icon-xs text-muted"></i>
-																		</span>
+                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                </span>
                                                 <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
-																			<i class="ki ki-bold-close icon-xs text-muted"></i>
-																		</span>
+                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                     <!--end::Group-->
                                     <!--begin::Group-->
                                     <div class="form-group row">
-                                        <label class="col-form-label col-3 text-lg-right text-left">First Name</label>
+                                        <label class="col-form-label col-3 text-lg-right text-left">Full Name</label>
                                         <div class="col-9">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value="Anna" />
-                                        </div>
-                                    </div>
-                                    <!--end::Group-->
-                                    <!--begin::Group-->
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-3 text-lg-right text-left">Last Name</label>
-                                        <div class="col-9">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value="Krox" />
-                                        </div>
-                                    </div>
-                                    <!--end::Group-->
-                                    <!--begin::Group-->
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-3 text-lg-right text-left">Company Name</label>
-                                        <div class="col-9">
-                                            <input class="form-control form-control-lg form-control-solid" type="text" value="Loop Inc." />
-                                            <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                                            <input class="form-control form-control-lg form-control-solid name" type="text" value="{{ $user->name }}" />
                                         </div>
                                     </div>
                                     <!--end::Group-->
@@ -172,7 +155,7 @@
                                                         <i class="la la-phone"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control form-control-lg form-control-solid" value="+45678967456" placeholder="Phone" />
+                                                <input type="text" class="form-control form-control-lg form-control-solid phone" value="{{ $user->phone }}" placeholder="Phone" />
                                             </div>
                                             <span class="form-text text-muted">We'll never share your email with anyone else.</span>
                                         </div>
@@ -188,20 +171,7 @@
                                                         <i class="la la-at"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control form-control-lg form-control-solid" value="anna.krox@loop.com" placeholder="Email" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end::Group-->
-                                    <!--begin::Group-->
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-3 text-lg-right text-left">Company Site</label>
-                                        <div class="col-9">
-                                            <div class="input-group input-group-lg input-group-solid">
-                                                <input type="text" class="form-control form-control-lg form-control-solid" placeholder="Username" value="loop" />
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">.com</span>
-                                                </div>
+                                                <input type="text" class="form-control form-control-lg form-control-solid email" value="{{ $user->email }}" placeholder="Email" />
                                             </div>
                                         </div>
                                     </div>
@@ -209,12 +179,25 @@
                                 </div>
                             </div>
                             <!--end::Row-->
+                            <div class="card-footer pb-0">
+                                <div class="row">
+                                    <div class="col-xl-2"></div>
+                                    <div class="col-xl-7">
+                                        <div class="row">
+                                            <div class="col-3"></div>
+                                            <div class="col-9">
+                                                <button type="button" class="btn btn-light-primary font-weight-bold save-profile">Save profile</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!--end::Tab-->
                         <!--begin::Tab-->
                         <div class="tab-pane px-7" id="kt_user_edit_tab_2" role="tabpanel">
                             <!--begin::Row-->
-                            <div class="row">
+                            <div class="row account-details">
                                 <div class="col-xl-2"></div>
                                 <div class="col-xl-7">
                                     <div class="my-2">
@@ -231,25 +214,8 @@
                                             <label class="col-form-label col-3 text-lg-right text-left">Username</label>
                                             <div class="col-9">
                                                 <div class="spinner spinner-sm spinner-success spinner-right spinner-input">
-                                                    <input class="form-control form-control-lg form-control-solid" type="text" value="nick84" />
+                                                    <input class="username form-control form-control-lg form-control-solid" type="text" value="{{ $user->username }}" />
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <!--end::Group-->
-                                        <!--begin::Group-->
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-3 text-lg-right text-left">Email Address</label>
-                                            <div class="col-9">
-                                                <div class="input-group input-group-lg input-group-solid">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="la la-at"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="text" class="form-control form-control-lg form-control-solid" value="nick.watson@loop.com" placeholder="Email" />
-                                                </div>
-                                                <span class="form-text text-muted">Email will not be publicly displayed.
-                                                    <a href="#">Learn more</a>.</span>
                                             </div>
                                         </div>
                                         <!--end::Group-->
@@ -257,55 +223,11 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Language</label>
                                             <div class="col-9">
-                                                <select class="form-control form-control-lg form-control-solid">
-                                                    <option>Select Language...</option>
-                                                    <option value="id">Bahasa Indonesia - Indonesian</option>
-                                                    <option value="msa">Bahasa Melayu - Malay</option>
-                                                    <option value="ca">Català - Catalan</option>
-                                                    <option value="cs">Čeština - Czech</option>
-                                                    <option value="da">Dansk - Danish</option>
-                                                    <option value="de">Deutsch - German</option>
-                                                    <option value="en" selected="selected">English</option>
-                                                    <option value="en-gb">English UK - British English</option>
-                                                    <option value="es">Español - Spanish</option>
-                                                    <option value="eu">Euskara - Basque (beta)</option>
-                                                    <option value="fil">Filipino</option>
-                                                    <option value="fr">Français - French</option>
-                                                    <option value="ga">Gaeilge - Irish (beta)</option>
-                                                    <option value="gl">Galego - Galician (beta)</option>
-                                                    <option value="hr">Hrvatski - Croatian</option>
-                                                    <option value="it">Italiano - Italian</option>
-                                                    <option value="hu">Magyar - Hungarian</option>
-                                                    <option value="nl">Nederlands - Dutch</option>
-                                                    <option value="no">Norsk - Norwegian</option>
-                                                    <option value="pl">Polski - Polish</option>
-                                                    <option value="pt">Português - Portuguese</option>
-                                                    <option value="ro">Română - Romanian</option>
-                                                    <option value="sk">Slovenčina - Slovak</option>
-                                                    <option value="fi">Suomi - Finnish</option>
-                                                    <option value="sv">Svenska - Swedish</option>
-                                                    <option value="vi">Tiếng Việt - Vietnamese</option>
-                                                    <option value="tr">Türkçe - Turkish</option>
-                                                    <option value="el">Ελληνικά - Greek</option>
-                                                    <option value="bg">Български език - Bulgarian</option>
-                                                    <option value="ru">Русский - Russian</option>
-                                                    <option value="sr">Српски - Serbian</option>
-                                                    <option value="uk">Українська мова - Ukrainian</option>
-                                                    <option value="he">עִבְרִית - Hebrew</option>
-                                                    <option value="ur">اردو - Urdu (beta)</option>
-                                                    <option value="ar">العربية - Arabic</option>
-                                                    <option value="fa">فارسی - Persian</option>
-                                                    <option value="mr">मराठी - Marathi</option>
-                                                    <option value="hi">हिन्दी - Hindi</option>
-                                                    <option value="bn">বাংলা - Bangla</option>
-                                                    <option value="gu">ગુજરાતી - Gujarati</option>
-                                                    <option value="ta">தமிழ் - Tamil</option>
-                                                    <option value="kn">ಕನ್ನಡ - Kannada</option>
-                                                    <option value="th">ภาษาไทย - Thai</option>
-                                                    <option value="ko">한국어 - Korean</option>
-                                                    <option value="ja">日本語 - Japanese</option>
-                                                    <option value="zh-cn">简体中文 - Simplified Chinese</option>
-                                                    <option value="zh-tw">繁體中文 - Traditional Chinese</option>
+                                                <select class="form-control form-control-lg form-control-solid language">
+                                                        <option>Select Language...</option>
+                                                    @foreach (active_languages() as $language)
+                                                        <option @if($user->language == $language->code) selected="selected" @endif value="{{ $language->code }}">{{ $language->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -314,7 +236,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Time Zone</label>
                                             <div class="col-9">
-                                                <select class="form-control form-control-lg form-control-solid">
+                                                <select class="form-control form-control-lg form-control-solid time_zone">
                                                     <option data-offset="-39600" value="International Date Line West">(GMT-11:00) International Date Line West</option>
                                                     <option data-offset="-39600" value="Midway Island">(GMT-11:00) Midway Island</option>
                                                     <option data-offset="-39600" value="Samoa">(GMT-11:00) Samoa</option>
@@ -467,14 +389,14 @@
                                             <label class="col-form-label col-3 text-lg-right text-left">Communication</label>
                                             <div class="col-9">
                                                 <div class="checkbox-inline">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" checked="checked" />
+                                                    <label class="checkbox ">
+                                                        <input type="checkbox" class="is_active_email" @if($user->is_active_email == 0) value="0" @else value="1" checked @endif  />
                                                         <span></span>Email</label>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" checked="checked" />
+                                                    <label  class="checkbox ">
+                                                        <input type="checkbox" class="is_active_sms" @if($user->is_active_sms == 0) value="0" @else value="1" checked @endif  value="0"  />
                                                         <span></span>SMS</label>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" />
+                                                    <label class="checkbox ">
+                                                        <input type="checkbox" class="is_active_phone" @if($user->is_active_phone == 0) value="0" @else value="1" checked @endif  value="0"  />
                                                         <span></span>Phone</label>
                                                 </div>
                                             </div>
@@ -484,6 +406,19 @@
                                 </div>
                             </div>
                             <!--end::Row-->
+                            <div class="card-footer pb-0">
+                                <div class="row">
+                                    <div class="col-xl-2"></div>
+                                    <div class="col-xl-7">
+                                        <div class="row">
+                                            <div class="col-3"></div>
+                                            <div class="col-9">
+                                                <button type="button" class="btn btn-light-primary font-weight-bold save-account">Save Account</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="separator separator-dashed my-10"></div>
                             <!--begin::Row-->
                             <div class="row">
@@ -532,92 +467,96 @@
                                 </div>
                                 <div class="col-xl-2"></div>
                             </div>
+
                             <!--end::Row-->
                         </div>
                         <!--end::Tab-->
                         <!--begin::Tab-->
                         <div class="tab-pane px-7" id="kt_user_edit_tab_3" role="tabpanel">
                             <!--begin::Body-->
-                            <div class="card-body">
-                                <!--begin::Row-->
-                                <div class="row">
-                                    <div class="col-xl-2"></div>
-                                    <div class="col-xl-7">
-                                        <!--begin::Row-->
-                                        <div class="row mb-5">
-                                            <label class="col-3"></label>
-                                            <div class="col-9">
-                                                <div class="alert alert-custom alert-light-danger fade show py-4" role="alert">
-                                                    <div class="alert-icon">
-                                                        <i class="flaticon-warning"></i>
-                                                    </div>
-                                                    <div class="alert-text font-weight-bold">Configure user passwords to expire periodically.
-                                                        <br />Users will need warning that their passwords are going to expire, or they might inadvertently get locked out of the system!</div>
-                                                    <div class="alert-close">
-                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-																					<span aria-hidden="true">
-																						<i class="la la-close"></i>
-																					</span>
-                                                        </button>
+                            <form action="{{ route('administrative.profile.change.password') }}" method="POST">
+                                @csrf
+                                <div class="card-body">
+                                    <!--begin::Row-->
+                                    <div class="row">
+                                        <div class="col-xl-2"></div>
+                                        <div class="col-xl-7">
+                                            <!--begin::Row-->
+                                            <div class="row mb-5">
+                                                <label class="col-3"></label>
+                                                <div class="col-9">
+                                                    <div class="alert alert-custom alert-light-danger fade show py-4" role="alert">
+                                                        <div class="alert-icon">
+                                                            <i class="flaticon-warning"></i>
+                                                        </div>
+                                                        <div class="alert-text font-weight-bold">Configure user passwords to expire periodically.
+                                                            <br />Users will need warning that their passwords are going to expire, or they might inadvertently get locked out of the system!</div>
+                                                        <div class="alert-close">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">
+                                                                    <i class="la la-close"></i>
+                                                                </span>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!--end::Row-->
-                                        <!--begin::Row-->
-                                        <div class="row">
-                                            <label class="col-3"></label>
-                                            <div class="col-9">
-                                                <h6 class="text-dark font-weight-bold mb-10">Change Or Recover Your Password:</h6>
+                                            <!--end::Row-->
+                                            <!--begin::Row-->
+                                            <div class="row">
+                                                <label class="col-3"></label>
+                                                <div class="col-9">
+                                                    <h6 class="text-dark font-weight-bold mb-10">Change Or Recover Your Password:</h6>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!--end::Row-->
-                                        <!--begin::Group-->
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-3 text-lg-right text-left">Current Password</label>
-                                            <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid mb-1" type="text" value="Current password" />
-                                                <a href="#" class="font-weight-bold font-size-sm">Forgot password ?</a>
+
+                                            <!--end::Row-->
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-3 text-lg-right text-left">Current Password</label>
+                                                <div class="col-9">
+                                                    <input  name="old_password" type="password" class="form-control form-control-lg form-control-solid mb-1"/>
+                                                    <a href="#" class="font-weight-bold font-size-sm">Forgot password ?</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!--end::Group-->
-                                        <!--begin::Group-->
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-3 text-lg-right text-left">New Password</label>
-                                            <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" type="text" value="New password" />
+                                            <!--end::Group-->
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-3 text-lg-right text-left">New Password</label>
+                                                <div class="col-9">
+                                                    <input  name="password"  type="password"  class="form-control form-control-lg form-control-solid" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!--end::Group-->
-                                        <!--begin::Group-->
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-3 text-lg-right text-left">Verify Password</label>
-                                            <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" type="text" value="Verify password" />
+                                            <!--end::Group-->
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-3 text-lg-right text-left">Verify Password</label>
+                                                <div class="col-9">
+                                                    <input   name="password_confirmation" type="password" class="form-control form-control-lg form-control-solid"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!--end::Group-->
-                                    </div>
-                                </div>
-                                <!--end::Row-->
-                            </div>
-                            <!--end::Body-->
-                            <!--begin::Footer-->
-                            <div class="card-footer pb-0">
-                                <div class="row">
-                                    <div class="col-xl-2"></div>
-                                    <div class="col-xl-7">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-9">
-                                                <a href="#" class="btn btn-light-primary font-weight-bold">Save changes</a>
-                                                <a href="#" class="btn btn-clean font-weight-bold">Cancel</a>
-                                            </div>
+                                            <!--end::Group-->
                                         </div>
                                     </div>
+                                    <!--end::Row-->
                                 </div>
-                            </div>
-                            <!--end::Footer-->
+                                <!--end::Body-->
+                                <!--begin::Footer-->
+                                <div class="card-footer pb-0">
+                                    <div class="row">
+                                        <div class="col-xl-2"></div>
+                                        <div class="col-xl-7">
+                                            <div class="row">
+                                                <div class="col-3"></div>
+                                                <div class="col-9">
+                                                    <input  type="submit" class="btn btn-light-primary font-weight-bold " value="Change password" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Footer-->
+                            </form>
                         </div>
                         <!--end::Tab-->
                         <!--begin::Tab-->
@@ -754,7 +693,7 @@
                         </div>
                         <!--end::Tab-->
                     </div>
-                </form>
+                {{-- </form> --}}
             </div>
             <!--begin::Card body-->
         </div>
@@ -763,7 +702,139 @@
     <!--end::Container-->
 @endsection
 @push('js')
+<script>
+    $(document).ready(function() {
+        //Submit image without reload
+        $('.save-profile').click(function(){
+            var formData = new FormData();
+            formData.append('name', $('.profile-details').find('.name').val())
+            formData.append('phone', $('.profile-details').find('.phone').val())
+            formData.append('email', $('.profile-details').find('.email').val())
+
+            formData.append('avatar', $('.profile-details').find('.profile_avatar')[0].files[0])
+
+            var this_button = $(this);
+            $.ajax({
+                method: 'POST',
+                url: "{{ route('administrative.profile.self.update') }}",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function (){
+                    this_button.prop("disabled", true)
+                },
+                complete: function (){
+                    this_button.prop("disabled", false)
+                },
+                success: function (response_data) {
+                    if (response_data.type == 'success'){
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: response_data.type,
+                            title: response_data.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        window.location.replace(response_data.url);
+                    }else{
+                        Swal.fire({
+                            icon: response_data.type,
+                            title: 'Oops...',
+                            text: response_data.message,
+                        })
+                    }
+                },
+                error: function (xhr) {
+                    var errorMessage = '<div class="card bg-danger">\n' +
+                        '                        <div class="card-body text-center p-5">\n' +
+                        '                            <span class="text-white">';
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        errorMessage +=(''+value+'<br>');
+                    });
+                    errorMessage +='</span>\n' +
+                        '                        </div>\n' +
+                        '                    </div>';
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        footer: errorMessage
+                    })
+                },
+            })
+        });
+
+        $('input[type="checkbox"]').change(function (){
+            if($(this).prop('checked')) {
+                $(this).val('1')
+            } else {
+                $(this).val('0')
+            }
+        })
+        $('.save-account').click(function(){
+            var formData = new FormData();
+            formData.append('username', $('.account-details').find('.username').val())
+            formData.append('is_active_email', $('.account-details').find('.is_active_email').val())
+            formData.append('is_active_sms', $('.account-details').find('.is_active_sms').val())
+            formData.append('is_active_phone', $('.account-details').find('.is_active_phone').val())
+            formData.append('language', $('.account-details').find('.language').val())
+            // formData.append('time_zone', $('.account-details').find('.time_zone').val())
+
+            var this_button = $(this);
+            $.ajax({
+                method: 'POST',
+                url: "{{ route('administrative.account.self.update') }}",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function (){
+                    this_button.prop("disabled", true)
+                },
+                complete: function (){
+                    this_button.prop("disabled", false)
+                },
+                success: function (response_data) {
+                    if (response_data.type == 'success'){
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: response_data.type,
+                            title: response_data.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        window.location.replace(response_data.url);
+                    }else{
+                        Swal.fire({
+                            icon: response_data.type,
+                            title: 'Oops...',
+                            text: response_data.message,
+                        })
+                    }
+                },
+                error: function (xhr) {
+                    var errorMessage = '<div class="card bg-danger">\n' +
+                        '                        <div class="card-body text-center p-5">\n' +
+                        '                            <span class="text-white">';
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        errorMessage +=(''+value+'<br>');
+                    });
+                    errorMessage +='</span>\n' +
+                        '                        </div>\n' +
+                        '                    </div>';
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        footer: errorMessage
+                    })
+                },
+            })
+        });
+    });
+</script>
 <!--begin::Page Scripts(used by this page)-->
+
+{{-- <script src="{{ asset('assets/administrative/js/pages/crud/file-upload/image-input.js') }}"></script> --}}
 <script src="{{asset('assets/administrative/js/pages/custom/user/edit-user.js')}}"></script>
 <!--end::Page Scripts-->
 @endpush

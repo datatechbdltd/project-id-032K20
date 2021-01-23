@@ -77,6 +77,10 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
     Route::resource('user', 'UserController');
     Route::resource('provider', 'ProviderController');
     Route::get('profile/edit/{id}', 'ProfileController@edit')->name('profile.edit');
+    Route::post('profile/update-self-profile', 'ProfileController@update_self_profile')->name('profile.self.update');
+    Route::post('profile/change-password', 'ProfileController@change_self_password')->name('profile.change.password');
+    Route::post('profile/update-self-account', 'ProfileController@update_self_account')->name('account.self.update');
+    Route::resource('terms-condition', 'TermsAndConditionController');
     Route::group(['prefix'=>'application'], function (){
         Route::resource('language', 'LanguageController');
         Route::resource('currency', 'CurrencyController');

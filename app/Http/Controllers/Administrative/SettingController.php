@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrative;
 use App\ApplicationSeo;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\File;
@@ -44,7 +45,7 @@ class SettingController extends Controller
         if ($request->type == 'website_logo' && $request->hasFile($request->type)) {        //****Website logo
             $image             = $request->file($request->type);
             $folder_path       = 'assets/uploads/images/setting/';
-            $image_new_name    = $request->type.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.'. $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->fit(134, 38, function($constraint){
                 $constraint->aspectRatio();
@@ -68,7 +69,7 @@ class SettingController extends Controller
         }else if ($request->type == 'favicon' && $request->hasFile($request->type)) {           //****Favicon
             $image             = $request->file($request->type);
             $folder_path       = 'assets/uploads/images/setting/';
-            $image_new_name    = $request->type.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.' . $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->crop(64, 64)->save($folder_path.$image_new_name);
             //to db
@@ -90,7 +91,7 @@ class SettingController extends Controller
         }else if ($request->type == 'we_accept' && $request->hasFile($request->type)) {         //****We accept
             $image             = $request->file($request->type);
             $folder_path       = 'assets/uploads/images/setting/';
-            $image_new_name    = $request->type.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.' . $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->fit(100, 21)->save($folder_path.$image_new_name);
             //to db
@@ -112,7 +113,7 @@ class SettingController extends Controller
         }else if ($request->type == 'meta_image' && $request->hasFile($request->type)) {            //****Meta image
             $image             = $request->file($request->type);
             $folder_path       = 'assets/uploads/images/setting/';
-            $image_new_name    = $request->type.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.' . $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->fit(1200, 627 )->save($folder_path.$image_new_name);
             //to db
