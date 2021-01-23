@@ -17,17 +17,63 @@
         <div class="sidebar-menu-wrap">
             <ul class="sidebar-menu toggle-menu list-items">
                 <li class="page-active"><a href="{{ route('provider.dashboard.index') }}"><i class="la la-dashboard mr-2"></i>Dashboard</a></li>
-                {{--
-                <li><a href="admin-dashboard-booking.html"><i class="la la-shopping-cart mr-2 text-color"></i>Booking</a></li>
                 <li>
                     <span class="side-menu-icon toggle-menu-icon">
                         <i class="la la-angle-down"></i>
                     </span>
-                    <a href="admin-dashboard-orders.html"><i class="la la-list mr-2 text-color-2"></i>Orders</a>
+                    <a href="#"><i class="la la-list mr-2 text-color-2"></i>Flight</a>
                     <ul class="toggle-drop-menu">
-                        <li><a href="admin-dashboard-orders-details.html">Order Details</a></li>
+                        <li><a href="#">Add new flight</a></li>
                     </ul>
                 </li>
+                <li>
+                    <span class="side-menu-icon toggle-menu-icon">
+                        <i class="la la-angle-down"></i>
+                    </span>
+                    <a href="#"><i class="la la-list mr-2 text-color-2"></i>Stay</a>
+                    <ul class="toggle-drop-menu">
+                        <li><a href="#">Add new stay</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="side-menu-icon toggle-menu-icon">
+                        <i class="la la-angle-down"></i>
+                    </span>
+                    <a href="#"><i class="la la-list mr-2 text-color-2"></i>Tour</a>
+                    <ul class="toggle-drop-menu">
+                        <li><a href="#">Add new tour</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="side-menu-icon toggle-menu-icon">
+                        <i class="la la-angle-down"></i>
+                    </span>
+                    <a href="#"><i class="la la-list mr-2 text-color-2"></i>Vacation packages</a>
+                    <ul class="toggle-drop-menu">
+                        <li><a href="#">Add new vacation package</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="side-menu-icon toggle-menu-icon">
+                        <i class="la la-angle-down"></i>
+                    </span>
+                    <a href="#"><i class="la la-list mr-2 text-color-2"></i>Things to do</a>
+                    <ul class="toggle-drop-menu">
+                        <li><a href="#">Add new things to do</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="side-menu-icon toggle-menu-icon">
+                        <i class="la la-angle-down"></i>
+                    </span>
+                    <a href="#"><i class="la la-list mr-2 text-color-2"></i>Food & Drink</a>
+                    <ul class="toggle-drop-menu">
+                        <li><a href="#">Add new food & drink</a></li>
+                    </ul>
+                </li>
+                <li class="text-danger text-center"><a href="#">Under development</a></li>
+
+                {{--
                 <li>
                     <span class="side-menu-icon toggle-menu-icon">
                         <i class="la la-angle-down"></i>

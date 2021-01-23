@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="menu-wrapper">
                     <div class="logo mr-5">
-                        <a href="index.html">
+                        <a href="{{ route('provider.dashboard.index') }}">
                             <img @if(get_static_option('website_logo')) src="{{ asset(get_static_option('website_logo')) }}" alt=""
                                      @else src="{{ asset('assets/frontend/images/logo.png') }}" alt="" @endif >
                         </a>

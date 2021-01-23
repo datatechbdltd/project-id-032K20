@@ -20,6 +20,7 @@ class CreateLanguagesTable extends Migration
             $table->string('code')->unique();
             $table->string('flag')->nullable();
             $table->string('alignment')->default('ltr');
+            $table->boolean('is_default')->default(false);
             $table->timestamps();
         });
     }

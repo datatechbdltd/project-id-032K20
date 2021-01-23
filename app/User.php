@@ -57,4 +57,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return "Has been {$eventName} user";
     }
 
+    //Provider
+    public function provider(){
+        return $this->hasOne(Provider::class,'provider_user_id','code');
+    }
+
 }
