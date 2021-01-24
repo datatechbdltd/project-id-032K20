@@ -37,6 +37,7 @@
                         <div class="form-group">
                             <span class="la la-map-marker form-icon"></span>
                             <input class="form-control" type="text" id="one-way-search-origin" placeholder="City or airport">
+                            <div id="suggesstion-box"></div>
                         </div>
                     </div>
                 </div><!-- end col-lg-3 -->
@@ -453,14 +454,16 @@
                     success:function(data){
                         //console.log(data)
                         var json = $.parseJSON(data);
-                        //console.log(json.data)
+                        console.log(json.data)
+                        var html = "";
+
                         $(json.data).each(function(key,val){
                             console.log(val['name']);
-                            //$.each(val,function(k,v){
-                               // console.log(v);
-                                //console.log(k.type);
-                            //});
+                            // html += '<h1>'+ val['name'] +'</h1>'
+                            html += '<div class="card card-body"><h5>'+ val['name'] +'</h5></div>'
                         });
+
+                        $('#suggesstion-box').html(html)
 
                     },
                     error: function (xhr) {
@@ -486,9 +489,6 @@
                     },
                     // success:function(data){
                     //     console.log(data)
-                    //     // $.each( data.data, function( key, value ) {
-                    //     //     console.log(key,value);
-                    //     // });
                     //     // var array = $.map(data.data,function(obj){
                     //     //     alert('working')
                     //     //     // return{
@@ -498,12 +498,6 @@
                     //     //     // }
                     //     // })
                     //     // response($.ui.autocomplete.filter(array, request.term));
-                    //     res.json(($.map(data.data.address.cityName, function(el)){
-                    //         return {
-                    //         label: el.address.cityName + (' + el.iataCode +'),
-                    //         value: el.iataCode
-                    //         }
-                    //     }));
 
                     // },
                 })
