@@ -19,7 +19,8 @@ class RoleSeeder extends Seeder
 
         User::find(1)->assignRole('administrative');
         User::find(2)->assignRole('provider');
-        User::find(3)->assignRole('user');
+        User::find(3)->assignRole('provider');
+        User::find(4)->assignRole('user');
 
     }
 }

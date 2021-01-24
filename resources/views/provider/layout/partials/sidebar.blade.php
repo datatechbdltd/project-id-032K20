@@ -23,7 +23,8 @@
                     </span>
                     <a href="#"><i class="la la-list mr-2 text-color-2"></i>Flight</a>
                     <ul class="toggle-drop-menu">
-                        <li><a href="#">Add new flight</a></li>
+                        <li><a href="{{route('provider.flight.index')}}">All flight</a></li>
+                        <li><a href="{{route('provider.flight.create')}}">Add new flight</a></li>
                     </ul>
                 </li>
                 <li>

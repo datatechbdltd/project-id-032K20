@@ -115,6 +115,7 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
 Route::group(['namespace' => 'Provider', 'as' => 'provider.', 'prefix'=>'provider', 'middleware'=>['permission:provider-access', 'auth', 'verified']], function (){
     //Dashboard route: provider.dashboard.index
     Route::resource('dashboard', 'DashboardController');
+    Route::resource('flight', 'FlightController');
 
 });
 

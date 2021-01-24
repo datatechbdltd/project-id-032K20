@@ -34,6 +34,16 @@ class UserSeeder extends Seeder
 
         $user = new \App\User();
         $user->status       = 1;
+        $user->name         = 'Mr. Provider 2';
+        $user->email        = 'provider2@gmail.com';
+        $user->user_type_id        = 2;
+        $user->email_verified_at        = \Carbon\Carbon::now();
+        $user->password     = \Illuminate\Support\Facades\Hash::make('password');
+        $user->api_token    = Str::random(60);
+        $user->save();
+
+        $user = new \App\User();
+        $user->status       = 1;
         $user->name         = 'Mr. User';
         $user->email        = 'user@gmail.com';
         $user->user_type_id        = 3;
