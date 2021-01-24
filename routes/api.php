@@ -22,6 +22,8 @@ Route::group(['namespace' => 'Api', 'as' => 'api.', 'prefix'=>'api'], function (
     //Dashboard route: administrative.dashboard.index
     Route::group(['prefix'=>'administrative', 'as' => 'administrative.'], function (){
         Route::get('user', 'AdministrativeApiController@get_ajax_user')->name('users');
+        Route::get('user', 'AdministrativeApiController@get_ajax_user')->name('users');
 
     });
 });
+Route::post('one-way-flying-from', 'Api\FlyingSearchController@one_way_flying_from')->name('api.oneWayFlyingFrom');

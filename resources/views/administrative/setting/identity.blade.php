@@ -65,7 +65,7 @@
                                         <div class="col-6">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('website_logo'))  src="{{ asset(get_static_option('website_logo')) }}" @else src="{{ asset('assets/administrative/media/products/1.png') }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img @if(get_static_option('website_logo'))  src="{{ asset(get_static_option('website_logo')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
@@ -90,7 +90,7 @@
                                         <div class="col-6">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('favicon'))  src="{{ asset(get_static_option('favicon')) }}" @else src="{{ asset('assets/administrative/media/products/1.png') }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img @if(get_static_option('favicon'))  src="{{ asset(get_static_option('favicon')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
@@ -116,7 +116,7 @@
                                         <div class="col-6">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img src="{{ asset('assets/administrative/media/products/1.png') }}" alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img src="{{ asset(get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
@@ -141,7 +141,7 @@
                                         <div class="col-6">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('we_accept'))  src="{{ asset(get_static_option('we_accept')) }}" @else src="{{ asset('assets/administrative/media/products/1.png') }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img @if(get_static_option('we_accept'))  src="{{ asset(get_static_option('we_accept')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
@@ -166,7 +166,7 @@
                                         <div class="col-6">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('meta_image'))  src="{{ asset(get_static_option('meta_image')) }}" @else src="{{ asset('assets/administrative/media/products/1.png') }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img @if(get_static_option('meta_image'))  src="{{ asset(get_static_option('meta_image')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
