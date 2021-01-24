@@ -441,7 +441,6 @@
         $( "#one-way-search-origin" ).autocomplete({
             source: function(request, response) {
                 console.log(request.term);
-                //Prerok information
                 var formData = new FormData();
                 formData.append('address', request.term)
                 $.ajax({
@@ -452,18 +451,17 @@
                     processData: false,
                     contentType: false,
                     success:function(data){
-                        console.log(data)
-                        data.forEach(element => {
-                            alert('')
+                        //console.log(data)
+                        var json = $.parseJSON(data);
+                        //console.log(json.data)
+                        $(json.data).each(function(key,val){
+                            console.log(val['name']);
+                            //$.each(val,function(k,v){
+                               // console.log(v);
+                                //console.log(k.type);
+                            //});
                         });
-                        var array = $.map(data.data,function(obj){
-                            return{
-                                value: obj.address['cityName'], //Filable in input field
-                                label: obj.address['cityName'],  //Show as label of input field
-                                phone: obj.address['cityName']
-                            }
-                        })
-                        response($.ui.autocomplete.filter(array, request.term));
+
                     },
                     error: function (xhr) {
                         console.log(xhr)
@@ -511,6 +509,7 @@
                 })
             }
         });
+
         // $( "#one-way-search-origin" ).autocomplete({
         //     source: function(request, response) {
         //         //console.log(request.term);
