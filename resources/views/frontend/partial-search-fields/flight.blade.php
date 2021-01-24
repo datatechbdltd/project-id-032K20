@@ -432,6 +432,8 @@
 <!-- ================================
             START PAGE LAVEl SCRIPT
 ================================= -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     $(document).ready(function() {
         //one-way-search-origin
@@ -451,21 +453,62 @@
                     contentType: false,
                     success:function(data){
                         console.log(data)
-                        var array = $.map(data,function(obj){
+                        data.forEach(element => {
+                            alert('')
+                        });
+                        var array = $.map(data.data,function(obj){
                             return{
-                                value: obj.name, //Filable in input field
-                                label: obj.name +' - '+ obj.phone,  //Show as label of input field
-                                phone: obj.phone
+                                value: obj.address['cityName'], //Filable in input field
+                                label: obj.address['cityName'],  //Show as label of input field
+                                phone: obj.address['cityName']
                             }
                         })
                         response($.ui.autocomplete.filter(array, request.term));
                     },
+                    error: function (xhr) {
+                        console.log(xhr)
+                        Swal.fire({
+                            title: 'Expire access code !',
+                            text: "Please reload this page for generate a new access code.",
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonColor: '#deaa40',
+                            cancelButtonColor: '#0fcaca',
+                            confirmButtonText: 'Yes, reload it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire(
+                                    'Thank you!',
+                                    'New access code generation completed.',
+                                    'success'
+                                )
+                            }
+                            location.reload();
+                        })
+                    },
+                    // success:function(data){
+                    //     console.log(data)
+                    //     // $.each( data.data, function( key, value ) {
+                    //     //     console.log(key,value);
+                    //     // });
+                    //     // var array = $.map(data.data,function(obj){
+                    //     //     alert('working')
+                    //     //     // return{
+                    //     //     //     value: obj.address['cityName'], //Filable in input field
+                    //     //     //     label: obj.address['cityName'],  //Show as label of input field
+                    //     //     //     phone: obj.address['cityName']
+                    //     //     // }
+                    //     // })
+                    //     // response($.ui.autocomplete.filter(array, request.term));
+                    //     res.json(($.map(data.data.address.cityName, function(el)){
+                    //         return {
+                    //         label: el.address.cityName + (' + el.iataCode +'),
+                    //         value: el.iataCode
+                    //         }
+                    //     }));
+
+                    // },
                 })
-            },
-            minLength: 1,
-            select:function(event, ui){
-                //console.log(ui.item);
-                $('#prapok-mobile').val(ui.item.phone);
             }
         });
         // $( "#one-way-search-origin" ).autocomplete({

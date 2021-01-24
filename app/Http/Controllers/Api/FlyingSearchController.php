@@ -11,14 +11,10 @@ class FlyingSearchController extends Controller
     public function one_way_flying_from(Request $request){
 
         $api_url = 'https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY,AIRPORT&keyword='.$request->address;
-
         $access_token = getAmadeusAccessToken();
-
-        // return Http::asForm()->get($api_url, [
-        //     'Bearer' => $access_token,
-        // ]);
-        $response = Http::withToken($access_token)->post($api_url);
-            return $response;
+        $response = Http::withToken($access_token)->get($api_url);
+        // return $response->body();
+        return $response;
 
 
     }
