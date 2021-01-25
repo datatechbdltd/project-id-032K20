@@ -16,7 +16,7 @@
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                             <li class="breadcrumb-item">
-                                <a href="javascript:0;" class="text-muted">Providers</a>
+                                <a href="javascript:0;" class="text-muted"> Terms and condition</a>
                             </li>
                         </ul>
                         <!--end::Breadcrumb-->
@@ -38,7 +38,7 @@
                             <span class="card-icon">
                                 <i class="flaticon2-user-1 text-primary"></i>
                             </span>
-                            <h3 class="card-label">Providers table</h3>
+                            <h3 class="card-label"> Terms and condition table</h3>
                         </div>
                     </div>
 

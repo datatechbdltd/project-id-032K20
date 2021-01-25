@@ -15,7 +15,7 @@ class CreateFlightsTable extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('approved_by_id')->nullable();
+            $table->foreignId('verified_by_id')->nullable();
             $table->foreignId('provider_id');
             $table->string('from');
             $table->string('to');

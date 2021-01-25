@@ -81,6 +81,17 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
     Route::post('profile/change-password', 'ProfileController@change_self_password')->name('profile.change.password');
     Route::post('profile/update-self-account', 'ProfileController@update_self_account')->name('account.self.update');
     Route::resource('terms-condition', 'TermsAndConditionController');
+
+    Route::group(['prefix'=>'provider', 'as' => 'provider.'], function (){
+        Route::group(['prefix'=>'flight', 'as' => 'flight.'], function (){
+
+            Route::get('/index', 'FlightController@provider_flight_index')->name('index');
+            Route::get('/view/{flight_id}', 'FlightController@provider_flight_view')->name('view');
+            Route::get('/approve/{flight_id}', 'FlightController@provider_flight_approve')->name('approve');
+            Route::get('/reject/{flight_id}', 'FlightController@provider_flight_reject')->name('reject');
+        });
+
+    });
     Route::group(['prefix'=>'application'], function (){
         Route::resource('language', 'LanguageController');
         Route::resource('currency', 'CurrencyController');

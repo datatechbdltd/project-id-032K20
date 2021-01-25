@@ -81,6 +81,28 @@
                     <h4 class="menu-text">{{__('01. Flights Search')}}</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
+                <li class="menu-item menu-item-submenu @if(Request::is('*/language')) menu-item-open menu-item-here @elseif(Request::is('*/language/*')) menu-item-open menu-item-here @endif" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+                        <i class="menu-bullet menu-bullet-line">
+                            <span></span>
+                        </i>
+                        <span class="menu-text">{{__('Flight')}}</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item @if(Request::is('*/language')) menu-item-active @endif" aria-haspopup="true">
+                                <a href="{{route('administrative.provider.flight.index')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('Proviser\'s flight')}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="menu-section">
                     <h4 class="menu-text">{{__('02. Stays Search')}}</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -162,7 +184,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">{{__('Tearm And Conditions')}}</span>
+                                    <span class="menu-text">{{__('Term And Conditions')}}</span>
                                     <i class="menu-arrow"></i>
                                 </a>
                                 <div class="menu-submenu">
