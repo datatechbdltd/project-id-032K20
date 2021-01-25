@@ -36,7 +36,7 @@
                         <label class="label-text">{{ __('Flying from') }}</label>
                         <div class="form-group">
                             <span class="la la-map-marker form-icon"></span>
-                            <input class="form-control" type="text" id="one-way-search-origin" placeholder="City or airport">
+                            <input class="form-control search-field" title="Search a programming language starting with 'A' or 'B'" type="text" id="one-way-search-origin" placeholder="City or airport">
                             <div id="suggesstion-box"></div>
                         </div>
                     </div>
