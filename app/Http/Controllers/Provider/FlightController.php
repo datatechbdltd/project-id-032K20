@@ -44,7 +44,6 @@ class FlightController extends Controller
             'price' => 'required',
             'departing' => 'required',
             'returning' => 'required',
-            'status' => 'required',
         ]);
         $flight = new Flight();
         $flight->provider_id = Auth::user()->id;
@@ -53,7 +52,6 @@ class FlightController extends Controller
         $flight->price = $request->price;
         $flight->departing = $request->departing;
         $flight->returning = $request->returning;
-        $flight->status = $request->status;
         try {
             $flight->save();
             session()->flash('success', 'Flight create successfully');
@@ -103,14 +101,12 @@ class FlightController extends Controller
             'price' => 'required',
             'departing' => 'required',
             'returning' => 'required',
-            'status' => 'required',
         ]);
         $flight->from = $request->from;
         $flight->to = $request->to;
         $flight->price = $request->price;
         $flight->departing = $request->departing;
         $flight->returning = $request->returning;
-        $flight->status = $request->status;
         try {
             $flight->save();
             session()->flash('success', 'Flight Update successfully');

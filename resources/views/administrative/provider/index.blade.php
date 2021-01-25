@@ -1,5 +1,8 @@
 @extends('administrative.layout.app')
 @push('title') {{ __('Providers') }} @endpush
+@push('css')
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+@endpush
 @section('content')
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -44,10 +47,9 @@
 
                     <div class="card-body">
                         <!--begin: Datatable-->
-                        <table class="table table-bordered table-hover table-checkable" id="user-table" style="margin-top: 13px !important">
+                        <table class="table table-bordered table-hover table-checkable" id="datatable" style="margin-top: 13px !important">
                             <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Avatar</th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -56,7 +58,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($providers as $provider)
+                           {{-- @foreach($providers as $provider)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
@@ -93,7 +95,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            @endforeach
+                            @endforeach--}}
                             </tbody>
                         </table>
                         <!--end: Datatable-->
@@ -108,6 +110,29 @@
     <!--end::Content-->
 @endsection
 @push('js')
+    <script src="//code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            var dataTable = $('#datatable').DataTable({
+                processing: true,
+                serverSide: true,
+                autoWidth: false,
+                pageLength: 5,
+                // scrollX: true,
+                "order": [[ 0, "desc" ]],
+                ajax: '{{ route('api.administrative.providers') }}',
+                columns: [
+                    {data: 'avatar', name: 'avatar'},
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'Actions', name: 'Actions',orderable:false,serachable:false,sClass:'text-center'},
+                ]
+            });
+        });
+    </script>
+    <!--end::Page Scripts-->
     <!--begin::Page Vendors(used by this page)-->
     <script src="{{ asset('assets/administrative/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors-->

@@ -156,7 +156,7 @@
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" id="userDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm flex-shrink-0 mr-2"><img src="{{ auth()->user()->avatar ?? asset('/assets/uploads/images/no-image.png') }}" alt="avatar"></div>
+                                            <div class="avatar avatar-sm flex-shrink-0 mr-2"><img src="{{ asset(auth()->user()->avatar ?? get_static_option('no_image')) }}" alt="avatar"></div>
                                             <span class="font-size-14 font-weight-bold">{{ auth()->user()->name  }}</span>
                                         </div>
                                     </a>
@@ -165,7 +165,7 @@
                                             <h6 class="title text-uppercase">Welcome!</h6>
                                         </div>
                                         <div class="list-group drop-reveal-list user-drop-reveal-list">
-                                            <a href="admin-dashboard-settings.html" class="list-group-item list-group-item-action">
+                                            <a href="{{route('provider.profile.edit')}}" class="list-group-item list-group-item-action">
                                                 <div class="msg-body">
                                                     <div class="msg-content">
                                                         <h3 class="title"><i class="la la-user mr-2"></i> Edit Profile</h3>

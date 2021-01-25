@@ -75,30 +75,7 @@
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
-                            <div class="col-lg-12 responsive-column">
-                                <div class="input-box">
-                                    <label class="label-text">Status</label>
-                                    <div class="col-9 col-form-label">
-                                        <div class="radio-inline">
-                                            <label class="radio radio-success">
-                                                <input type="radio" name="status" value="Pending" />
-                                                <span></span>
-                                                Pending
-                                            </label>
-                                            <label class="radio radio-success">
-                                                <input type="radio" name="status" value="Approved" />
-                                                <span></span>
-                                                Approved
-                                            </label>
-                                            <label class="radio radio-success radio-disabled">
-                                                <input type="radio" name="status" value="Sold" />
-                                                <span></span>
-                                                Sold
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end col-lg-12 -->
+
 
                             <div class="col-lg-12">
                                 <div class="btn-box">

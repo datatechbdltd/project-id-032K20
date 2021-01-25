@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Administrative;
+namespace App\Http\Controllers\Provider;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ProviderController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        /*$providers = User::role('provider')->orderBy('id', 'desc')->get();*/
-        return view('administrative.provider.index');
+        //
     }
 
     /**
@@ -57,9 +56,10 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        return view('provider.profile.edit', compact('user'));
     }
 
     /**

@@ -15,6 +15,16 @@ class AdministrativeApiController extends Controller
         $query = User::select('*');
         return datatables($query)->make(true);
     }
+    public function get_ajax_provider(){
+        $data =User::role('provider')->get();
+        return DataTables::of($data)
+            ->addColumn('Actions', function($data) {
+                return '<button type="button" data-id="'.$data->id.'" class="btn btn-danger btn-sm" ><i class="fas fa-trash-alt icon-lg"></i></button><button type="button" data-id="'.$data->id.'" class="btn btn-primary btn-sm"><i class="fas fa-edit icon-lg"></i></button>';
+            })
+
+            ->rawColumns(['Actions','provider_name'])
+            ->make(true);
+    }
 
     public function get_ajax_provider_flight(){
         $data =Flight::all();

@@ -128,7 +128,7 @@ Route::group(['namespace' => 'Provider', 'as' => 'provider.', 'prefix'=>'provide
     //Dashboard route: provider.dashboard.index
     Route::resource('dashboard', 'DashboardController');
     Route::resource('flight', 'FlightController');
-
+    Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
 });
 
 

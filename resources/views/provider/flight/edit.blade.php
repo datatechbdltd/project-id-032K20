@@ -77,30 +77,7 @@
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
-                            <div class="col-lg-12 responsive-column">
-                                <div class="input-box">
-                                    <label class="label-text">Status</label>
-                                    <div class="col-9 col-form-label">
-                                        <div class="radio-inline">
-                                            <label class="radio radio-success">
-                                                <input type="radio" name="status" value="pending" @if($flight->status == 'pending') checked   @endif />
-                                                <span></span>
-                                                Pending
-                                            </label>
-                                            <label class="radio radio-success">
-                                                <input type="radio" name="status" value="approved" @if($flight->status == 'approved') checked   @endif />
-                                                <span></span>
-                                                Approved
-                                            </label>
-                                            <label class="radio radio-success radio-disabled">
-                                                <input type="radio" name="status" value="sold" @if($flight->status == 'sold') checked   @endif />
-                                                <span></span>
-                                                Sold
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end col-lg-12 -->
+                           
 
                             <div class="col-lg-12">
                                 <div class="btn-box">

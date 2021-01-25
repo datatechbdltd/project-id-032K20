@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default('0')->comment('0 disable | 1 enable');
             $table->foreignId('user_type_id');
             $table->string('name');
+            $table->string('user_name')->nullable();
             $table->string('phone')->nullable()->unique();
             $table->string('email')->unique();
             $table->string('username')->nullable()->unique();
