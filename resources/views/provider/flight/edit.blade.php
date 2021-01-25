@@ -15,8 +15,8 @@
                 <div class="col-lg-6">
                     <div class="breadcrumb-list">
                         <ul class="list-items d-flex justify-content-end">
-                            <li><a href="index.html" class="text-white">Dashboard</a></li>
-                            <li>Flight</li>
+                            <li><a href="{{ route('provider.dashboard.index') }}" class="text-white">Dashboard</a></li>
+                            <li><a href="{{ route('provider.flight.index') }}" class="text-white">Flight</a></li>
                             <li>Update flight</li>
                         </ul>
                     </div><!-- end breadcrumb-list -->

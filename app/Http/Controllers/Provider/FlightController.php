@@ -82,7 +82,7 @@ class FlightController extends Controller
      */
     public function edit(Flight $flight)
     {
-        if ($flight->ptovider_id == Auth::user()->id)
+        if ($flight->provider_id == Auth::user()->id)
             return view('provider.flight.edit', compact('flight'));
         else
             return back()->withErrors('Page not found');

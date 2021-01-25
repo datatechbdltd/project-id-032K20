@@ -8,16 +8,16 @@
                     <div class="col-lg-6">
                         <div class="breadcrumb-content">
                             <div class="section-heading">
-                                <h2 class="sec__title font-size-30">Travellers</h2>
+                                <h2 class="sec__title font-size-30">Flights</h2>
                             </div>
                         </div><!-- end breadcrumb-content -->
                     </div><!-- end col-lg-6 -->
                     <div class="col-lg-6">
                         <div class="breadcrumb-list">
                             <ul class="list-items d-flex justify-content-end">
-                                <li><a href="index.html" class="text-white">Home</a></li>
-                                <li>Dashboard</li>
-                                <li>Travellers</li>
+                                <li><a href="{{route('provider.dashboard.index')}}" class="text-white">Dashboard</a></li>
+                                <li>Flight</li>
+                                <li>All Flight</li>
                             </ul>
                         </div><!-- end breadcrumb-list -->
                     </div><!-- end col-lg-6 -->
@@ -58,15 +58,25 @@
                                                 <td>{{$flight->price}}</td>
                                                 <td>{{$flight->departing}}</td>
                                                 <td>{{$flight->returning}}</td>
-                                                <td><span class="badge badge-success py-1 px-2">{{$flight->status}}</span></td>
                                                 <td>
-                                                    <div class="table-content">
-                                                        <a class="btn btn-sm btn-info d-inline-block" href="{{ route('provider.flight.edit', $flight->id) }}">Edit</a>
-                                                        <form class="d-inline-block pull-right" method="post" action="{{ route('provider.flight.destroy', $flight->id) }}">
+                                                    @if($flight->status == 'Pending') <span class="badge badge-danger py-1 px-2">{{ $flight->status }}</span> @endif
+                                                    @if($flight->status == 'Approved') <span class="badge badge-primary py-1 px-2">{{ $flight->status }}</span> @endif
+                                                    @if($flight->status == 'Sold') <span class="badge badge-success py-1 px-2">{{ $flight->status }}</span> @endif
+                                                </td>
+                                                <td>
+                                                    <div class="table-content row">
+                                                        <a class="btn btn-sm btn-info d-inline-block m-1" href="{{ route('provider.flight.edit', $flight->id) }}">Edit</a>
+                                                        <form action="{{ route('provider.flight.destroy', $flight->id) }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button class="btn btn-sm btn-danger d-inline-block delete-confirm m-1" data-name="{{ 'flight' }}" type="submit">Delete</button>
+                                                        </form>
+
+                                                        {{--<form class="d-inline-block pull-right" method="post" action="{{ route('provider.flight.destroy', $flight->id) }}">
                                                             @csrf
                                                             @method('delete')
                                                             <button class="btn btn-sm btn-danger">Delete</button>
-                                                        </form>
+                                                        </form>--}}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -85,3 +95,28 @@
 @section('content')
 
 @endsection
+@push('js')
+<script>
+    $(document).ready(function() {
+        $('.delete-confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            Swal.fire({
+                title: `Are you sure to delete ${name}?`,
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //submit form
+                    form.submit();
+                }
+            })
+        });
+    });
+</script>
+@endpush

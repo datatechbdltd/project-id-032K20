@@ -22,7 +22,7 @@ class CreateFlightsTable extends Migration
             $table->double('price', 8, 2);
             $table->string('departing');
             $table->string('returning');
-            $table->string('status')->default('pending');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }
