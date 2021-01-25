@@ -18,7 +18,7 @@ class FlightSeeder extends Seeder
         $flight->price = '45000';
         $flight->departing = '1997-11-26';
         $flight->returning = '1998-11-26';
-        $flight->status = 'pending';
+        $flight->status = 'Pending';
         $flight->save();
 
         $flight = new \App\Flight();
@@ -28,7 +28,7 @@ class FlightSeeder extends Seeder
         $flight->price = '45000';
         $flight->departing = '1997-11-26';
         $flight->returning = '1998-11-26';
-        $flight->status = 'pending';
+        $flight->status = 'Pending';
         $flight->save();
 
         $flight = new \App\Flight();
@@ -38,7 +38,7 @@ class FlightSeeder extends Seeder
         $flight->price = '45000';
         $flight->departing = '1997-11-26';
         $flight->returning = '1998-11-26';
-        $flight->status = 'pending';
+        $flight->status = 'Pending';
         $flight->save();
 
         $flight = new \App\Flight();
@@ -48,7 +48,7 @@ class FlightSeeder extends Seeder
         $flight->price = '45000';
         $flight->departing = '1997-11-26';
         $flight->returning = '1998-11-26';
-        $flight->status = 'pending';
+        $flight->status = 'Pending';
         $flight->save();
 
         $flight = new \App\Flight();
@@ -58,7 +58,7 @@ class FlightSeeder extends Seeder
         $flight->price = '45000';
         $flight->departing = '1997-11-26';
         $flight->returning = '1998-11-26';
-        $flight->status = 'pending';
+        $flight->status = 'Pending';
         $flight->save();
 
         $flight = new \App\Flight();
@@ -68,7 +68,7 @@ class FlightSeeder extends Seeder
         $flight->price = '45000';
         $flight->departing = '1997-11-26';
         $flight->returning = '1998-11-26';
-        $flight->status = 'pending';
+        $flight->status = 'Pending';
         $flight->save();
     }
 }
