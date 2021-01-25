@@ -13,4 +13,6 @@
 <script src="{{ asset('assets/frontend/js/quantity-input.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
 
+<script src="{{ asset('assets/api-js/flight-search.js') }}"></script>
+
 @stack('js')
