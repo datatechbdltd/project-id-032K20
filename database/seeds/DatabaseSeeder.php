@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTypeSeeder::class);
         $this->call(FlightSeeder::class);
         $this->call(TermsAndConditionSeedeer::class);
+        $this->call(SubscriberSeeder::class);
     }
 }

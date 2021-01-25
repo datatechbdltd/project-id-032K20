@@ -50,7 +50,14 @@
                 <div class="form-box">
                     @foreach ($condition as $item)
                         <div class="form-title-wrap">
-                            <h3 class="title">{{ $loop->iteration }}. {{ $item->title }}</h3>
+                            <h3 class="title">
+                                <a href="{{ url('/terms-and-condition#'.$item->title) }}">{{ $loop->iteration }}. {{ $item->title }}</a></h3>
+                        </div><!-- form-title-wrap -->
+                    @endforeach
+
+                    @foreach ($condition as $item)
+                        <div class="form-title-wrap" id="{{ $item->title }}">
+                            <h3 class="title">{{ $item->title }}</h3>
                             <div class="m-2">{!! $item->description !!}</div>
                         </div><!-- form-title-wrap -->
                     @endforeach
