@@ -1,5 +1,5 @@
 <section class="footer-area section-bg padding-top-100px padding-bottom-30px">
-    <div class="container" style="display: none">
+    <div class="container" >
         <div class="row">
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
@@ -67,7 +67,7 @@
             <div class="col-lg-8">
                 <div class="term-box footer-item">
                     <ul class="list-items list--items d-flex align-items-center">
-                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="{{ route('frontend.terms.condition') }}">Terms & Conditions</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Help Center</a></li>
                     </ul>

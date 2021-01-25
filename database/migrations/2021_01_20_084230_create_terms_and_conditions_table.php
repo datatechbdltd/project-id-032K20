@@ -15,7 +15,7 @@ class CreateTermsAndConditionsTable extends Migration
     {
         Schema::create('terms_and_conditions', function (Blueprint $table) {
             $table->id();
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(false);
             $table->integer('serial');
             $table->string('title');
             $table->longText('description');

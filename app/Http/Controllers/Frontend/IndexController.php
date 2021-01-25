@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\TermsAndCondition;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -79,5 +80,10 @@ class IndexController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function termsAndCondition(){
+        $condition = TermsAndCondition::where('status',true)->orderBy('serial','ASC')->get();
+        return view('frontend.terms-and-condition',compact('condition'));
     }
 }

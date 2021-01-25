@@ -29,6 +29,7 @@ Route::get('/language/{languageCode}', 'LanguageController@languageSwitcher')->n
  */
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function (){
     Route::get('/', 'IndexController@index')->name('index');
+    Route::get('/terms-and-condition', 'IndexController@termsAndCondition')->name('terms.condition');
     Route::get('/user-type', 'NonPermittedUserController@index')->name('nonPermittedUser')->middleware('auth');
     Route::get('/user-type/{permission}', 'NonPermittedUserController@assignPermission')->name('assignPermission')->middleware('auth');
 });
@@ -85,10 +86,10 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
     Route::group(['prefix'=>'provider', 'as' => 'provider.'], function (){
         Route::group(['prefix'=>'flight', 'as' => 'flight.'], function (){
 
-            Route::get('/index', 'FlightController@provider_flight_index')->name('index');
-            Route::get('/view/{flight_id}', 'FlightController@provider_flight_view')->name('view');
-            Route::get('/approve/{flight_id}', 'FlightController@provider_flight_approve')->name('approve');
-            Route::get('/reject/{flight_id}', 'FlightController@provider_flight_reject')->name('reject');
+            Route::get('/index', 'FlightController@providerFlightIndex')->name('index');
+            Route::get('/view/{flight_id}', 'FlightController@providerFlightView')->name('view');
+            Route::get('/approve/{flight_id}', 'FlightController@providerFlightApprove')->name('approve');
+            Route::get('/reject/{flight_id}', 'FlightController@providerFlightReject')->name('reject');
         });
 
     });
