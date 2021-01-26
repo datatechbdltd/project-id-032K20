@@ -62,7 +62,7 @@
                                          <div class="col-6 text-right">
                                             <label for="example-search-input" class="col-form-label "><b>Website logo (134px, 38px)</b></label>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
                                                     <img @if(get_static_option('website_logo')) src="{{ asset(get_static_option('website_logo')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
@@ -87,7 +87,7 @@
                                          <div class="col-6 text-right">
                                             <label for="example-search-input" class="col-form-label "><b>Favicon (16px, 16px)</b></label>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
                                                     <img @if(get_static_option('favicon'))  src="{{ asset(get_static_option('favicon')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
@@ -113,7 +113,7 @@
                                             <label for="example-search-input" class="col-form-label "><b>Breadcrumb Image</b></label>
                                             <br>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
                                                     <img src="{{ asset(get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display">
@@ -138,7 +138,7 @@
                                         <div class="col-6 text-right">
                                             <label for="example-search-input" class="col-form-label "><b>We accept (100px, 21px)</b></label>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
                                                     <img @if(get_static_option('we_accept'))  src="{{ asset(get_static_option('we_accept')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
@@ -163,7 +163,7 @@
                                         <div class="col-6 text-right">
                                             <label for="example-search-input" class="col-form-label "><b>Meta image (1200px, 627 px)</b></label>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
                                                     <img @if(get_static_option('meta_image'))  src="{{ asset(get_static_option('meta_image')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
@@ -339,7 +339,7 @@
             });
         });
     </script>
-    @include('includes.image-upload-helper')
+
     <!--begin::Page Scripts(used by this page)-->
     <script src="{{ asset('assets/administrative/js/pages/crud/file-upload/image-input.js') }}"></script>
     <!--end::Page Scripts-->

@@ -97,7 +97,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">{{__('Proviser\'s flight')}}</span>
+                                    <span class="menu-text">{{__('Provider\'s flight')}}</span>
                                 </a>
                             </li>
                         </ul>
