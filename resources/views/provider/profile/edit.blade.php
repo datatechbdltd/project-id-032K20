@@ -30,18 +30,18 @@
                         <div class="form-title-wrap">
                             <h3 class="title">Profile Setting</h3>
                         </div>
-                        <div class="form-content">
+                        <div class="form-content middle-image-helper">
                             <div class="user-profile-action d-flex align-items-center pb-4">
                                 <div class="overlay">
                                     <div class="overlay-wrapper rounded bg-light-success text-center">
-                                        <img @if(get_static_option('website_logo')) src="{{ asset(get_static_option('website_logo')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                        <img src="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
                                     </div>
                                     <div class="overlay-layer mt-3">
                                         <input style="display: none" type="file" accept="image/*" class="image-importer">
                                         <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                            Choose Image
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" @if(get_static_option('website_logo'))  value="{{ asset(get_static_option('website_logo')) }}" @else value="{{ asset('assets/administrative/media/products/1.png') }}" @endif>
+                                        <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
                                             Reset
                                         </button>
                                         <button type="button" class="btn btn-icon btn-info mr-2 submit-btn">
@@ -97,6 +97,34 @@
                                         </div><!-- end col-lg-12 -->
                                     </div><!-- end row -->
                                 </form>
+                            </div>
+                        </div>
+                    </div><!-- end form-box -->
+                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="form-box">
+                        <div class="form-title-wrap">
+                            <h3 class="title">Documents</h3>
+                        </div>
+                        <div class="form-content middle-image-helper">
+                            <div class="user-profile-action d-flex align-items-center pb-4">
+                                <div class="overlay">
+                                    <div class="overlay-wrapper rounded bg-light-success text-center">
+                                        <img src="{{ asset(auth()->user->type->document ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                    </div>
+                                    <div class="overlay-layer mt-3">
+                                        <input style="display: none" type="file" accept="image/*" class="image-importer">
+                                        <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
+                                           Choose Image
+                                        </button>
+                                        <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
+                                            Reset
+                                        </button>
+                                        <button type="button" class="btn btn-icon btn-info mr-2 submit-btn">
+                                            Upload Image
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div><!-- end form-box -->
@@ -263,7 +291,7 @@
             </div><!-- end row -->
         </div><!-- end container-fluid -->
     </div><!-- end dashboard-main-content -->
-    @include('includes.image-upload-helper')
+    {{-- @include('includes.image-upload-helper') --}}
 @endsection
 @section('content')
 
