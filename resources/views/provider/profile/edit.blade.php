@@ -106,27 +106,31 @@
                         <div class="form-title-wrap">
                             <h3 class="title">Documents</h3>
                         </div>
-                        <div class="form-content middle-image-helper">
-                            <div class="user-profile-action d-flex align-items-center pb-4">
-                                <div class="overlay">
-                                    <div class="overlay-wrapper rounded bg-light-success text-center">
-                                        <img src="{{ asset(auth()->user->type->documents ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
-                                    </div>
-                                    <div class="overlay-layer mt-3">
-                                        <input style="display: none" type="file" accept="image/*" class="image-importer">
-                                        <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
-                                           Choose Image
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
-                                            Reset
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-info mr-2 submit-btn">
-                                            Upload Image
-                                        </button>
+                        @foreach ($user->type->documents as $document)
+                            <div class="form-content middle-image-helper">
+                                <div class="user-profile-action d-flex align-items-center pb-4">
+                                    <div class="overlay">
+                                        <h1>{{ $document->documentType->name }}</h1>
+                                        <div class="overlay-wrapper rounded bg-light-success text-center">
+                                            <img src="{{ asset(auth()->user->type->documents ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                        </div>
+                                        <div class="overlay-layer mt-3">
+                                            <input style="display: none" type="file" accept="image/*" class="image-importer">
+                                            <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
+                                            Choose Image
+                                            </button>
+                                            <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
+                                                Reset
+                                            </button>
+                                            <button type="button" class="btn btn-icon btn-info mr-2 submit-btn">
+                                                Upload Image
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
+
                     </div><!-- end form-box -->
                 </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">

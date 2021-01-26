@@ -13,12 +13,15 @@ class DocumentTypeSeeder extends Seeder
     public function run()
     {
         $document_type = new \App\DocumentType();
-        $document_type->name    = Str::random(60);
+        $document_type->name    = "Nid";
         $document_type->save();
 
         $document_type = new \App\DocumentType();
-        $document_type->name    = Str::random(60);
+        $document_type->name    = "Passport";
+        $document_type->save();
 
+        $document_type = new \App\DocumentType();
+        $document_type->name    = "Driving licence";
         $document_type->save();
     }
 }

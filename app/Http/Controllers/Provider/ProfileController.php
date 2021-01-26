@@ -59,8 +59,7 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        dd($user->type);
-        // return view('provider.profile.edit', compact('user'));
+        return view('provider.profile.edit', compact('user'));
     }
 
     /**
