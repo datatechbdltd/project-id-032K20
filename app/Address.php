@@ -9,14 +9,14 @@ class Address extends Model
     protected $fillable = [
         'primary_address',
         'secondary_address',
+        'user_id',
         'state',
         'city',
         'zip',
         'country_id',
     ];
 
-    /*//User
     public function user(){
-        return $this->hasOne(User::class);
-    }*/
+        return $this->hasOne(User::class, 'user_id','id');
+    }
 }

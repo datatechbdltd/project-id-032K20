@@ -101,7 +101,7 @@
                         </div>
                     </div><!-- end form-box -->
                 </div><!-- end col-lg-6 -->
-                <div class="col-lg-6">
+                <div class="col-lg-6 ">
                     <div class="form-box">
                         <div class="form-title-wrap">
                             <h3 class="title">Documents</h3>
@@ -110,7 +110,63 @@
                             <div class="form-content middle-image-helper">
                                 <div class="user-profile-action d-flex align-items-center pb-4">
                                     <div class="overlay">
-                                        <h1>{{ $document->documentType->name }}</h1>
+                                        <h3 class="title">{{ $document->documentType->name }}</h3>
+                                        <!--begin::Symbol-->
+                                        <div class="row">
+                                            <div class="row">
+                                                <!--begin::Product-->
+                                                <div class="col-md-6 col-xxl-6 col-lg-6">
+                                                    <!--begin::Card-->
+                                                    <div class="card card-custom card-shadowless">
+                                                        <div class="card-body p-0">
+                                                            <!--begin::Image-->
+                                                            <div class="overlay">
+                                                                <div class="overlay-wrapper rounded bg-light text-center">
+                                                                    <img src="{{ asset($document->documentType->correct_example ??get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                </div>
+                                                                <div class="overlay-layer">
+                                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::Image-->
+                                                            <!--begin::Details-->
+                                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                                <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Correct example</a>
+                                                            </div>
+                                                            <!--end::Details-->
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Card-->
+                                                </div>
+                                                <!--end::Product-->
+                                                <!--begin::Product-->
+                                                <div class="col-md-6 col-lg-6 col-xxl-6">
+                                                    <!--begin::Card-->
+                                                    <div class="card card-custom card-shadowless">
+                                                        <div class="card-body p-0">
+                                                            <!--begin::Image-->
+                                                            <div class="overlay">
+                                                                <div class="overlay-wrapper rounded bg-light text-center">
+                                                                    <img src="{{ asset($document->documentType->false_example ??get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                </div>
+                                                                <div class="overlay-layer">
+                                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::Image-->
+                                                            <!--begin::Details-->
+                                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                                <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Incorrect example</a>
+                                                            </div>
+                                                            <!--end::Details-->
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Card-->
+                                                </div>
+                                                <!--end::Product-->
+                                            </div>
+                                        </div>
+                                        <!--end::Symbol-->
                                         <div class="overlay-wrapper rounded bg-light-success text-center">
                                             <img src="{{ asset(auth()->user->type->documents ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
                                         </div>

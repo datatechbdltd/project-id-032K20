@@ -20,6 +20,7 @@ class CreateAddressesTable extends Migration
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('zip')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('country_id')->nullable();
             $table->timestamps();
         });

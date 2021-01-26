@@ -12,4 +12,8 @@ class Authorization extends Model
         'authorization_note',
         'is_approved',
     ];
+
+    public function user(){
+        return $this->hasOne(User::class, 'user_id','id');
+    }
 }
