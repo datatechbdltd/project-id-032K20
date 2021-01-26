@@ -12,12 +12,12 @@ class DocumentTypesAndUserTypes extends Model
     ];
 
     //document type
-    public function types(){
+    public function documentType(){
         return $this->belongsTo(DocumentType::class,'document_type_id','id');
     }
 
     //user type
-    public function userTypes(){
+    public function userType(){
         return $this->belongsTo(UserType::class,'user_type_id','id');
     }
 }

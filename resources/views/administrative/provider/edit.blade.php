@@ -391,6 +391,7 @@
                                     <!--end::Header-->
                                     <!--begin::Body-->
                                     <div class="card-body pt-2">
+                                        @foreach($provider->type->documents as $document)
                                         <!--begin::Item-->
                                         <div class="d-flex flex-wrap align-items-center mb-10">
                                             <!--begin::Symbol-->
@@ -400,7 +401,7 @@
                                             <!--end::Symbol-->
                                             <!--begin::Title-->
                                             <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">Cup &amp; Green</a>
+                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $document->documentType->name }}</a>
                                                 <span class="text-muted font-weight-bold font-size-sm my-1">Local, clean &amp; environmental</span>
                                                 <span class="text-muted font-weight-bold font-size-sm">Created by:
 																<span class="text-primary font-weight-bold">CoreAd</span></span>
@@ -416,106 +417,7 @@
                                             <!--end::Info-->
                                         </div>
                                         <!--end::Item-->
-                                        <!--begin: Item-->
-                                        <div class="d-flex flex-wrap align-items-center mb-10">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                                <div class="symbol-label" style="background-image: url('assets/media/stock-600x400/img-10.jpg')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">Yellow Background</a>
-                                                <span class="text-muted font-weight-bold font-size-sm my-1">Strong abstract concept</span>
-                                                <span class="text-muted font-weight-bold font-size-sm">Created by:
-																<span class="text-primary font-weight-bold">KeenThemes</span></span>
-                                            </div>
-                                            <!--end::Title-->
-                                            <!--begin::Info-->
-                                            <div class="d-flex align-items-center py-lg-0 py-2">
-                                                <div class="d-flex flex-column text-right">
-                                                    <span class="text-dark-75 font-weight-bolder font-size-h4">70,380</span>
-                                                    <span class="text-muted font-weight-bolder font-size-sm">votes</span>
-                                                </div>
-                                            </div>
-                                            <!--end::Info-->
-                                        </div>
-                                        <!--end: Item-->
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-wrap align-items-center mb-10">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                                <div class="symbol-label" style="background-image: url('assets/media/stock-600x400/img-1.jpg')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="d-flex flex-column flex-grow-1 pr-3">
-                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">Nike &amp; Blue</a>
-                                                <span class="text-muted font-weight-bold font-size-sm my-1">Footwear overalls</span>
-                                                <span class="text-muted font-weight-bold font-size-sm">Created by:
-																<span class="text-primary font-weight-bold">Invision Inc.</span></span>
-                                            </div>
-                                            <!--end::Title-->
-                                            <!--begin::Info-->
-                                            <div class="d-flex align-items-center py-lg-0 py-2">
-                                                <div class="d-flex flex-column text-right">
-                                                    <span class="text-dark-75 font-size-h4 font-weight-bolder">7,200</span>
-                                                    <span class="text-muted font-size-sm font-weight-bolder">votes</span>
-                                                </div>
-                                            </div>
-                                            <!--end::Info-->
-                                        </div>
-                                        <!--end::Item-->
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-wrap align-items-center mb-10">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                                <div class="symbol-label" style="background-image: url('assets/media/stock-600x400/img-9.jpg')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">Desserts platter</a>
-                                                <span class="text-muted font-size-sm font-weight-bold my-1">Food trends &amp; reviews</span>
-                                                <span class="text-muted font-size-sm font-weight-bold">Created by:
-																<span class="text-primary font-weight-bold">Figma Studio</span></span>
-                                            </div>
-                                            <!--end::Title-->
-                                            <!--begin::Info-->
-                                            <div class="d-flex align-items-center py-lg-0 py-2">
-                                                <div class="d-flex flex-column text-right">
-                                                    <span class="text-dark-75 font-size-h4 font-weight-bolder">36,450</span>
-                                                    <span class="text-muted font-size-sm font-weight-bolder">votes</span>
-                                                </div>
-                                            </div>
-                                            <!--end::Info-->
-                                        </div>
-                                        <!--end::Item-->
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                                <div class="symbol-label" style="background-image: url('assets/media/stock-600x400/img-12.jpg')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">Cup &amp; Green</a>
-                                                <span class="text-muted font-weight-bold font-size-sm my-1">Local, clean &amp; environmental</span>
-                                                <span class="text-muted font-weight-bold font-size-sm">Created by:
-																<span class="text-primary font-weight-bold">CoreAd</span></span>
-                                            </div>
-                                            <!--end::Title-->
-                                            <!--begin::Info-->
-                                            <div class="d-flex align-items-center py-lg-0 py-2">
-                                                <div class="d-flex flex-column text-right">
-                                                    <span class="text-dark-75 font-weight-bolder font-size-h4">23,900</span>
-                                                    <span class="text-muted font-size-sm font-weight-bolder">votes</span>
-                                                </div>
-                                            </div>
-                                            <!--end::Info-->
-                                        </div>
-                                        <!--end::Item-->
+                                            @endforeach
                                     </div>
                                     <!--end::Body-->
                                 </div>
