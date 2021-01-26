@@ -15,6 +15,7 @@ class Language extends Model
         'code',
         'flag',
         'alignment',
+        'is_default',
     ];
 
     /**

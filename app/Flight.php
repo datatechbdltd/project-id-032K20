@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Flight extends Model
 {
     protected $fillable = [
-        'approved_by_id',
+        'verified_by_id',
         'provider_id',
         'from',
         'to',
