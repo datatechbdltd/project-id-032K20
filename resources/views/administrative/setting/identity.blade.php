@@ -65,14 +65,14 @@
                                         <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('website_logo')) src="{{ asset(get_static_option('website_logo')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img src="{{ asset(get_static_option('website_logo') ?? get_static_option('no_image')) }}"  alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
                                                     <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                                         <i class="ki ki-plus text-white"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" @if(get_static_option('website_logo'))  value="{{ asset(get_static_option('website_logo')) }}" @else value="{{ asset('assets/administrative/media/products/1.png') }}" @endif>
+                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(get_static_option('website_logo') ?? get_static_option('no_image')) }}">
                                                         <i class="ki ki-reload text-white"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-icon btn-info mr-2 submit-btn" value="website_logo">
@@ -90,14 +90,14 @@
                                         <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('favicon'))  src="{{ asset(get_static_option('favicon')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img src="{{ asset(get_static_option('favicon') ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
                                                     <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                                         <i class="ki ki-plus text-white"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" @if(get_static_option('favicon'))  value="{{ asset(get_static_option('favicon')) }}" @else value="{{ asset('assets/administrative/media/products/1.png') }}" @endif>
+                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(get_static_option('favicon') ?? get_static_option('no_image')) }}">
                                                         <i class="ki ki-reload text-white"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-icon btn-info mr-2 submit-btn" value="favicon">
@@ -123,7 +123,7 @@
                                                     <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                                         <i class="ki ki-plus text-white"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset('assets/administrative/media/products/1.png') }}">
+                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(get_static_option('no_image')) }}">
                                                         <i class="ki ki-reload text-white"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-icon btn-info mr-2">
@@ -141,14 +141,14 @@
                                         <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('we_accept'))  src="{{ asset(get_static_option('we_accept')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img  src="{{ asset(get_static_option('we_accept') ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
                                                     <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                                         <i class="ki ki-plus text-white"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" @if(get_static_option('we_accept'))  value="{{ asset(get_static_option('we_accept')) }}" @else value="{{ asset('assets/administrative/media/products/1.png') }}" @endif>
+                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(get_static_option('we_accept') ?? get_static_option('no_image')) }}">
                                                         <i class="ki ki-reload text-white"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-icon btn-info mr-2 submit-btn" value="we_accept">
@@ -166,14 +166,14 @@
                                         <div class="col-6 middle-image-helper">
                                             <div class="overlay">
                                                 <div class="overlay-wrapper rounded bg-light-success text-center">
-                                                    <img @if(get_static_option('meta_image'))  src="{{ asset(get_static_option('meta_image')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display">
+                                                    <img src="{{ asset(get_static_option('meta_image') ?? get_static_option('no_image')) }}"  alt="" id="image-display" class="mw-100 w-200px image-display">
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <input style="display: none" type="file" accept="image/*" class="image-importer">
                                                     <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                                         <i class="ki ki-plus text-white"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" @if(get_static_option('meta_image'))  value="{{ asset(get_static_option('meta_image')) }}" @else value="{{ asset('assets/administrative/media/products/1.png') }}" @endif>
+                                                    <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn"  value="{{ asset(get_static_option('meta_image') ?? get_static_option('no_image')) }}">
                                                         <i class="ki ki-reload text-white"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-icon btn-info mr-2 submit-btn" value="meta_image">

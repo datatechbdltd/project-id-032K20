@@ -24,10 +24,10 @@ class StaticOptionSeeder extends Seeder
         set_static_option('company_main_email', '');
         set_static_option('company_main_phone', '');
 
-        set_static_option('website_logo', '');
-        set_static_option('favicon', '');
-        set_static_option('meta_image', '');
-        set_static_option('we_accept', '');
+        set_static_option('website_logo', null);
+        set_static_option('favicon', null);
+        set_static_option('meta_image', null);
+        set_static_option('we_accept', null);
 
         set_static_option('website_hero_bg_color', '');
         set_static_option('website_hero_bg_image', '');
