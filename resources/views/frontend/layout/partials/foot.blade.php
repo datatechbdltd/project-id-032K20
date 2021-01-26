@@ -12,7 +12,8 @@
 <script src="{{ asset('assets/frontend/js/jquery.ripples-min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/quantity-input.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-
-<script src="{{ asset('assets/api-js/flight-search.js') }}"></script>
-
+{{-- cousom js  starts --}}
+<script src="{{ asset('assets/helper-js/flight-search.js') }}"></script>
+<script src="{{ asset('assets/helper-js/helper.js') }}"></script>
+{{-- cousom js ends --}}
 @stack('js')

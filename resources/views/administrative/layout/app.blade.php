@@ -96,9 +96,14 @@
 <!--begin::Page Vendors(used by this page)-->
 <script src="{{ asset('assets/administrative/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
 <!--end::Page Vendors-->
+{{-- cousom js  starts --}}
+<script src="{{ asset('assets/helper-js/flight-search.js') }}"></script>
+<script src="{{ asset('assets/helper-js/helper.js') }}"></script>
+{{-- cousom js ends --}}
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{ asset('assets/administrative/js/pages/widgets.js') }}"></script>
 <!--end::Page Scripts-->
+
 @stack('js')
 @include('includes.logout')
 @include('sweetalert::alert')

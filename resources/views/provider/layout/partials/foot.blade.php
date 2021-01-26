@@ -18,4 +18,7 @@
 <script src="{{ asset('assets/frontend/js/jquery.filer.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/jquery.ripples-min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-
+{{-- cousom js  starts --}}
+<script src="{{ asset('assets/helper-js/flight-search.js') }}"></script>
+<script src="{{ asset('assets/helper-js/helper.js') }}"></script>
+{{-- cousom js ends --}}
