@@ -128,11 +128,11 @@
                                 <!--begin::User-->
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-                                        <div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
+                                        <div class="symbol-label" style="background-image:url('{{ asset(auth()->user()->avatar ?? get_static_option("no_image")) }}')"></div>
                                         <i class="symbol-badge bg-success"></i>
                                     </div>
                                     <div>
-                                        <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">James Jones</a>
+                                        <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$provider->name}}</a>
                                         <div class="text-muted">Application Developer</div>
                                         <div class="mt-2">
                                             <a href="#" class="btn btn-sm btn-primary font-weight-bold mr-2 py-2 px-3 px-xxl-5 my-1">Chat</a>
@@ -145,11 +145,11 @@
                                 <div class="py-9">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         <span class="font-weight-bold mr-2">Email:</span>
-                                        <a href="#" class="text-muted text-hover-primary">matt@fifestudios.com</a>
+                                        <a href="#" class="text-muted text-hover-primary">{{$provider->email}}</a>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         <span class="font-weight-bold mr-2">Phone:</span>
-                                        <span class="text-muted">44(76)34254578</span>
+                                        <span class="text-muted">{{$provider->phone}}</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <span class="font-weight-bold mr-2">Location:</span>
