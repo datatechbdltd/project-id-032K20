@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\Administrative\DocumentTypeController;
 use Illuminate\Database\Eloquent\Model;
 
 class UserType extends Model
@@ -9,4 +10,19 @@ class UserType extends Model
     protected $fillable = [
         'name',
     ];
+
+    //User
+    public function user(){
+        return $this->hasOne(User::class,'type_id','id');
+    }
+
+    //Document types
+    public function documents(){
+        return $this->hasMany(DocumentTypesAndUserTypes::class,'user_type_id','id');
+    }
+
+    //DocumentTypesAndUserTypes
+    public function documentTypes(){
+        return $this->hasMany(DocumentTypesAndUserTypes::class,'user_type_id','id');
+    }
 }

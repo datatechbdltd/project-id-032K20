@@ -15,4 +15,19 @@ class Document extends Model
         'authorization_note',
         'is_approved',
     ];
+
+    //User
+    public function user(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    //Authorizer
+    public function authorizer(){
+        return $this->belongsTo(User::class,'authorized_by_id','id');
+    }
+
+    //Document type
+    public function type(){
+        return $this->belongsTo(DocumentType::class,'document_type_id','id');
+    }
 }

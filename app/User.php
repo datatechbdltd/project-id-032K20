@@ -86,9 +86,13 @@ class User extends Authenticatable implements MustVerifyEmail
       return $this->belongsTo(Address::class);
   }*/
 
-
-    /*//User Type
+    //User Type
     public function type(){
-        return $this->hasOne(UserType::class,'user_id','user_type_id');
-    }*/
+        return $this->belongsTo(UserType::class,'type_id','id');
+    }
+
+    //Documents
+    public function documents(){
+        return $this->hasMany(Document::class,'user_id','id');
+    }
 }

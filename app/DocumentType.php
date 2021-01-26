@@ -12,4 +12,9 @@ class DocumentType extends Model
         'correct_example',
         'false_example',
     ];
+
+    //document type
+    public function types(){
+        return $this->hasMany(DocumentTypesAndUserTypes::class,'document_type_id','id');
+    }
 }
