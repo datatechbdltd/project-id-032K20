@@ -339,8 +339,4 @@
             });
         });
     </script>
-
-    <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('assets/administrative/js/pages/crud/file-upload/image-input.js') }}"></script>
-    <!--end::Page Scripts-->
 @endpush

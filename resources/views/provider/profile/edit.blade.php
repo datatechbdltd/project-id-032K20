@@ -34,7 +34,7 @@
                             <div class="user-profile-action d-flex align-items-center pb-4">
                                 <div class="overlay">
                                     <div class="overlay-wrapper rounded bg-light-success text-center">
-                                        <img src="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                        <img src="{{ asset($user->avatar ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
                                     </div>
                                     <div class="overlay-layer mt-3">
                                         <input style="display: none" type="file" accept="image/*" class="image-importer">
@@ -56,7 +56,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 responsive-column">
                                             <div class="input-box">
-                                                <label class="label-text">Name..{{ $user->type }}</label>
+                                                <label class="label-text">Name</label>
                                                 <div class="form-group">
                                                     <span class="la la-user form-icon"></span>
                                                     <input class="form-control" type="text"  value="{{ $user->name }}" placeholder="Your name">
@@ -110,7 +110,7 @@
                             <div class="user-profile-action d-flex align-items-center pb-4">
                                 <div class="overlay">
                                     <div class="overlay-wrapper rounded bg-light-success text-center">
-                                        <img src="{{ asset(auth()->user->type->document ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                        <img src="{{ asset(auth()->user->type->documents ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
                                     </div>
                                     <div class="overlay-layer mt-3">
                                         <input style="display: none" type="file" accept="image/*" class="image-importer">

@@ -57,7 +57,7 @@
                                 <input type="text" class="form-control form-control-lg document_name" value="{{ old('document_name') }}"  placeholder="Document name" name="document_name" required/>
                             </div>
                             {{--currect_example--}}
-                            <div class="form-group bg-light-success rounded ">
+                            <div class="form-group bg-light-success rounded middle-image-helper">
                                 <div class="col-6 text-right">
                                     <label for="example-search-input" class="col-form-label "><b>Currect example (134px, 38px)</b></label>
                                 </div>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             {{--false_example--}}
-                            <div class="form-group bg-light-success rounded ">
+                            <div class="form-group bg-light-success rounded middle-image-helper">
                                 <div class="col-6 text-right">
                                     <label for="example-search-input" class="col-form-label "><b>False example (134px, 38px)</b></label>
                                 </div>
@@ -221,9 +221,6 @@
         });
     });
 </script>
-    @include('includes.image-upload-helper')
-
-    <script src="{{ asset('assets/administrative/js/pages/crud/file-upload/image-input.js') }}"></script>
     <script src="{{ asset('assets/administrative/js/pages/crud/forms/widgets/select2.js') }}"></script>
 <!--end::Page Scripts-->
 @endpush
