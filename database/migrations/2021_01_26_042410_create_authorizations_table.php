@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProviderDocumentsTable extends Migration
+class CreateAuthorizationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateProviderDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('provider_documents', function (Blueprint $table) {
+        Schema::create('authorizations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provider_id');
-            $table->string('doocument_name');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('authorized_by_id')->nullable();
             $table->longText('authorization_note')->nullable();
             $table->boolean('is_approved')->default(false);
@@ -31,6 +30,6 @@ class CreateProviderDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provider_documents');
+        Schema::dropIfExists('authorizations');
     }
 }

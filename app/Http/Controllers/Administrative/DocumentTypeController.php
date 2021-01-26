@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrative;
 
 use App\DocumentAndUserType;
 use App\DocumentType;
+use App\DocumentTypesAndUserTypes;
 use App\Http\Controllers\Controller;
 use App\UserType;
 use Carbon\Carbon;
@@ -79,10 +80,10 @@ class DocumentTypeController extends Controller
                 //Database
                 $user_type = UserType::find($user_type);
 
-                if(DocumentAndUserType::where('user_type_id', $user_type->id)->where('document_id', $document_type->id)->exists()){
+                if(DocumentTypesAndUserTypes::where('user_type_id', $user_type->id)->where('document_id', $document_type->id)->exists()){
                     continue;
                 }else{
-                    $document_and_user_types = new DocumentAndUserType();
+                    $document_and_user_types = new DocumentTypesAndUserTypes();
                     $document_and_user_types->user_type_id = $user_type->id;
                     $document_and_user_types->document_id = $document_type->id;
                     $document_and_user_types->save();
