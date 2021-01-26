@@ -59,7 +59,8 @@ class ProviderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $provider = User::findOrFail($id);
+        return view('administrative.provider.edit', compact('provider'));
     }
 
     /**

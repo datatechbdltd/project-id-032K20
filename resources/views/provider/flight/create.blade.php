@@ -39,7 +39,10 @@
                                 <div class="input-box">
                                     <label class="label-text">Leaving From</label>
                                     <div class="form-group">
-                                        <input class="form-control" name="from" type="text" id="from" placeholder="Leaving from">
+                                        <input class="form-control" value="{{old('from')}}" name="from" type="text" id="from" placeholder="Leaving from">
+                                        @error('from')
+                                         <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -47,7 +50,10 @@
                                 <div class="input-box">
                                     <label class="label-text">Going To</label>
                                     <div class="form-group">
-                                        <input class="form-control" name="to" type="text" id="to" placeholder="Going to">
+                                        <input class="form-control" value="{{old('to')}}" name="to" type="text" id="to" placeholder="Going to">
+                                        @error('to')
+                                         <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -55,7 +61,10 @@
                                 <div class="input-box">
                                     <label class="label-text">Price</label>
                                     <div class="form-group">
-                                        <input class="form-control" name="price" type="number" id="price" min="1" step="0.01">
+                                        <input class="form-control" value="{{old('price')}}" name="price" type="number" id="price" min="1" step="0.01" placeholder="000.0">
+                                        @error('price')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -63,7 +72,10 @@
                                 <div class="input-box">
                                     <label class="label-text">Departing</label>
                                     <div class="form-group">
-                                        <input class="form-control" name="departing" type="date" id="departing">
+                                        <input class="form-control" value="{{old('departing')}}" name="departing" type="date" id="departing">
+                                        @error('departing')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -71,7 +83,10 @@
                                 <div class="input-box">
                                     <label class="label-text">Returning</label>
                                     <div class="form-group">
-                                        <input class="form-control" name="returning" type="date" id="returning">
+                                        <input class="form-control" value="{{old('returning')}}" name="returning" type="date" id="returning">
+                                        @error('returning')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->

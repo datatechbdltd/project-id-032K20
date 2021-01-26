@@ -53,7 +53,7 @@
                                 <th>Avatar</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Join</th>
+                                <th>Date & Time</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

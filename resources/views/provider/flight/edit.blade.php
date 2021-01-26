@@ -42,6 +42,9 @@
                                     <label class="label-text">Leaving From</label>
                                     <div class="form-group">
                                         <input class="form-control" value="{{ $flight->from }}" name="from" type="text" id="from" placeholder="Leaving from">
+                                        @error('from')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -50,6 +53,9 @@
                                     <label class="label-text">Going To</label>
                                     <div class="form-group">
                                         <input class="form-control" value="{{ $flight->to }}" name="to" type="text" id="to" placeholder="Going to">
+                                        @error('to')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -58,6 +64,9 @@
                                     <label class="label-text">Price</label>
                                     <div class="form-group">
                                         <input class="form-control" value="{{ $flight->price }}" name="price" type="number" id="price" min="1" step="0.01">
+                                        @error('price')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -66,6 +75,9 @@
                                     <label class="label-text">Departing</label>
                                     <div class="form-group">
                                         <input class="form-control" value="{{ $flight->departing }}" name="departing" type="date" id="departing">
+                                        @error('departing')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
@@ -74,10 +86,13 @@
                                     <label class="label-text">Returning</label>
                                     <div class="form-group">
                                         <input class="form-control" value="{{ $flight->returning }}" name="returning" type="date" id="returning">
+                                        @error('returning')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div><!-- end col-lg-12 -->
-                           
+
 
                             <div class="col-lg-12">
                                 <div class="btn-box">

@@ -32,22 +32,31 @@
                         </div>
                         <div class="form-content">
                             <div class="user-profile-action d-flex align-items-center pb-4">
-                                <div class="user-pro-img">
-                                    <img src="{{ asset($user->avatar ?? get_static_option('no_image')) }}" alt="user-image">
-                                </div>
-                                <div class="upload-btn-box">
-                                    <div class="file-upload-wrap file-upload-wrap-2">
-                                        <input type="file" name="files[]" class="multi file-upload-input with-preview" maxlength="1">
-                                        <span class="file-upload-text"><i class="la la-upload mr-2"></i>Upload Image</span>
+                                <div class="overlay">
+                                    <div class="overlay-wrapper rounded bg-light-success text-center">
+                                        <img @if(get_static_option('website_logo')) src="{{ asset(get_static_option('website_logo')) }}" @else src="{{ asset(get_static_option('no_image')) }}" @endif alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                    </div>
+                                    <div class="overlay-layer mt-3">
+                                        <input style="display: none" type="file" accept="image/*" class="image-importer">
+                                        <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
+                                           Choose Image
+                                        </button>
+                                        <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" @if(get_static_option('website_logo'))  value="{{ asset(get_static_option('website_logo')) }}" @else value="{{ asset('assets/administrative/media/products/1.png') }}" @endif>
+                                            Reset
+                                        </button>
+                                        <button type="button" class="btn btn-icon btn-info mr-2 submit-btn">
+                                            Upload Image
+                                        </button>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="contact-form-action">
                                 <form action="#">
                                     <div class="row">
                                         <div class="col-lg-6 responsive-column">
                                             <div class="input-box">
-                                                <label class="label-text">Name</label>
+                                                <label class="label-text">Name..{{ $user->type }}</label>
                                                 <div class="form-group">
                                                     <span class="la la-user form-icon"></span>
                                                     <input class="form-control" type="text"  value="{{ $user->name }}" placeholder="Your name">
@@ -254,6 +263,7 @@
             </div><!-- end row -->
         </div><!-- end container-fluid -->
     </div><!-- end dashboard-main-content -->
+    @include('includes.image-upload-helper')
 @endsection
 @section('content')
 
