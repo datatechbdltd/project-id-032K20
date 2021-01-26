@@ -435,7 +435,6 @@
 <script>
     $(document).ready(function() {
 
-
         //one-way-search-destination
         $( "#one-way-search-destination" ).autocomplete({
             source: function(request, response) {
