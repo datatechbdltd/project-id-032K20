@@ -408,7 +408,7 @@
                                                                            <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
                                                                        </div>
                                                                        <div class="overlay-layer">
-                                                                           <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+                                                                           <a href="{{ asset($document->avatar ?? get_static_option('no_image')) }}"  id="image" class="btn font-weight-bolder symbol-light-primary btn-sm btn-primary mr-2">View</a>
                                                                         </div>
                                                                    </div>
                                                                    <!--end::Image-->
@@ -433,7 +433,10 @@
                                                                            <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
                                                                        </div>
                                                                        <div class="overlay-layer">
+{{--
                                                                            <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+--}}
+                                                                           <a href="{{ asset($document->avatar ?? get_static_option('no_image')) }}" id="zoom" class="btn font-weight-bolder symbol-light-primary btn-sm btn-primary mr-2">View</a>
                                                                        </div>
                                                                    </div>
                                                                    <!--end::Image-->
@@ -1823,5 +1826,12 @@
     <!--end::Content-->
 @endsection
 @push('js')
-
+    <script src="{{ asset('assets/administrative/js/fancybox/js/jquery.fancybox.min.js') }}"></script>
+    <script>
+        $(function(){
+            $('.my-gallery').imageZoom({
+                $(this).imageZoom();
+        });
+        });
+    </script>
 @endpush
