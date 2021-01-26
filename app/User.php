@@ -20,7 +20,20 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+
+        'user_type_id',
+        'name',
+        'username',
+        'phone',
+        'email',
+        'language',
+        'time_zone',
+        'password',
+        'api_token',
+        'avatar',
+        'status',
+        'phone_verified_at',
+        'email_verified_at',
     ];
 
     /**
@@ -66,6 +79,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function flights(){
         return $this->hasMany(Flight::class,'provider_id','id');
     }
+
 
     /*//Address
   public function address(){
