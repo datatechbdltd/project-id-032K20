@@ -392,32 +392,111 @@
                                     <!--begin::Body-->
                                     <div class="card-body pt-2">
                                         @foreach($provider->type->documents as $document)
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-wrap align-items-center mb-10">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                                <div class="symbol-label" style="background-image: url('assets/media/stock-600x400/img-17.jpg')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $document->documentType->name }}</a>
-                                                <span class="text-muted font-weight-bold font-size-sm my-1">Local, clean &amp; environmental</span>
-                                                <span class="text-muted font-weight-bold font-size-sm">Created by:
-																<span class="text-primary font-weight-bold">CoreAd</span></span>
-                                            </div>
-                                            <!--end::Title-->
-                                            <!--begin::Info-->
-                                            <div class="d-flex align-items-center py-lg-0 py-2">
-                                                <div class="d-flex flex-column text-right">
-                                                    <span class="text-dark-75 font-weight-bolder font-size-h4">24,900</span>
-                                                    <span class="text-muted font-size-sm font-weight-bolder">votes</span>
+                                            <!--begin::Item-->
+                                            <div class="d-flex flex-wrap align-items-center mb-10">
+                                                <!--begin::Symbol-->
+                                               <div class="row">
+                                                   <div class="row">
+                                                       <!--begin::Product-->
+                                                       <div class="col-md-6 col-xxl-6 col-lg-6">
+                                                           <!--begin::Card-->
+                                                           <div class="card card-custom card-shadowless">
+                                                               <div class="card-body p-0">
+                                                                   <!--begin::Image-->
+                                                                   <div class="overlay">
+                                                                       <div class="overlay-wrapper rounded bg-light text-center">
+                                                                           <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                       </div>
+                                                                       <div class="overlay-layer">
+                                                                           <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+                                                                        </div>
+                                                                   </div>
+                                                                   <!--end::Image-->
+                                                                   <!--begin::Details-->
+                                                                   <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                                       <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Correct example</a>
+                                                                   </div>
+                                                                   <!--end::Details-->
+                                                               </div>
+                                                           </div>
+                                                           <!--end::Card-->
+                                                       </div>
+                                                       <!--end::Product-->
+                                                       <!--begin::Product-->
+                                                       <div class="col-md-6 col-lg-6 col-xxl-6">
+                                                           <!--begin::Card-->
+                                                           <div class="card card-custom card-shadowless">
+                                                               <div class="card-body p-0">
+                                                                   <!--begin::Image-->
+                                                                   <div class="overlay">
+                                                                       <div class="overlay-wrapper rounded bg-light text-center">
+                                                                           <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                       </div>
+                                                                       <div class="overlay-layer">
+                                                                           <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+                                                                       </div>
+                                                                   </div>
+                                                                   <!--end::Image-->
+                                                                   <!--begin::Details-->
+                                                                   <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                                       <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Incorrect example</a>
+                                                                   </div>
+                                                                   <!--end::Details-->
+                                                               </div>
+                                                           </div>
+                                                           <!--end::Card-->
+                                                       </div>
+                                                       <!--end::Product-->
+                                                       <!--begin::Product-->
+                                                       <div class="col-md-12 col-lg-12 col-xxl-12">
+                                                           <!--begin::Card-->
+                                                           <div class="card card-custom card-shadowless">
+                                                               <div class="card-body p-0">
+                                                                   <!--begin::Image-->
+                                                                   <div class="overlay">
+                                                                       <div class="overlay-wrapper rounded bg-light text-center">
+                                                                           <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                       </div>
+                                                                       <div class="overlay-layer">
+                                                                           <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
+                                                                           <a href="#" class="btn font-weight-bolder btn-sm btn-light-primary">Purchase</a>
+                                                                       </div>
+                                                                   </div>
+                                                                   <!--end::Image-->
+                                                                   <!--begin::Details-->
+                                                                   <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                                       <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Upload ypur image</a>
+                                                                       <span class="font-size-lg">Note .........</span>
+                                                                   </div>
+                                                                   <!--end::Details-->
+                                                               </div>
+                                                           </div>
+                                                           <!--end::Card-->
+                                                       </div>
+                                                       <!--end::Product-->
+                                                   </div>
+                                               </div>
+                                                <!--end::Symbol-->
+
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
+                                                    <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $document->documentType->name }}</a>
+                                                    <span class="text-muted font-weight-bold font-size-sm my-1">Local, clean &amp; environmental</span>
+                                                    <span class="text-muted font-weight-bold font-size-sm">Created by:
+                                                                    <span class="text-primary font-weight-bold">CoreAd</span></span>
                                                 </div>
+                                                <!--end::Title-->
+                                                <!--begin::Info-->
+                                                <div class="d-flex align-items-center py-lg-0 py-2">
+                                                    <div class="d-flex flex-column text-right">
+                                                        <span class="text-dark-75 font-weight-bolder font-size-h4">24,900</span>
+                                                        <span class="text-muted font-size-sm font-weight-bolder">votes</span>
+                                                    </div>
+                                                </div>
+                                                <!--end::Info-->
                                             </div>
-                                            <!--end::Info-->
-                                        </div>
-                                        <!--end::Item-->
-                                            @endforeach
+                                            <!--end::Item-->
+                                        @endforeach
                                     </div>
                                     <!--end::Body-->
                                 </div>
