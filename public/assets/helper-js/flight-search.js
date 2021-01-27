@@ -20,17 +20,25 @@ $( "#one-way-search-origin" ).autocomplete({
             },
             success:function(data){
                 var json_data = $.parseJSON(data);
-                console.log(json_data.data)
+                // console.log(json_data.data)
                 var array = $.map(json_data.data,function(obj){
                     return{
                         // value: obj.address['cityName'], //Filable in input field
                         // label: obj.address['cityName'],  //Show as label of input field
                        // phone: obj.address['cityName']
+
                         value: obj.address.cityName +' - '+ obj.name, //Filable in input field
                         label: obj.address.cityName +' - '+ obj.name,  //Show as label of input field
+                        abc: '000',  //Show as label of input field
+                        //origin_iata_code: ,
+                        //$('#one-way-search-origin_iata_code').val(obj.iataCode),
+
                     }
                 })
+                //console.log(array['0']['origin_iata_code'])
+                console.log(array, abc)
                 response($.ui.autocomplete.filter(array, request.term));
+                $('#one-way-search-origin_iata_code').val($.ui.autocomplete.filter(array, request.term));
             },
             error: function (xhr) {
                 Swal.fire({

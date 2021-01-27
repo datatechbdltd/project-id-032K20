@@ -38,6 +38,7 @@
                         <div class="form-group">
                             <span class="la la-map-marker form-icon"></span>
                             <input class="form-control search-field" name="flying_from" title="Search a programming language starting with 'A' or 'B'" type="text" id="one-way-search-origin" placeholder="City or airport">
+                            <input name="flying_from_iata_code"  type="hidden" id="one-way-search-origin_iata_code">
                         </div>
                     </div>
                 </div><!-- end col-lg-3 -->
@@ -47,6 +48,7 @@
                         <div class="form-group">
                             <span class="la la-map-marker form-icon"></span>
                             <input class="form-control"  name="flying_to" type="text" id="one-way-search-destination" placeholder="City or airport">
+                            <input  name="flying_to_iata_code" type="hidden" id="one-way-search-destination_iata_code">
                         </div>
                     </div>
                 </div><!-- end col-lg-3 -->
@@ -55,7 +57,7 @@
                         <label class="label-text">{{ __('Departing') }}</label>
                         <div class="form-group">
                             <span class="la la-calendar form-icon"></span>
-                            <input class="date-range form-control" type="text" name="daterange-single">
+                            <input class="date-range form-control" type="date" name="departing_date">
                         </div>
                     </div>
                 </div><!-- end col-lg-3 -->

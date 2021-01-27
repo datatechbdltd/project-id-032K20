@@ -22,7 +22,14 @@ Auth::routes(['verify' => true]);
  * @params lang-code
  * Lang switcher
  */
-Route::get('/language/{languageCode}', 'LanguageController@languageSwitcher')->name('languageSwitcher');
+
+
+Route::group(['namespace' => 'Global'], function (){
+    Route::get('/language/{languageCode}', 'HelperController@languageSwitcher')->name('languageSwitcher');
+    Route::get('/currency/{currencyCode}', 'HelperController@currencySwitcher')->name('currencySwitcher');
+
+});
+
 
 /***
  * All of frontend routes
@@ -139,4 +146,9 @@ Route::group(['namespace' => 'Provider', 'as' => 'provider.', 'prefix'=>'provide
 Route::group(['namespace' => 'User', 'as' => 'user.', 'prefix'=>'user', 'middleware'=>['permission:user-access', 'auth', 'verified']], function (){
     //Dashboard route: user.dashboard.index
     Route::resource('dashboard', 'DashboardController');
+});
+
+
+Route::get('/access-token', function(){
+    getAmadeusAccessTokenView();
 });
