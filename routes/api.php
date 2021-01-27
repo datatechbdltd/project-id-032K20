@@ -26,8 +26,8 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function (){
         Route::get('provider-flight', 'AdministrativeApiController@get_ajax_provider_flight')->name('provider-flight');
 
     });
-});
 
-Route::group(['namespace' => 'Api', 'as' => 'api.', 'prefix'=>''], function (){
     Route::post('airport-search', 'FlyingSearchController@airportSearch')->name('airportSearch');
+    Route::post('one-way-flight-search', 'FlyingSearchController@oneWayFlightSearch')->name('oneWayFlightSearch');
+
 });
