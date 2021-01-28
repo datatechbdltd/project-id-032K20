@@ -54,7 +54,7 @@ if (!function_exists('random_code')){
         return Currency::where('status', true)->get();
     }
 
-    function get_currency_currency()
+    function get_current_currency()
     {
         return Session::get('currency');
     }

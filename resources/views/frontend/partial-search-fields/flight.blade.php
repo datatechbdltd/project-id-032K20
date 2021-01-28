@@ -30,7 +30,7 @@
 <div class="tab-content" id="myTabContent3">
     <div class="tab-pane fade show active" id="one-way" role="tabpanel" aria-labelledby="one-way-tab">
         <div class="contact-form-action">
-            <form method="POST" action="{{ route('api.oneWayFlightSearch') }}" class="row align-items-center">
+            <form method="POST" action="{{ route('frontend.oneWayFlightSearch') }}" class="row align-items-center">
                 @csrf
                 <div class="col-lg-6 pr-0">
                     <div class="input-box">

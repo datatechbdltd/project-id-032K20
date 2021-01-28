@@ -28,6 +28,5 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function (){
     });
 
     Route::post('airport-search', 'FlyingSearchController@airportSearch')->name('airportSearch');
-    Route::post('one-way-flight-search', 'FlyingSearchController@oneWayFlightSearch')->name('oneWayFlightSearch');
 
 });

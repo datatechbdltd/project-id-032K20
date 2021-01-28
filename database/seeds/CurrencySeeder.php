@@ -38,5 +38,12 @@ class CurrencySeeder extends Seeder
         $currency->name =   'Yuan';
         $currency->sign =   '€';
         $currency->save();
+
+        $currency = new \App\Currency();
+        $currency->status =   true;
+        $currency->code =   'CAD';
+        $currency->name =   'Ca dollar';
+        $currency->sign =   'CA$';
+        $currency->save();
     }
 }

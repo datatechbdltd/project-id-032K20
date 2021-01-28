@@ -39,6 +39,8 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function (){
     Route::get('/terms-and-condition', 'IndexController@termsAndCondition')->name('terms.condition');
     Route::get('/user-type', 'NonPermittedUserController@index')->name('nonPermittedUser')->middleware('auth');
     Route::get('/user-type/{permission}', 'NonPermittedUserController@assignPermission')->name('assignPermission')->middleware('auth');
+    Route::post('one-way-flight-search', 'FlightSearchController@oneWayFlightSearch')->name('oneWayFlightSearch');
+
 
 });
 
@@ -82,6 +84,7 @@ Route::get('/home',function (){
  */
 Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefix'=>'administrative', 'middleware'=>['permission:administrative-access', 'auth', 'verified']], function (){
     //Dashboard route: administrative.dashboard.index
+
     Route::resource('dashboard', 'DashboardController');
     Route::resource('user', 'UserController');
     Route::resource('provider', 'ProviderController');
@@ -150,5 +153,6 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'prefix'=>'user', 'middlew
 
 
 Route::get('/access-token', function(){
-    getAmadeusAccessTokenView();
+    // getAmadeusAccessTokenView();
+   echo( get_current_currency());
 });
