@@ -63,8 +63,8 @@ if (!function_exists('random_code')){
      *
      */
     function get_content_by_language($table){
-        if ( current_language()->$table ){
-            return current_language()->$table;
+        if ( get_current_language()->$table ){
+            return get_current_language()->$table;
         }else{
             return en_language()->$table;
         }
