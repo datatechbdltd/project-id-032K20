@@ -225,7 +225,7 @@
                                             <div class="col-9">
                                                 <select class="form-control form-control-lg form-control-solid language">
                                                         <option>Select Language...</option>
-                                                    @foreach (active_languages() as $language)
+                                                    @foreach (get_active_languages() as $language)
                                                         <option @if($user->language == $language->code) selected="selected" @endif value="{{ $language->code }}">{{ $language->name }}</option>
                                                     @endforeach
                                                 </select>

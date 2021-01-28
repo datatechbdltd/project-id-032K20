@@ -24,7 +24,7 @@ Auth::routes(['verify' => true]);
  */
 
 
-Route::group(['namespace' => 'Global'], function (){
+Route::group(['namespace' => 'Helper'], function (){
     Route::get('/language/{languageCode}', 'HelperController@languageSwitcher')->name('languageSwitcher');
     Route::get('/currency/{currencyCode}', 'HelperController@currencySwitcher')->name('currencySwitcher');
 

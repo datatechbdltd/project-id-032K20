@@ -1337,7 +1337,7 @@
                     <!--begin::Nav-->
                     <ul class="navi navi-hover py-4">
                         <!--begin::Item-->
-                        @foreach(active_languages() as $active_language)
+                        @foreach(get_active_languages() as $active_language)
                         <li class="navi-item">
                             <a href="{{ route('languageSwitcher', $active_language->code) }}" class="navi-link">
 													<span class="symbol symbol-20 mr-3">

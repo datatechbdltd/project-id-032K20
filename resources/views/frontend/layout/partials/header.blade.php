@@ -40,7 +40,7 @@
                             <div class="header-right-action">
                                 <div class="select-contain select--contain w-auto">
                                     <select class="select-contain-select" onchange="location = this.value;">
-                                        @foreach(active_languages() as $active_language)
+                                        @foreach(get_active_languages() as $active_language)
                                             <option value="{{ route('languageSwitcher', $active_language->code) }}" @if(current_language()->code == $active_language->code) selected @endif data-content='<span class="flag-icon flag-icon-us mr-1"></span> {{ $active_language->name }}'>
                                                 {{ $active_language->name }}
                                             </option>
@@ -50,10 +50,12 @@
                             </div>
                             <div class="header-right-action">
                                 <div class="select-contain select--contain w-auto">
-                                    <select class="select-contain-select">
-                                        <option value="1">AED</option>
-                                        <option value="2">AUD</option>
-                                        <option value="3">BRL</option>
+                                    <select class="select-contain-select" onchange="location = this.value;">
+                                        @foreach(get_active_currencies() as $active_currency)
+                                            <option value="{{ route('currencySwitcher', $active_currency->code) }}" @if(current_language()->code == $active_currency->code) selected @endif>
+                                                {{ $active_currency->code }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
