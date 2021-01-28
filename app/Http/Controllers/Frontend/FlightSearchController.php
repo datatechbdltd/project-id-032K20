@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class FlightSearchController extends Controller
 {
-    public function oneWayFlightSearch(Request $request){
+    public function oneWayFlightSearchResult(Request $request){
         $request->validate([
             'flying_from' => 'required',
             'flying_to' => 'required|different:flying_from',
@@ -21,8 +21,9 @@ class FlightSearchController extends Controller
 
         $access_token = getAmadeusAccessToken();
         $response = Http::withToken($access_token)->get($api_url);
-        //$response = json_decode($response);
+        // $response = json_decode($response);
         // return redirect()->route('frontend.oneWayFlightSearchResult', $response);
+        // dd($response);
         return view('frontend.flight.one-way-search-result',compact('response'));
     }
 }

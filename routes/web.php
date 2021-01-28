@@ -39,7 +39,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function (){
     Route::get('/terms-and-condition', 'IndexController@termsAndCondition')->name('terms.condition');
     Route::get('/user-type', 'NonPermittedUserController@index')->name('nonPermittedUser')->middleware('auth');
     Route::get('/user-type/{permission}', 'NonPermittedUserController@assignPermission')->name('assignPermission')->middleware('auth');
-    Route::post('one-way-flight-search', 'FlightSearchController@oneWayFlightSearch')->name('oneWayFlightSearch');
+    Route::post('one-way-flight-search-result', 'FlightSearchController@oneWayFlightSearchResult')->name('oneWayFlightSearchResult');
 
 
 });
