@@ -19,10 +19,24 @@ class CurrencySeeder extends Seeder
         $currency->save();
 
         $currency = new \App\Currency();
-        $currency->status =   false;
+        $currency->status =   true;
         $currency->code =   'USD';
         $currency->name =   'DOLLAR';
         $currency->sign =   '$';
+        $currency->save();
+
+        $currency = new \App\Currency();
+        $currency->status =   true;
+        $currency->code =   'UK';
+        $currency->name =   'Pound';
+        $currency->sign =   '£';
+        $currency->save();
+
+        $currency = new \App\Currency();
+        $currency->status =   true;
+        $currency->code =   'Yuan';
+        $currency->name =   'Yuan';
+        $currency->sign =   '€';
         $currency->save();
     }
 }

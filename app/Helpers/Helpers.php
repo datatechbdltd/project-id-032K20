@@ -34,6 +34,11 @@ if (!function_exists('random_code')){
         return Language::where("code", $locale)->first();
     }
 
+    function get_default_language()
+    {
+        return Language::where("is_default", true)->first();
+    }
+
     function set_currency($currency_code)
     {
         if (Currency::where('code', $currency_code)->where('status', true)->exists()){
@@ -66,7 +71,7 @@ if (!function_exists('random_code')){
         if ( get_current_language()->$table ){
             return get_current_language()->$table;
         }else{
-            return en_language()->$table;
+            return get_default_language()->$table;
         }
     }
 
