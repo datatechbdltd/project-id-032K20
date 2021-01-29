@@ -344,7 +344,7 @@
                 <div class="filter-wrap margin-bottom-30px">
                     <div class="filter-top d-flex align-items-center justify-content-between pb-4">
                         <div>
-                            <h3 class="title font-size-24">New Jersey: 24 Flights found</h3>
+                            <h3 class="title font-size-24">New Jersey: {{ $response['meta']['count'] }} Flights found</h3>
                             <p class="font-size-14"><span class="mr-1 pt-1">Book with confidence:</span>No flight booking fees</p>
                         </div>
                         <div class="layout-view d-flex align-items-center">
@@ -516,14 +516,10 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row">
-            <div class="col-lg-4 responsive-column">
-                <h1>{{ $response->data ?? 'not found' }}</h1>
-                <h1>{{ $response }}</h1>
-
-                <hr>
-
-
-
+            
+                @foreach ($response['data'] as $item)
+                    @foreach ( $item['priceMetrics'] as $item1)
+                    <div class="col-lg-4 responsive-column">
                     <div class="card-item flight-card flight--card">
                         <div class="card-img">
                             <img src="images/airline-img7.png" alt="flight-logo-img">
@@ -531,14 +527,14 @@
                         <div class="card-body">
                             <div class="card-top-title d-flex justify-content-between">
                                 <div>
-                                    <h3 class="card-title font-size-17">Beijing</h3>
+                                    <h3 class="card-title font-size-17">{{ $item1['quartileRanking'] }}</h3>
                                     <p class="card-meta font-size-14">One way flight</p>
 
                                 </div>
                                 <div>
                                     <div class="text-right">
                                         <span class="font-weight-regular font-size-14 d-block">avg/person</span>
-                                        <h6 class="font-weight-bold color-text">$350.00</h6>
+                                        <h6 class="font-weight-bold color-text">{{ $item1['amount'] }}</h6>
                                     </div>
                                 </div>
                             </div><!-- end card-top-title -->
@@ -549,7 +545,7 @@
                                             <i class="la la-plane"></i>
                                         </div>
                                         <div>
-                                            <h3 class="card-title font-size-15 font-weight-medium mb-0">Take off</h3>
+                                            <h3 class="card-title font-size-15 font-weight-medium mb-0">{{ $item['origin']['iataCode'] }}</h3>
                                             <p class="card-meta font-size-14">Wed Nov 12 6:50 AM</p>
                                         </div>
                                     </div>
@@ -558,7 +554,7 @@
                                             <i class="la la-plane"></i>
                                         </div>
                                         <div>
-                                            <h3 class="card-title font-size-15 font-weight-medium mb-0">Landing</h3>
+                                            <h3 class="card-title font-size-15 font-weight-medium mb-0">{{ $item['destination']['iataCode'] }}</h3>
                                             <p class="card-meta font-size-14">Thu Nov 13 8:50 AM</p>
                                         </div>
                                     </div>
@@ -570,8 +566,12 @@
                             </div>
                         </div><!-- end card-body -->
                     </div><!-- end card-item -->
+                </div><!-- end col-lg-4 -->
+                    @endforeach
+                @endforeach
 
-            </div><!-- end col-lg-4 -->
+                {{ ($response)}}
+            
         </div><!-- end row -->
         <div class="row">
             <div class="col-lg-12">
