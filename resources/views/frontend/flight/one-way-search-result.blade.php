@@ -344,7 +344,7 @@
                 <div class="filter-wrap margin-bottom-30px">
                     <div class="filter-top d-flex align-items-center justify-content-between pb-4">
                         <div>
-                            <h3 class="title font-size-24">New Jersey: {{ $response['meta']['count'] }} Flights found</h3>
+                            <h3 class="title font-size-24">{{ __('Flight from') }} {{ $flying_from }} {{ __('to') }} {{ $flying_to }} : {{ $response['meta']['count'] }} {{ __('found') }}</h3>
                             <p class="font-size-14"><span class="mr-1 pt-1">Book with confidence:</span>No flight booking fees</p>
                         </div>
                         <div class="layout-view d-flex align-items-center">

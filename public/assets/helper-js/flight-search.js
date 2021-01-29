@@ -20,10 +20,10 @@ $( "#one-way-search-origin" ).autocomplete({
             },
             success:function(data){
                 var json_data = $.parseJSON(data);
-                console.log(json_data.data)
+                console.log(json_data)
                 var array = $.map(json_data.data,function(obj){
                     return{
-                        value: obj.address.cityName +' - '+ obj.name, //Filable in input field
+                        value: obj.name, //Filable in input field
                         label: obj.address.cityName +' - '+ obj.name,  //Show as label of input field
                         iataCode: obj.iataCode,  //iataCode for hidden
                     }
@@ -80,7 +80,7 @@ $( "#one-way-search-destination" ).autocomplete({
                 //console.log(json.data)
                 var array = $.map(json_data.data,function(obj){
                     return{
-                        value: obj.address.cityName +' - '+ obj.name, //Filable in input field
+                        value: obj.name, //Filable in input field
                         label: obj.address.cityName +' - '+ obj.name,  //Show as label of input field
                         iataCode: obj.iataCode,  //iataCode for hidden
                     }
@@ -113,7 +113,7 @@ $( "#one-way-search-destination" ).autocomplete({
     minLength: 1,
     select: function( event, ui ) {
         //console.log(ui.item.iataCode)
-        alert('iata Code is: '+ui.item.iataCode)
+        //alert('iata Code is: '+ui.item.iataCode)
         $('#one-way-search-destination_iata_code').val(ui.item.iataCode)
 
     }

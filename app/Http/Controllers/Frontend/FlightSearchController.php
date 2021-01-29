@@ -22,6 +22,6 @@ class FlightSearchController extends Controller
         $access_token = getAmadeusAccessToken();
         $response = Http::withToken($access_token)->get($api_url);
         //$response = json_decode($response, true);
-        return view('frontend.flight.one-way-search-result',compact('response'));
+        return view('frontend.flight.one-way-search-result',compact('response'))->with('flying_from', $request->flying_from)->with('flying_to', $request->flying_to);;
     }
 }
