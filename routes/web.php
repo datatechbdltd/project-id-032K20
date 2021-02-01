@@ -107,6 +107,7 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
         Route::resource('language', 'LanguageController');
         Route::resource('currency', 'CurrencyController');
         Route::resource('document', 'DocumentTypeController'); // administrative.document.index,
+        Route::post('document/update', 'DocumentTypeController@documentUpdate')->name('documentUpdate'); // administrative.document.index,
 
         Route::group(['prefix'=>'mail', 'as' => 'mail.'], function (){
             Route::get('/smtp', 'EmailConfigController@smtp')->name('smtp');

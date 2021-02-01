@@ -3,6 +3,7 @@
 use App\Currency;
 use App\Language;
 use App\StaticOption;
+use App\DocumentTypesAndUserTypes;
 use App\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -182,6 +183,15 @@ if (!function_exists('random_code')){
             return $return_val->option_value;
         }
         return null;
+    }
+
+    function get_document_type_and_user_type($user_type_id,$document_type_id)
+    {
+        if(DocumentTypesAndUserTypes::where('user_type_id',$user_type_id)->where('document_type_id',$document_type_id)->exists()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     function update_static_option($key, $value)

@@ -51,7 +51,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>name</th>
-                                    <th>Currect example</th>
+                                    <th>Correct example</th>
                                     <th>False example</th>
                                     <th>status</th>
                                     <th>Actions</th>
@@ -62,8 +62,12 @@
                                 <tr>
                                     <td>{{ $loop->iteration  }}</td>
                                     <td>{{ $document->name }}</td>
-                                    <td>{{ $document->currect_example }}</td>
-                                    <td>{{ $document->false_example }}</td>
+                                    <td>
+                                        <img width="100px" height="80px" src="{{ asset($document->correct_example ?? get_static_option('no_image')) }}">
+                                    </td>
+                                    <td>
+                                        <img width="100px" height="80px" src="{{ asset($document->false_example ?? get_static_option('no_image')) }}">
+                                    </td>
                                     <td>
                                         @if($document->status == true)
                                             <span class="label label-inline label-light-success font-weight-bold">
@@ -76,10 +80,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('administrative.currency.edit', $document->id) }}" class="btn btn-shadow btn-icon btn-warning">
+                                        <a href="{{ route('administrative.document.edit', $document->id) }}" class="btn btn-shadow btn-icon btn-warning">
                                             <i class="flaticon2-edit"></i>
                                         </a>
-                                        <a href="{{ route('administrative.currency.show', $document->id) }}" class="btn btn-shadow btn-icon btn-info">
+                                        <a href="{{ route('administrative.document.show', $document->id) }}" class="btn btn-shadow btn-icon btn-info">
                                             <i class="flaticon-medical icon-lg"></i>
                                         </a>
                                         <button type="button" class="btn btn-shadow btn-icon btn-danger delete-btn" value="{{ route('administrative.document.destroy',$document->id ) }}">

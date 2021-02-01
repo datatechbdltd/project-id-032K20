@@ -75,19 +75,26 @@ class DocumentTypeController extends Controller
             $document_type->false_example=$folder_path.$image_new_name;
         }
         try {
-            //$document_type->save();
+            $document_type->save();
+
             $user_types = explode(',', $request->input(['user_role']));
             foreach($user_types as $user_type){
-                //Database
-                $user_type = UserType::find($user_type);
-
-                if(DocumentTypesAndUserTypes::where('user_type_id', $user_type->id)->where('document_id', $document_type->id)->exists()){
+                if(DocumentTypesAndUserTypes::where('user_type_id', $user_type)->where('document_type_id', $document_type->id)->exists()){
                     continue;
                 }else{
-                    $document_and_user_types = new DocumentTypesAndUserTypes();
-                    $document_and_user_types->user_type_id = $user_type->id;
-                    $document_and_user_types->document_id = $document_type->id;
-                    $document_and_user_types->save();
+                    if ($user_type){
+                        $document_and_user_types = new DocumentTypesAndUserTypes();
+                        $document_and_user_types->user_type_id = $user_type;
+                        $document_and_user_types->document_type_id = $document_type->id;
+                        $document_and_user_types->save();
+                    }else{
+                        return response()->json([
+                            'type' => 'error',
+                            'message' => $user_type,
+                            'url' => route('administrative.document.index'),
+                        ]);
+                    }
+
                 }
             }
             return response()->json([
@@ -123,7 +130,9 @@ class DocumentTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user_type = UserType::all();
+        $document_type = DocumentType::findOrFail($id);
+        return view('administrative.document.edit',compact('user_type','document_type'));
     }
 
     /**
@@ -133,9 +142,77 @@ class DocumentTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function documentUpdate(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required|boolean',
+            'user_role' => 'required|exists:user_types,id',
+            'document_type_id' => 'required',
+        ]);
+
+        $document_type = DocumentType::findOrFail($request->document_type_id);
+        $document_type->name = $request->name;
+        $document_type->status = $request->status;
+
+        if ($request->hasFile('correct_example')) {
+            if ($document_type->correct_example != null)
+                File::delete(public_path($document_type->correct_example)); //Old image delete
+            $image             = $request->file('correct_example');
+            $folder_path       = 'assets/uploads/images/setting/document/';
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->resize(500, 500)->save($folder_path.$image_new_name);
+            $document_type->correct_example=$folder_path.$image_new_name;
+        }
+        if ($request->hasFile('false_example')) {
+            if ($document_type->false_example != null)
+                File::delete(public_path($document_type->false_example)); //Old image delete
+            $image             = $request->file('false_example');
+            $folder_path       = 'assets/uploads/images/setting/document/';
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->resize(500, 500)->save($folder_path.$image_new_name);
+            $document_type->false_example=$folder_path.$image_new_name;
+        }
+        try {
+            $document_type->save();
+            DocumentTypesAndUserTypes::where('document_type_id', $document_type->id)->delete();
+            
+            $user_types = explode(',', $request->input(['user_role']));
+            foreach($user_types as $user_type){
+                if(DocumentTypesAndUserTypes::where('user_type_id', $user_type)->where('document_type_id', $document_type->id)->exists()){
+                    continue;
+                }else{
+                    if ($user_type){
+                        $document_and_user_types = new DocumentTypesAndUserTypes();
+                        $document_and_user_types->user_type_id = $user_type;
+                        $document_and_user_types->document_type_id = $document_type->id;
+                        $document_and_user_types->save();
+                    }else{
+                        return response()->json([
+                            'type' => 'error',
+                            'message' => $user_type,
+                            'url' => route('administrative.document.index'),
+                        ]);
+                    }
+                }
+            }
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully updated',
+                'url' => route('administrative.document.index'),
+            ]);
+
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => 'Something going wrong'.$exception,
+            ]);
+        }
+    }
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -147,15 +224,16 @@ class DocumentTypeController extends Controller
     public function destroy($id)
     {
         if (DocumentType::where('id', $id)->exists()){
+
             $document = DocumentType::find($id);
             try {
-                if ($document->currect_example != null)
-                    File::delete(public_path($document->currect_example)); //Old image delete
+                if ($document->correct_example != null)
+                    File::delete(public_path($document->correct_example)); //Old image delete
                 if ($document->false_example != null)
                     File::delete(public_path($document->false_example)); //Old image delete
                 $document->delete();
+                DocumentTypesAndUserTypes::where('document_type_id',$id)->delete();
                 return redirect()->back()->withToastSuccess('Successfully deleted');
-
             }catch (\Exception $exception){
                 return redirect()->back()->withErrors('Something going wrong. Error:'.$exception->getMessage());
             }
