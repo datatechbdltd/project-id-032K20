@@ -160,6 +160,8 @@
             formData.append('false_example', $(this).parent().parent().find('.false_example')[0].files[0])
             formData.append('status', $(this).parent().parent().find('.status:checked').val())
 
+
+
             var ids = []
             var checkboxes = document.querySelectorAll('.user_role:checked')
             for (var i = 0; i < checkboxes.length; i++) {

@@ -516,13 +516,13 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row">
-            
+
                 @foreach ($response['data'] as $item)
                     @foreach ( $item['priceMetrics'] as $item1)
                     <div class="col-lg-4 responsive-column">
                     <div class="card-item flight-card flight--card">
-                        <div class="card-img">
-                            <img src="images/airline-img7.png" alt="flight-logo-img">
+                        <div class="">
+                            <img width=310px" height="145px" src="{{ asset(get_static_option('plane')) }}">
                         </div>
                         <div class="card-body">
                             <div class="card-top-title d-flex justify-content-between">
@@ -555,14 +555,14 @@
                                         </div>
                                         <div>
                                             <h3 class="card-title font-size-15 font-weight-medium mb-0">{{ $item['destination']['iataCode'] }}</h3>
-                                            <p class="card-meta font-size-14">Thu Nov 13 8:50 AM</p>
+                                            <p class="card-meta font-size-14">{{ $item['departureDate'] }}</p>
                                         </div>
                                     </div>
                                 </div><!-- end flight-time -->
                                 <p class="font-size-14 text-center"><span class="color-text-2 mr-1">Total Time:</span>12 Hours 30 Minutes</p>
                             </div><!-- end flight-details -->
                             <div class="btn-box text-center">
-                                <a href="flight-single.html" class="theme-btn theme-btn-small w-100">View Details</a>
+                                <a href="{{ route('frontend.flightDetails') }}" class="theme-btn theme-btn-small w-100">View Details</a>
                             </div>
                         </div><!-- end card-body -->
                     </div><!-- end card-item -->
@@ -571,7 +571,7 @@
                 @endforeach
 
                 {{ ($response)}}
-            
+
         </div><!-- end row -->
         <div class="row">
             <div class="col-lg-12">

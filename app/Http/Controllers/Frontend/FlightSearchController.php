@@ -24,4 +24,11 @@ class FlightSearchController extends Controller
         //$response = json_decode($response, true);
         return view('frontend.flight.one-way-search-result',compact('response'))->with('flying_from', $request->flying_from)->with('flying_to', $request->flying_to);;
     }
+
+    public  function flightDetails(){
+        return view('frontend.flight.flight-details');
+    }
+    public  function flightBooking(){
+        return view('frontend.flight.flight-booking');
+    }
 }

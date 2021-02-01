@@ -40,8 +40,8 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function (){
     Route::get('/user-type', 'NonPermittedUserController@index')->name('nonPermittedUser')->middleware('auth');
     Route::get('/user-type/{permission}', 'NonPermittedUserController@assignPermission')->name('assignPermission')->middleware('auth');
     Route::post('/', 'FlightSearchController@oneWayFlightSearchResult')->name('oneWayFlightSearchResult');
-
-
+    Route::get('/flight-details', 'FlightSearchController@flightDetails')->name('flightDetails');
+    Route::get('/flight-booking', 'FlightSearchController@flightBooking')->name('flightBooking');
 });
 
 /***
@@ -96,7 +96,6 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
 
     Route::group(['prefix'=>'provider', 'as' => 'provider.'], function (){
         Route::group(['prefix'=>'flight', 'as' => 'flight.'], function (){
-
             Route::get('/index', 'FlightController@providerFlightIndex')->name('index');
             Route::get('/view/{flight_id}', 'FlightController@providerFlightView')->name('view');
             Route::get('/approve/{flight_id}', 'FlightController@providerFlightApprove')->name('approve');
@@ -153,6 +152,6 @@ Route::group(['namespace' => 'User', 'as' => 'user.', 'prefix'=>'user', 'middlew
 
 
 Route::get('/access-token', function(){
-    // getAmadeusAccessTokenView();
-   echo( get_current_currency());
+     getAmadeusAccessTokenView();
+//   echo( get_current_currency());
 });

@@ -76,9 +76,11 @@ class RegisterController extends Controller
         try {
             //User and provider type account
             if ($request->input('type') == 'user'){
+                $user->type_id       = 3;
                 $user->save();
                 $user->assignRole('user');
             }elseif ($request->input('type') == 'provider'){
+                $user->type_id       = 2;
                 $user->save();
                 $user->assignRole('provider');
             }else{

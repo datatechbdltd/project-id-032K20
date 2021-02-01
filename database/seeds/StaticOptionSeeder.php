@@ -56,6 +56,7 @@ class StaticOptionSeeder extends Seeder
         set_static_option('linkedin_o_auth_status', '');
 
         set_static_option('no_image', 'assets/uploads/images/setting/no-image.png');   //no_image
+        set_static_option('plane', 'assets/uploads/images/setting/plane.png');   //plane image
 
     }
 }

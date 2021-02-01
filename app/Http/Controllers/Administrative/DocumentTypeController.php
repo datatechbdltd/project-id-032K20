@@ -75,8 +75,9 @@ class DocumentTypeController extends Controller
             $document_type->false_example=$folder_path.$image_new_name;
         }
         try {
-            $document_type->save();
-            foreach($request->input(['user_role']) as $user_type){
+            //$document_type->save();
+            $user_types = explode(',', $request->input(['user_role']));
+            foreach($user_types as $user_type){
                 //Database
                 $user_type = UserType::find($user_type);
 
