@@ -140,6 +140,7 @@ Route::group(['namespace' => 'Provider', 'as' => 'provider.', 'prefix'=>'provide
     Route::resource('dashboard', 'DashboardController');
     Route::resource('flight', 'FlightController');
     Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
+    Route::post('profile/update', 'ProfileController@updateProfile')->name('updateProfile');
 });
 
 

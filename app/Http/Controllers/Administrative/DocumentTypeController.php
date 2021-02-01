@@ -177,7 +177,7 @@ class DocumentTypeController extends Controller
         try {
             $document_type->save();
             DocumentTypesAndUserTypes::where('document_type_id', $document_type->id)->delete();
-            
+
             $user_types = explode(',', $request->input(['user_role']));
             foreach($user_types as $user_type){
                 if(DocumentTypesAndUserTypes::where('user_type_id', $user_type)->where('document_type_id', $document_type->id)->exists()){

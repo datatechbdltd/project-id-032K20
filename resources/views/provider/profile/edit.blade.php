@@ -30,16 +30,16 @@
                         <div class="form-title-wrap">
                             <h3 class="title">Profile Setting</h3>
                         </div>
-                        <div class="form-content middle-image-helper">
+                        <div class="form-content middle-image-helper profile-setting-parent">
                             <div class="user-profile-action d-flex align-items-center pb-4">
                                 <div class="overlay">
                                     <div class="overlay-wrapper rounded bg-light-success text-center">
-                                        <img src="{{ asset($user->avatar ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                        <img src="{{ asset($user->avatar ?? get_static_option('no_image')) }}" alt=""  class="mw-100 w-200px image-display" width="50%">
                                     </div>
                                     <div class="overlay-layer mt-3">
-                                        <input style="display: none" type="file" accept="image/*" class="image-importer">
+                                        <input style="display: none" id="image-display" type="file" accept="image/*" class="image-importer">
                                         <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
-                                           Choose Image
+                                            Choose Image
                                         </button>
                                         <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
                                             Reset
@@ -59,7 +59,7 @@
                                                 <label class="label-text">Name</label>
                                                 <div class="form-group">
                                                     <span class="la la-user form-icon"></span>
-                                                    <input class="form-control" type="text"  value="{{ $user->name }}" placeholder="Your name">
+                                                    <input class="form-control name" id="name" type="text"  value="{{ $user->name }}" placeholder="Your name">
                                                 </div>
                                             </div>
                                         </div><!-- end col-lg-6 -->
@@ -68,7 +68,7 @@
                                                 <label class="label-text">Email Address</label>
                                                 <div class="form-group">
                                                     <span class="la la-envelope form-icon"></span>
-                                                    <input class="form-control" type="text" value="{{ $user->email }}" placeholder="Your email">
+                                                    <input class="form-control email" id="email" type="text" value="{{ $user->email }}" placeholder="Your email">
                                                 </div>
                                             </div>
                                         </div><!-- end col-lg-6 -->
@@ -77,22 +77,31 @@
                                                 <label class="label-text">Phone</label>
                                                 <div class="form-group">
                                                     <span class="la la-phone form-icon"></span>
-                                                    <input class="form-control" type="text" value="{{ $user->phone }}">
+                                                    <input class="form-control phone" id="phone" type="text" value="{{ $user->phone }}">
                                                 </div>
                                             </div>
                                         </div><!-- end col-lg-6 -->
                                         <div class="col-lg-6 responsive-column">
                                             <div class="input-box">
-                                                <label class="label-text">Address</label>
-                                                <div class="form-group">
-                                                    <span class="la la-map form-icon"></span>
-                                                    <input class="form-control" type="text" value="{{ $user->address }}">
+                                                <label class="label-text">Language</label>
+                                                <div class="select-contain">
+                                                    <div class=" bootstrap-select select-contain-select">
+                                                        <select class="select-contain-select" tabindex="-98">
+
+                                                            @foreach(get_active_languages() as $lang)
+                                                                <option id="language" @if($user->language === $lang->code) selected @endif value="{{ $lang->code }}">{{ $lang->name }}</option>
+                                                            @endforeach
+
+
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div><!-- end col-lg-6 -->
+                                            </div><!-- end col-lg-6 -->
+                                        </div>
+
                                         <div class="col-lg-12">
                                             <div class="btn-box">
-                                                <button class="theme-btn" type="button">Save Changes</button>
+                                                <button id="profile_update_btn" class="theme-btn" type="button">Save Changes</button>
                                             </div>
                                         </div><!-- end col-lg-12 -->
                                     </div><!-- end row -->
@@ -173,7 +182,7 @@
                                         <div class="overlay-layer mt-3">
                                             <input style="display: none" type="file" accept="image/*" class="image-importer">
                                             <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
-                                            Choose Image
+                                                Choose Image
                                             </button>
                                             <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
                                                 Reset
@@ -351,8 +360,77 @@
             </div><!-- end row -->
         </div><!-- end container-fluid -->
     </div><!-- end dashboard-main-content -->
-    {{-- @include('includes.image-upload-helper') --}}
+    <!--begin::Page Scripts-->
+    <script>
+        $(document).ready(function() {
+            //Submit image without reload
+            $('#profile_update_btn').click(function(){
+
+                var formData = new FormData();
+                formData.append('name', $('.profile-setting-parent').find('#name').val())
+                formData.append('email', $('.profile-setting-parent').find('#email').val())
+                formData.append('phone', $('.profile-setting-parent').find('#phone').val())
+                formData.append('language', $('.profile-setting-parent').find('#language').val())
+
+                formData.append('avatar', $('.profile-setting-parent').find('#image-display')[0].files[0])
+
+                var this_button = $(this);
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('provider.updateProfile') }}",
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function (){
+                        this_button.prop("disabled", true)
+                    },
+                    complete: function (){
+                        this_button.prop("disabled", false)
+                    },
+                    success: function (response_data) {
+                        if (response_data.type == 'success'){
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: response_data.type,
+                                title: response_data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            location.reload();
+                        }else{
+                            Swal.fire({
+                                icon: response_data.type,
+                                title: 'Oops...',
+                                text: response_data.message,
+                            })
+                        }
+                    },
+                    error: function (xhr) {
+                        var errorMessage = '<div class="card bg-danger">\n' +
+                            '                        <div class="card-body text-center p-5">\n' +
+                            '                            <span class="text-white">';
+                        $.each(xhr.responseJSON.errors, function(key,value) {
+                            errorMessage +=(''+value+'<br>');
+                        });
+                        errorMessage +='</span>\n' +
+                            '                        </div>\n' +
+                            '                    </div>';
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            footer: errorMessage
+                        })
+                    },
+                })
+            });
+        });
+    </script>
+    <!--end::Page Scripts-->
 @endsection
 @section('content')
 
 @endsection
+@push('js')
+
+@endpush

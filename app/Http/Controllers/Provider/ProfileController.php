@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\Provider;
 
+use App\DocumentType;
+use App\User;
+use App\DocumentTypesAndUserTypes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProfileController extends Controller
 {
@@ -74,6 +80,45 @@ class ProfileController extends Controller
         //
     }
 
+    public function updateProfile(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'language' => 'required',
+        ]);
+
+        $user = User::findOrFail(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->language = $request->language;
+
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar != null)
+                File::delete(public_path($user->avatar)); //Old image delete
+            $image             = $request->file('avatar');
+            $folder_path       = 'assets/uploads/images/profile/';
+            $image_new_name    = Str::random(20).'-'.now()->timestamp.'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->resize(500, 500)->save($folder_path.$image_new_name);
+            $user->avatar=$folder_path.$image_new_name;
+        }
+
+        try {
+            $user->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully updated profile',
+            ]);
+
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => 'Something going wrong'.$exception,
+            ]);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
