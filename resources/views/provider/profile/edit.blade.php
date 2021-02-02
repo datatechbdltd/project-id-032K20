@@ -32,20 +32,17 @@
                         </div>
                         <div class="form-content middle-image-helper profile-setting-parent">
                             <div class="user-profile-action d-flex align-items-center pb-4">
-                                <div class="overlay">
+                                <div class="overlay" style="margin: 0 auto;">
                                     <div class="overlay-wrapper rounded bg-light-success text-center">
-                                        <img src="{{ asset($user->avatar ?? get_static_option('no_image')) }}" alt=""  class="mw-100 w-200px image-display" width="50%">
+                                        <img src="{{ asset($user->avatar ?? get_static_option('no_image')) }}" alt=""  class="image-display" height="180px" width="180px">
                                     </div>
-                                    <div class="overlay-layer mt-3">
+                                    <div class="overlay-layer mt-3 text-center">
                                         <input style="display: none" id="image-display" type="file" accept="image/*" class="image-importer">
                                         <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                             Choose Image
                                         </button>
                                         <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
                                             Reset
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-info mr-2 submit-btn">
-                                            Upload Image
                                         </button>
                                     </div>
                                 </div>
@@ -114,16 +111,15 @@
                 <div class="col-lg-6 ">
                     <div class="form-box">
                         <div class="form-title-wrap">
-                            <h3 class="title">Documents</h3>
+                            <h3 class="title">{{ $document->documentType->name }}</h3>
                         </div>
 
                             <div class="form-content middle-image-helper">
                                 <div class="user-profile-action d-flex align-items-center pb-4">
-                                    <div class="overlay">
-                                        <h3 class="title">{{ $document->documentType->name }}</h3>
-                                        <!--begin::Symbol-->
+                                    <div class="overlay"  style="margin: 10px auto;">
+
                                         <div class="row">
-                                            <div class="row">
+                                            <div class="row"  style="margin: 0 auto;">
                                                 <!--begin::Product-->
                                                 <div class="col-md-6 col-xxl-6 col-lg-6">
                                                     <!--begin::Card-->
@@ -132,15 +128,12 @@
                                                             <!--begin::Image-->
                                                             <div class="overlay">
                                                                 <div class="overlay-wrapper rounded bg-light text-center">
-                                                                    <img src="{{ asset($document->documentType->correct_example ??get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
-                                                                </div>
-                                                                <div class="overlay-layer">
-                                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+                                                                    <img src="{{ asset($document->documentType->correct_example ??get_static_option('no_image')) }}"  width="160px;" height="160px;">
                                                                 </div>
                                                             </div>
                                                             <!--end::Image-->
                                                             <!--begin::Details-->
-                                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                            <div class="text-center mt-3 mb-3 d-flex flex-column">
                                                                 <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Correct example</a>
                                                             </div>
                                                             <!--end::Details-->
@@ -157,15 +150,12 @@
                                                             <!--begin::Image-->
                                                             <div class="overlay">
                                                                 <div class="overlay-wrapper rounded bg-light text-center">
-                                                                    <img src="{{ asset($document->documentType->false_example ??get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
-                                                                </div>
-                                                                <div class="overlay-layer">
-                                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
+                                                                    <img src="{{ asset($document->documentType->false_example ??get_static_option('no_image')) }}" width="160px;" height="160px;">
                                                                 </div>
                                                             </div>
                                                             <!--end::Image-->
                                                             <!--begin::Details-->
-                                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                            <div class="text-center mt-3 mb-3 d-flex flex-column">
                                                                 <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Incorrect example</a>
                                                             </div>
                                                             <!--end::Details-->
@@ -177,18 +167,19 @@
                                             </div>
                                         </div>
                                         <!--end::Symbol-->
-                                        <div class="overlay-wrapper rounded bg-light-success text-center">
-                                            <img src="{{ asset(auth()->user->type->documents ?? get_static_option('no_image')) }}" alt="" id="image-display" class="mw-100 w-200px image-display" width="50%">
+                                        <div class="overlay-wrapper rounded bg-light-success text-center mb-2">
+                                            <img src="{{ asset(get_auth_user_single_document(auth()->user()->id, $document->documentType->id)->document ?? get_static_option('no_image')) }}"   class="image-display" width="170px" height="170px">
                                         </div>
-                                        <div class="overlay-layer mt-3">
-                                            <input style="display: none" type="file" accept="image/*" class="image-importer">
+                                        <div class="overlay-layer"  style="margin: 10px auto;" >
+                                            <input style="display: none"  id="image-display" type="file" accept="image/*" class="image-importer">
+                                            <input  id="document_type_id" type="hidden" value="{{ $document->documentType->id }}">
                                             <button type="button" class="btn btn-icon btn-info mr-2 image-chose-btn">
                                                 Choose Image
                                             </button>
                                             <button type="button" class="btn btn-icon btn-warning mr-2 image-reset-btn" value="{{ asset(auth()->user->avatar ?? get_static_option('no_image')) }}" >
                                                 Reset
                                             </button>
-                                            <button type="button" class="btn btn-icon btn-info mr-2 submit-btn">
+                                            <button type="button" class="btn btn-icon btn-info mr-2 upload-image-btn">
                                                 Upload Image
                                             </button>
                                         </div>
@@ -366,6 +357,62 @@
     <script>
         $(document).ready(function() {
             //Submit image without reload
+            $('.upload-image-btn').click(function(){
+
+                var formData = new FormData();
+                formData.append('document_type_id', $(this).parentsUntil('.middle-image-helper').find('#document_type_id').val())
+                formData.append('document', $(this).parentsUntil('.middle-image-helper').find('#image-display')[0].files[0])
+
+                var this_button = $(this);
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('provider.documentUpload') }}",
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function (){
+                        this_button.prop("disabled", true)
+                    },
+                    complete: function (){
+                        this_button.prop("disabled", false)
+                    },
+                    success: function (response_data) {
+                        if (response_data.type == 'success'){
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: response_data.type,
+                                title: response_data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            location.reload();
+                        }else{
+                            Swal.fire({
+                                icon: response_data.type,
+                                title: 'Oops...',
+                                text: response_data.message,
+                            })
+                        }
+                    },
+                    error: function (xhr) {
+                        var errorMessage = '<div class="card bg-danger">\n' +
+                            '                        <div class="card-body text-center p-5">\n' +
+                            '                            <span class="text-white">';
+                        $.each(xhr.responseJSON.errors, function(key,value) {
+                            errorMessage +=(''+value+'<br>');
+                        });
+                        errorMessage +='</span>\n' +
+                            '                        </div>\n' +
+                            '                    </div>';
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            footer: errorMessage
+                        })
+                    },
+                })
+            });
             $('#profile_update_btn').click(function(){
 
                 var formData = new FormData();
