@@ -110,12 +110,13 @@
                         </div>
                     </div><!-- end form-box -->
                 </div><!-- end col-lg-6 -->
+                @foreach ($user->type->documents as $document)
                 <div class="col-lg-6 ">
                     <div class="form-box">
                         <div class="form-title-wrap">
                             <h3 class="title">Documents</h3>
                         </div>
-                        @foreach ($user->type->documents as $document)
+
                             <div class="form-content middle-image-helper">
                                 <div class="user-profile-action d-flex align-items-center pb-4">
                                     <div class="overlay">
@@ -194,10 +195,11 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+
 
                     </div><!-- end form-box -->
                 </div><!-- end col-lg-6 -->
+                @endforeach
                 <div class="col-lg-6">
                     <div class="form-box">
                         <div class="form-title-wrap">
