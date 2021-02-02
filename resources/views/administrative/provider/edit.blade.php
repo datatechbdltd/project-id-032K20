@@ -128,12 +128,12 @@
                                 <!--begin::User-->
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-                                        <div class="symbol-label" style="background-image:url('{{ asset(auth()->user()->avatar ?? get_static_option("no_image")) }}')"></div>
+                                        <div class="symbol-label" style="background-image:url('{{ asset($provider->avatar ?? get_static_option("no_image")) }}')"></div>
                                         <i class="symbol-badge bg-success"></i>
                                     </div>
                                     <div>
                                         <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$provider->name}}</a>
-                                        <div class="text-muted">Application Developer</div>
+                                        <div class="text-muted">{{ $provider->phone }}</div>
                                         <div class="mt-2">
                                             <a href="#" class="btn btn-sm btn-primary font-weight-bold mr-2 py-2 px-3 px-xxl-5 my-1">Chat</a>
                                             <a href="#" class="btn btn-sm btn-success font-weight-bold py-2 px-3 px-xxl-5 my-1">Follow</a>
@@ -404,8 +404,9 @@
                                                                <div class="card-body p-0">
                                                                    <!--begin::Image-->
                                                                    <div class="overlay">
+                                                                       <h3>{{ $document }}</h3>
                                                                        <div class="overlay-wrapper rounded bg-light text-center">
-                                                                           <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                           <img src="{{ asset( $document->correct_example ?? get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
                                                                        </div>
                                                                        <div class="overlay-layer">
                                                                            <a href="{{ asset($document->avatar ?? get_static_option('no_image')) }}"  id="image" class="btn font-weight-bolder symbol-light-primary btn-sm btn-primary mr-2">View</a>
@@ -468,8 +469,7 @@
                                                                    <!--end::Image-->
                                                                    <!--begin::Details-->
                                                                    <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-                                                                       <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Upload ypur image</a>
-                                                                       <span class="font-size-lg">Note .........</span>
+                                                                       <a href="javascript:void(0)" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Uploaded image</a>
                                                                    </div>
                                                                    <!--end::Details-->
                                                                </div>

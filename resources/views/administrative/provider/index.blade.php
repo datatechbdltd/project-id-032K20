@@ -53,49 +53,12 @@
                                 <th>Avatar</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Date & Time</th>
+                                <th>Join at</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                           {{-- @foreach($providers as $provider)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>
-                                    <div class="symbol symbol-40 mr-3">
-                                        <div class="symbol-label" style="background-image: url('{{ $provider->avatar }}')"></div>
-                                        @if(!$provider->email_verified_at)
-                                        <i class="symbol-badge bg-danger"></i>
-                                        @else
-                                            <i class="symbol-badge bg-success"></i>
-                                        @endif
-                                    </div>
-                                </td>
-                                <td>{{ $provider->name }}</td>
-                                <td>{{ $provider->email }}</td>
-                                <td>{{ $provider->created_at->format('M Y') }}</td>
-                                <td nowrap="nowrap">
-                                    <div class="dropdown dropdown-inline">
-                                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
-                                            <i class="la la-cog"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                            <ul class="nav nav-hoverable flex-column">
-                                                <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-edit"></i><span class="nav-text">Edit Details</span></a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-leaf"></i><span class="nav-text">Update Status</span></a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon la la-print"></i><span class="nav-text">Print</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details">
-                                        <i class="la la-edit"></i>
-                                    </a>
-                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">
-                                        <i class="la la-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach--}}
+                           {{--added data by ajax datatables--}}
                             </tbody>
                         </table>
                         <!--end: Datatable-->
@@ -123,7 +86,7 @@
                 "order": [[ 0, "desc" ]],
                 ajax: '{{ route('api.administrative.providers') }}',
                 columns: [
-                    {data: 'avatar', name: 'avatar'},
+                    {data: 'Avatar', name: 'Avatar'},
                     {data: 'name', name: 'name'},
                     {data: 'email', name: 'email'},
                     {data: 'created_at', name: 'created_at'},

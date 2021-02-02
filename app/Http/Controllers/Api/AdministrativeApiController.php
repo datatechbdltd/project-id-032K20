@@ -21,7 +21,14 @@ class AdministrativeApiController extends Controller
                 return '<a href="'. route('administrative.provider.edit', $data->id) .'" type="button" class="btn btn-success btn-sm" id="getEditArticleData" data-id="'.$data->id.'"><i class="
                 fas fa-eye icon-lg"></i></a><button type="button" data-id="'.$data->id.'" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm" id="getDeleteId"><i class="fas fa-trash-alt icon-lg"></i></button>';
             })
-            ->rawColumns(['Actions','provider_name'])
+            ->addColumn('Avatar', function($data) {
+                return '<img src="'.asset($data->avatar ?? get_static_option('no_image')).'" class="rounded" width="50px" height="50px">';
+                //{{ asset(auth()->user()->avatar ?? get_static_option('no_image')) }}
+            })
+            ->addColumn('created_at', function($data) {
+                return $data->created_at->format('D-d-M-Y');
+            })
+            ->rawColumns(['Actions','provider_name','Avatar'])
             ->make(true);
     }
 
