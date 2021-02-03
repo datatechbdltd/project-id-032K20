@@ -79,6 +79,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function flights(){
         return $this->hasMany(Flight::class,'provider_id','id');
     }
+    // address
+    public function address(){
+        return $this->hasOne(Address::class, 'user_id','id');
+    }
 
 
     /*//Address
@@ -87,7 +91,7 @@ class User extends Authenticatable implements MustVerifyEmail
   }*/
 
     //User Type
-    public function type(){
+    public function userType(){
         return $this->belongsTo(UserType::class,'type_id','id');
     }
 
@@ -95,4 +99,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function documents(){
         return $this->hasMany(Document::class,'user_id','id');
     }
+
+    //authorized document | this document authorized by me
+    public function authorizedDocuments(){
+        return $this->hasMany(Document::class,'authorized_by_id','id');
+    }
+
+
 }

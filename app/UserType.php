@@ -16,13 +16,8 @@ class UserType extends Model
         return $this->hasOne(User::class,'type_id','id');
     }
 
-    //Document types
-    public function documents(){
-        return $this->hasMany(DocumentTypesAndUserTypes::class,'user_type_id','id');
-    }
-
     //DocumentTypesAndUserTypes
-    public function documentTypes(){
-        return $this->hasMany(DocumentTypesAndUserTypes::class,'user_type_id','id');
+    public function documentTypesAndUserTypes(){
+        return $this->hasMany(DocumentTypesAndUserTypes::class,'user_type_id','id')->where('is_active', true);
     }
 }

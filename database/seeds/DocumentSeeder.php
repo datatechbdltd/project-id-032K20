@@ -13,19 +13,19 @@ class DocumentSeeder extends Seeder
     {
         $document = new \App\Document();
         $document->user_id    = 2;
-        $document->document    = "Nidssdd";
+        $document->document    = null;
         $document->document_type_id    = 1;
         $document->save();
 
         $document = new \App\Document();
         $document->user_id    = 3;
-        $document->document    = "Nidssfgdgddd";
+        $document->document    = null;
         $document->document_type_id    = 2;
         $document->save();
 
         $document = new \App\Document();
         $document->user_id    = 2;
-        $document->document    = "Nidsgfdfsdd";
+        $document->document    = null;
         $document->document_type_id    = 2;
         $document->save();
     }

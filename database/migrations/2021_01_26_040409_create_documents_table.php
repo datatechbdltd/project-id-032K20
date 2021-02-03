@@ -16,7 +16,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('document');
+            $table->string('document')->nullable();
             $table->foreignId('document_type_id');
             $table->string('extention')->nullable();
             $table->foreignId('authorized_by_id')->nullable();

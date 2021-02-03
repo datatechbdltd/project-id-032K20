@@ -2,12 +2,60 @@
 
 namespace App\Http\Controllers\Administrative;
 
+use App\Document;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProviderController extends Controller
 {
+    public function approveProviderDocument(Request $request){
+        $request->validate([
+            'document_id'=>'required',
+        ]);
+
+        $document = Document::findOrFail($request->document_id);
+        $document->is_approved = true;
+        $document->authorized_by_id = Auth::user()->id;
+
+        try {
+            $document->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully approved document',
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => 'Something going wrong'.$exception,
+            ]);
+        }
+    }
+
+    public function rejectProviderDocument(Request $request){
+        $request->validate([
+            'document_id'=>'required',
+        ]);
+
+        $document = Document::findOrFail($request->document_id);
+        $document->is_approved = false;
+        $document->authorization_note = $request->note;
+        $document->authorized_by_id = Auth::user()->id;
+
+        try {
+            $document->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully rejected document',
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'type' => 'error',
+                'message' => 'Something going wrong'.$exception,
+            ]);
+        }
+    }
     /**
      * Display a listing of the resource.
      *

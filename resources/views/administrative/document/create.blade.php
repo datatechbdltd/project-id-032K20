@@ -158,9 +158,7 @@
             formData.append('name', $(this).parent().parent().find('.document_name').val())
             formData.append('correct_example', $(this).parent().parent().find('.correct_example')[0].files[0])
             formData.append('false_example', $(this).parent().parent().find('.false_example')[0].files[0])
-            formData.append('status', $(this).parent().parent().find('.status:checked').val())
-
-
+            formData.append('is_active', $(this).parent().parent().find('.status:checked').val())
 
             var ids = []
             var checkboxes = document.querySelectorAll('.user_role:checked')

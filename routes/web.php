@@ -95,6 +95,8 @@ Route::group(['namespace' => 'Administrative', 'as' => 'administrative.', 'prefi
     Route::resource('terms-condition', 'TermsAndConditionController');
 
     Route::group(['prefix'=>'provider', 'as' => 'provider.'], function (){
+        Route::post('/approve-provider-document', 'ProviderController@approveProviderDocument')->name('approveProviderDocument');
+        Route::post('/reject-provider-document', 'ProviderController@rejectProviderDocument')->name('rejectProviderDocument');
         Route::group(['prefix'=>'flight', 'as' => 'flight.'], function (){
             Route::get('/index', 'FlightController@providerFlightIndex')->name('index');
             Route::get('/view/{flight_id}', 'FlightController@providerFlightView')->name('view');
@@ -158,3 +160,5 @@ Route::get('/access-token', function(){
      getAmadeusAccessTokenView();
 //   echo( get_current_currency());
 });
+
+

@@ -98,12 +98,12 @@
                                 <div class="col-9 col-form-label">
                                     <div class="radio-inline">
                                         <label class="radio radio-success">
-                                            <input value="0" @if($document_type->status == 0)  checked="checked"  @endif type="radio" class="status" name="status"/>
+                                            <input value="0" @if($document_type->is_active == 0)  checked="checked"  @endif type="radio" class="status" name="status"/>
                                             <span></span>
                                             Off
                                         </label>
                                         <label class="radio radio-success">
-                                            <input value="1" @if($document_type->status == 1)  checked="checked"  @endif type="radio" class="status" name="status"/>
+                                            <input value="1" @if($document_type->is_active == 1)  checked="checked"  @endif type="radio" class="status" name="status"/>
                                             <span></span>
                                             On
                                         </label>
@@ -151,7 +151,7 @@
                 formData.append('name', $(this).parent().parent().find('.document_name').val())
                 formData.append('correct_example', $(this).parent().parent().find('.correct_example')[0].files[0])
                 formData.append('false_example', $(this).parent().parent().find('.false_example')[0].files[0])
-                formData.append('status', $(this).parent().parent().find('.status:checked').val())
+                formData.append('is_active', $(this).parent().parent().find('.status:checked').val())
                 formData.append('document_type_id', $(this).parent().parent().find('.document_type_id').val())
 
 

@@ -14,7 +14,7 @@ class DocumentType extends Model
     ];
 
     //document type
-    public function types(){
+    public function documentTypesAndUserTypes(){
         return $this->hasMany(DocumentTypesAndUserTypes::class,'document_type_id','id');
     }
 }

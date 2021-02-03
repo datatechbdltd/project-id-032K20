@@ -69,7 +69,7 @@
                                         <img width="100px" height="80px" src="{{ asset($document->false_example ?? get_static_option('no_image')) }}">
                                     </td>
                                     <td>
-                                        @if($document->status == true)
+                                        @if($document->is_active == true)
                                             <span class="label label-inline label-light-success font-weight-bold">
                                                 Activated
                                             </span>

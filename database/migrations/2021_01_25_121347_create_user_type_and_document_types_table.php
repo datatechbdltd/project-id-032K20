@@ -17,6 +17,7 @@ class CreateUserTypeAndDocumentTypesTable extends Migration
             $table->id();
             $table->foreignId('user_type_id');
             $table->foreignId('document_type_id');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

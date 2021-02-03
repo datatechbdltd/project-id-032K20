@@ -27,7 +27,7 @@ class Document extends Model
     }
 
     //Document type
-    public function type(){
+    public function documentType(){
         return $this->belongsTo(DocumentType::class,'document_type_id','id');
     }
 }

@@ -107,7 +107,7 @@
                         </div>
                     </div><!-- end form-box -->
                 </div><!-- end col-lg-6 -->
-                @foreach ($user->type->documents as $document)
+                @foreach ($user->userType->documentTypesAndUserTypes as $document)
                 <div class="col-lg-6 ">
                     <div class="form-box">
                         <div class="form-title-wrap">
@@ -168,7 +168,7 @@
                                         </div>
                                         <!--end::Symbol-->
                                         <div class="overlay-wrapper rounded bg-light-success text-center mb-2">
-                                            <img src="{{ asset(get_auth_user_single_document(auth()->user()->id, $document->documentType->id)->document ?? get_static_option('no_image')) }}"   class="image-display" width="170px" height="170px">
+                                            <img src="{{ asset(get_document_by_user_id_and_document_type_id(auth()->user()->id, $document->documentType->id)->document ?? get_static_option('no_image')) }}"   class="image-display" width="170px" height="170px">
                                         </div>
                                         <div class="overlay-layer"  style="margin: 10px auto;" >
                                             <input style="display: none"  id="image-display" type="file" accept="image/*" class="image-importer">

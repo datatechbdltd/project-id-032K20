@@ -50,13 +50,13 @@ class DocumentTypeController extends Controller
             'name' => 'required',
             'correct_example' => 'required|image',
             'false_example' => 'required|image',
-            'status' => 'required|boolean',
+            'is_active' => 'required|boolean',
             'user_role' => 'required|exists:user_types,id',
         ]);
 
         $document_type = new DocumentType();
         $document_type->name = $request->name;
-        $document_type->status = $request->status;
+        $document_type->is_active = $request->is_active;
 
         if ($request->hasFile('correct_example')) {
             $image             = $request->file('correct_example');
@@ -86,6 +86,7 @@ class DocumentTypeController extends Controller
                         $document_and_user_types = new DocumentTypesAndUserTypes();
                         $document_and_user_types->user_type_id = $user_type;
                         $document_and_user_types->document_type_id = $document_type->id;
+                        $document_and_user_types->is_active = $document_type->is_active;
                         $document_and_user_types->save();
                     }else{
                         return response()->json([
@@ -145,14 +146,14 @@ class DocumentTypeController extends Controller
     public function documentUpdate(Request $request){
         $request->validate([
             'name' => 'required',
-            'status' => 'required|boolean',
+            'is_active' => 'required|boolean',
             'user_role' => 'required|exists:user_types,id',
             'document_type_id' => 'required',
         ]);
 
         $document_type = DocumentType::findOrFail($request->document_type_id);
         $document_type->name = $request->name;
-        $document_type->status = $request->status;
+        $document_type->is_active = $request->is_active;
 
         if ($request->hasFile('correct_example')) {
             if ($document_type->correct_example != null)
@@ -176,8 +177,8 @@ class DocumentTypeController extends Controller
         }
         try {
             $document_type->save();
+            // delete first
             DocumentTypesAndUserTypes::where('document_type_id', $document_type->id)->delete();
-
             $user_types = explode(',', $request->input(['user_role']));
             foreach($user_types as $user_type){
                 if(DocumentTypesAndUserTypes::where('user_type_id', $user_type)->where('document_type_id', $document_type->id)->exists()){
@@ -187,6 +188,7 @@ class DocumentTypeController extends Controller
                         $document_and_user_types = new DocumentTypesAndUserTypes();
                         $document_and_user_types->user_type_id = $user_type;
                         $document_and_user_types->document_type_id = $document_type->id;
+                        $document_and_user_types->is_active = $document_type->is_active;
                         $document_and_user_types->save();
                     }else{
                         return response()->json([

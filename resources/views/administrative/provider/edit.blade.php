@@ -391,9 +391,16 @@
                                     <!--end::Header-->
                                     <!--begin::Body-->
                                     <div class="card-body pt-2">
-                                        @foreach($provider->type->documents as $document)
+                                        @foreach($provider->userType->documentTypesAndUserTypes as $documentTypesAndUserType)
+
                                             <!--begin::Item-->
-                                            <div class="d-flex flex-wrap align-items-center mb-10">
+                                            <div  @if(get_document_by_user_id_and_document_type_id($provider->id, $documentTypesAndUserType->documentType->id) && get_document_by_user_id_and_document_type_id($provider->id, $documentTypesAndUserType->documentType->id)->is_appoved == true)
+                                                  class="d-flex flex-wrap align-items-center mb-10 bg-success-o-65" @else class="d-flex flex-wrap align-items-center mb-10 bg-danger-o-65" @endif >
+                                                <!--begin::Title-->
+                                                <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
+                                                    <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $documentTypesAndUserType->documentType->name }}</a>
+                                                </div>
+                                                <!--end::Title-->
                                                 <!--begin::Symbol-->
                                                <div class="row">
                                                    <div class="row">
@@ -404,12 +411,12 @@
                                                                <div class="card-body p-0">
                                                                    <!--begin::Image-->
                                                                    <div class="overlay">
-                                                                       <h3>{{ $document }}</h3>
+
                                                                        <div class="overlay-wrapper rounded bg-light text-center">
-                                                                           <img src="{{ asset( $document->correct_example ?? get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                           <img src="{{ asset( $documentTypesAndUserType->documentType->correct_example ?? get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
                                                                        </div>
                                                                        <div class="overlay-layer">
-                                                                           <a href="{{ asset($document->avatar ?? get_static_option('no_image')) }}"  id="image" class="btn font-weight-bolder symbol-light-primary btn-sm btn-primary mr-2">View</a>
+                                                                           <a href="{{ asset( $documentTypesAndUserType->documentType->correct_example ?? get_static_option('no_image')) }}"  id="image" class="btn font-weight-bolder symbol-light-primary btn-sm btn-primary mr-2">View</a>
                                                                         </div>
                                                                    </div>
                                                                    <!--end::Image-->
@@ -431,13 +438,13 @@
                                                                    <!--begin::Image-->
                                                                    <div class="overlay">
                                                                        <div class="overlay-wrapper rounded bg-light text-center">
-                                                                           <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                           <img src="{{ asset( $documentTypesAndUserType->documentType->false_example ?? get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
                                                                        </div>
                                                                        <div class="overlay-layer">
 {{--
                                                                            <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">View</a>
 --}}
-                                                                           <a href="{{ asset($document->avatar ?? get_static_option('no_image')) }}" id="zoom" class="btn font-weight-bolder symbol-light-primary btn-sm btn-primary mr-2">View</a>
+                                                                           <a href="{{ asset( $documentTypesAndUserType->documentType->false_example ?? get_static_option('no_image')) }}" id="zoom" class="btn font-weight-bolder symbol-light-primary btn-sm btn-primary mr-2">View</a>
                                                                        </div>
                                                                    </div>
                                                                    <!--end::Image-->
@@ -454,16 +461,13 @@
                                                        <!--begin::Product-->
                                                        <div class="col-md-12 col-lg-12 col-xxl-12">
                                                            <!--begin::Card-->
-                                                           <div class="card card-custom card-shadowless">
+                                                           <div class="card card-custom card-shadowless middle-document-helper">
                                                                <div class="card-body p-0">
                                                                    <!--begin::Image-->
                                                                    <div class="overlay">
                                                                        <div class="overlay-wrapper rounded bg-light text-center">
-                                                                           <img src="{{ asset(get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
-                                                                       </div>
-                                                                       <div class="overlay-layer">
-                                                                           <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
-                                                                           <a href="#" class="btn font-weight-bolder btn-sm btn-light-primary">Purchase</a>
+                                                                           <img src="{{ asset(get_document_by_user_id_and_document_type_id($provider->id, $documentTypesAndUserType->documentType->id)->document ?? get_static_option('no_image')) }}" alt="" class="mw-100 w-200px">
+                                                                           <input  class="document_id" type="hidden" value="{{ get_document_by_user_id_and_document_type_id($provider->id, $documentTypesAndUserType->documentType->id)->id ?? null }}">
                                                                        </div>
                                                                    </div>
                                                                    <!--end::Image-->
@@ -471,6 +475,12 @@
                                                                    <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
                                                                        <a href="javascript:void(0)" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Uploaded image</a>
                                                                    </div>
+                                                                   @if(get_document_by_user_id_and_document_type_id($provider->id, $documentTypesAndUserType->documentType->id))
+                                                                   <div class="text-center mt-1">
+                                                                       <a href="javascript:0" class="btn font-weight-bolder btn-sm btn-primary mr-2 approve-document-btn">Approve</a>
+                                                                       <a href="javascript:0" class="btn font-weight-bolder btn-sm btn-danger reject-document-btn" >Reject</a>
+                                                                   </div>
+                                                                   @endif
                                                                    <!--end::Details-->
                                                                </div>
                                                            </div>
@@ -480,23 +490,6 @@
                                                    </div>
                                                </div>
                                                 <!--end::Symbol-->
-
-                                                <!--begin::Title-->
-                                                <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                                    <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $document->documentType->name }}</a>
-                                                    <span class="text-muted font-weight-bold font-size-sm my-1">Local, clean &amp; environmental</span>
-                                                    <span class="text-muted font-weight-bold font-size-sm">Created by:
-                                                                    <span class="text-primary font-weight-bold">CoreAd</span></span>
-                                                </div>
-                                                <!--end::Title-->
-                                                <!--begin::Info-->
-                                                <div class="d-flex align-items-center py-lg-0 py-2">
-                                                    <div class="d-flex flex-column text-right">
-                                                        <span class="text-dark-75 font-weight-bolder font-size-h4">24,900</span>
-                                                        <span class="text-muted font-size-sm font-weight-bolder">votes</span>
-                                                    </div>
-                                                </div>
-                                                <!--end::Info-->
                                             </div>
                                             <!--end::Item-->
                                         @endforeach
@@ -1824,14 +1817,159 @@
         <!--end::Entry-->
     </div>
     <!--end::Content-->
+    <div class="modal" tabindex="-1" role="dialog" id="reject_document_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Authorization note</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="hidden_id">
+                    <textarea id="reject_note" class="form-control" rows="3" ></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary modal-submit-btn" >Reject</button>
+                    <button type="button" class="btn btn-secondary reject-btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('js')
     <script src="{{ asset('assets/administrative/js/fancybox/js/jquery.fancybox.min.js') }}"></script>
     <script>
-        $(function(){
-            $('.my-gallery').imageZoom({
-                $(this).imageZoom();
-        });
+        $(document).ready(function() {
+            $('.approve-document-btn').click(function(){
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "Do you want to approve it ?",
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#deaa40',
+                    cancelButtonColor: '#0fcaca',
+                    confirmButtonText: 'Yes, approve it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var formData = new FormData();
+
+                        formData.append('document_id', $(this).parentsUntil('.middle-document-helper').find('.document_id').val());
+                        var this_button = $(this);
+                        $.ajax({
+                            method: 'POST',
+                            url: "{{ route('administrative.provider.approveProviderDocument') }}",
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            beforeSend: function (){
+                                this_button.prop("disabled", true)
+                            },
+                            complete: function (){
+                                this_button.prop("disabled", false)
+                            },
+                            success: function (response_data) {
+                                if (response_data.type == 'success'){
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: response_data.type,
+                                        title: response_data.message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    location.reload();
+                                }else{
+                                    Swal.fire({
+                                        icon: response_data.type,
+                                        title: 'Oops...',
+                                        text: response_data.message,
+                                    })
+                                }
+                            },
+                            error: function (xhr) {
+                                var errorMessage = '<div class="card bg-danger">\n' +
+                                    '                        <div class="card-body text-center p-5">\n' +
+                                    '                            <span class="text-white">';
+                                $.each(xhr.responseJSON.errors, function(key,value) {
+                                    errorMessage +=(''+value+'<br>');
+                                });
+                                errorMessage +='</span>\n' +
+                                    '                        </div>\n' +
+                                    '                    </div>';
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    footer: errorMessage
+                                })
+                            },
+                        })
+                    }
+                })
+            });
+            $('.reject-document-btn').click(function() {
+                $('#hidden_id').val($(this).parentsUntil('.middle-document-helper').find('.document_id').val())
+                $('#reject_document_modal').modal('show');
+
+            });
+            $('.modal-submit-btn').click(function(){
+
+            var formData = new FormData();
+            formData.append('note', $('#reject_note').val());
+            formData.append('document_id',  $('#hidden_id').val());
+
+            var this_button = $(this);
+
+            $.ajax({
+                method: 'POST',
+                url: "{{ route('administrative.provider.rejectProviderDocument') }}",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function (){
+                    this_button.prop("disabled", true)
+                },
+                complete: function (){
+                    this_button.prop("disabled", false)
+                },
+                success: function (response_data) {
+                    if (response_data.type == 'success'){
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: response_data.type,
+                            title: response_data.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        location.reload();
+                    }else{
+                        Swal.fire({
+                            icon: response_data.type,
+                            title: 'Oops...',
+                            text: response_data.message,
+                        })
+                    }
+                },
+                error: function (xhr) {
+                    var errorMessage = '<div class="card bg-danger">\n' +
+                        '                        <div class="card-body text-center p-5">\n' +
+                        '                            <span class="text-white">';
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        errorMessage +=(''+value+'<br>');
+                    });
+                    errorMessage +='</span>\n' +
+                        '                        </div>\n' +
+                        '                    </div>';
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        footer: errorMessage
+                    })
+                },
+            });
+            });
         });
     </script>
 @endpush

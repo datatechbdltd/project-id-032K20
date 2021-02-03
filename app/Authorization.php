@@ -13,6 +13,7 @@ class Authorization extends Model
         'is_approved',
     ];
 
+    // user
     public function user(){
         return $this->hasOne(User::class, 'user_id','id');
     }
