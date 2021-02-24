@@ -24,7 +24,6 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function (){
         Route::get('user', 'AdministrativeApiController@get_ajax_user')->name('users');
         Route::get('provider', 'AdministrativeApiController@get_ajax_provider')->name('providers');
         Route::get('provider-flight', 'AdministrativeApiController@get_ajax_provider_flight')->name('provider-flight');
-
     });
 
     Route::post('airport-search', 'FlyingSearchController@airportSearch')->name('airportSearch');
